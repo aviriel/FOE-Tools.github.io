@@ -42,8 +42,8 @@ export default class {
          if ((this.getEl('level').value > 0) &&
          (this.getEl('level').value <= this.state['max-level'])) {
             this.state.level = this.getEl('level').value;
+            submitForm(this);
          }
-         submitForm(this);
       });
       this.subscribeTo(this.getEl('percentage-value-global')).on('keyup', () => {
          if (this.getEl('percentage-value-global').value >= 0) {

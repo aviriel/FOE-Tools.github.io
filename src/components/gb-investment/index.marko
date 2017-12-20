@@ -11,12 +11,12 @@ div.columns
       div.field
          label.label for="level" -- Niveau du GM (entre 1 et ${state['max-level']})
          div.control
-            input.input type="number" min="1" max="${state['max-level']}" value="${state.level}" name="level" id="level" key="level"
+            input.input type="number" min="1" max="${state['max-level']}" value="${state.level}" name="level" id="level" key="level" autocomplete="off" autofocus
    div.column.is-half
       div.field
          label.label for="investor-percentage" -- % de bonus (grosses arches) globale des investisseurs
          div.control
-            input.input type="number" min="0" name="investor-percentage" value="${state['percentage-value-global']}" id="investor-percentage" key="percentage-value-global"
+            input.input type="number" min="0" value="${state['percentage-value-global']}" name="investor-percentage" id="investor-percentage" key="percentage-value-global" autocomplete="off"
 
 table.table.is-bordered.is-striped.is-narrow.is-fullwidth
    thead
@@ -40,7 +40,7 @@ table.table.is-bordered.is-striped.is-narrow.is-fullwidth
          td
             p.level-right -- ${place.participation}
          td
-            input.input type="number" min="0" name="investor-percentage" value="${state['percentage-value'][i]}" id="investor-percentage" key="percentage-value-${i}"
+            input.input type="number" min="0" value="${state['percentage-value'][i]}" name="investor-percentage-${i}" id="investor-percentage-${i}" key="percentage-value-${i}" autocomplete="off"
    tfoot
       tr
          th colspan=4 -- Investissement totale du propriétaire

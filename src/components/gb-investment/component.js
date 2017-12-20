@@ -1,5 +1,5 @@
-import data from "src/services/foe-gb-data.js";
-import gbProcess from "src/services/foe-gb-investment";
+import data from "~/src/services/foe-gb-data.js";
+import gbProcess from "~/src/services/foe-gb-investment";
 
 function submitForm (obj) {
 obj.state.gb = gbProcess.Submit(obj.state.level,

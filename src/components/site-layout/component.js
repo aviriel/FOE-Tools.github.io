@@ -1,4 +1,4 @@
-import packagejson from '../../../package.json';
+import packagejson from '~/package.json';
 
 export default class {
    onCreate() {

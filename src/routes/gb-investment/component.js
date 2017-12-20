@@ -1,4 +1,4 @@
-import data from "src/services/foe-gb-data.js";
+import data from "~/src/services/foe-gb-data.js";
 
 export default class {
    onCreate() {

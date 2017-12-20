@@ -57,12 +57,26 @@ The generated static site will be placed in `dist/`.
 
 - [ ] Internationalization (preferably use [i18next](https://www.i18next.com/)) [#1](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/1)
 - [ ] Improve UX 
-      - [ ] GB display [#2](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/2)
-      - [ ] Add cookie [#3](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/3)
+      -   GB display [#2](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/2)
+      -   Add cookie [#3](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/3)
 - [ ] Tests
 
 
 And (obviously) make other tools.
+
+
+
+## Contributing
+
+Please, create a fork and an explicit branch. For exemple, if you fix something (ex: mail sending) create a branch like this: `git checkout -b fix/mail-sending`.
+
+
+
+For commit message, follow [this recommendation](https://chris.beams.io/posts/git-commit/).
+
+
+
+**PR are accepted on `dev` branch**. Master branch it is only for website GitHub static page (so, production).
 
 
 

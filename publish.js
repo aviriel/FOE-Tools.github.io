@@ -1,7 +1,10 @@
 /* eslint-disable no-undef */
+require("babel-core/register");
+require("babel-polyfill");
+
 const prompt = require("prompt");
 const exec = require("child_process").execSync;
-const gitUrl = "git@github.com:marko-js/markojs-website.git";
+const gitUrl = "git@github.com:FOE-Tools/FOE-Tools.github.io.git";
 const gitBranch = "gh-pages";
 const buildDir = __dirname + "/dist";
 const publishDir = buildDir + "/__publish";

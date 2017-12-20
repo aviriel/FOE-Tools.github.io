@@ -61,6 +61,6 @@
     "prettier": "prettier src/**/*.{js,css,less} *.js --write",
     "publish": "NODE_ENV=production node --trace-warnings -r babel-register ./publish"
   },
-  "static-repo": "git@github.com:FOE-Tools/FOE-Tools.github.io.git#gh-pages",
+  "static-repo": "git@github.com:FOE-Tools/FOE-Tools.github.io.git#master",
   "baseurl": "/"
 }

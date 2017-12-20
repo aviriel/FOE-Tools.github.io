@@ -1,0 +1,59 @@
+div.columns
+   div.column.is-half
+      div.field
+         h3 -- ${state.data.gbs[input.gb].display_name}
+   div.column.is-half
+      div.field
+         a#permalink.level-right href="/gb-investment/${state.data.gbs[input.gb].key}?level=${state.level}&pg=${state['percentage-value-global']}&p1=${state['percentage-value'][0]}&p2=${state['percentage-value'][1]}&p3=${state['percentage-value'][2]}&p4=${state['percentage-value'][3]}&p5=${state['percentage-value'][4]}" -- Lien permanent
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="level" -- Niveau du GM (entre 1 et ${state['max-level']})
+         div.control
+            input.input type="number" min="1" max="${state['max-level']}" value="${state.level}" name="level" id="level" key="level"
+   div.column.is-half
+      div.field
+         label.label for="investor-percentage" -- % de bonus (grosses arches) globale des investisseurs
+         div.control
+            input.input type="number" min="0" name="investor-percentage" value="${state['percentage-value-global']}" id="investor-percentage" key="percentage-value-global"
+
+table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+   thead
+      tr
+         th colspan=5
+            p.level-item -- ${state.data.gbs[input.gb].display_name} niveau ${state.gb.level}
+      tr
+         th -- Place
+         th -- Recompense de base
+         th -- PF à mettre par le propriétaire pour sécurisé la place
+         th -- Recompense avec taux
+         th -- % de bonus (grosses arches) des investisseurs
+   tbody
+      tr for(i, place in state.gb.investment)
+         td
+            p.level-right -- ${i + 1}
+         td
+            p.level-right -- ${place.reward}
+         td
+            p.level-right -- ${place.preparation}
+         td
+            p.level-right -- ${place.participation}
+         td
+            input.input type="number" min="0" name="investor-percentage" value="${state['percentage-value'][i]}" id="investor-percentage" key="percentage-value-${i}"
+   tfoot
+      tr
+         th colspan=4 -- Investissement totale du propriétaire
+         td
+            p.level-right -- ${state.gb.totalPreparations}
+      tr
+         th colspan=4 -- Coût du niveau
+         td
+            p.level-right -- ${state.gb.cost}
+
+p -- Message de promotion : ${state.data.gbs[input.gb].display_name}
+   for(i, place in state.gb.investment)
+      if(place.participation > 0)
+         --
+          P${i + 1}(${place.participation})
+         --

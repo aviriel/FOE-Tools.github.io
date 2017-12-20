@@ -1,0 +1,1 @@
+exports.path = "/gb-investment";

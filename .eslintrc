@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "allowImportExportEverywhere": true
+  },
+  "extends": [
+    "airbnb-base/legacy",
+    "prettier",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-console": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

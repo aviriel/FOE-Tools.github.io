@@ -1,45 +1,66 @@
 {
-  "name": "foe-gb-investment",
+  "name": "foe-tools",
   "version": "1.0.0",
-  "description": "Demo of how to build an app using marko-starter",
+  "description": "Set of tools for Forge Of Empire",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marko-js-samples/marko-starter-demo"
+    "url": "https://github.com/FOE-Tools/FOE-Tools.github.io"
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^4.2.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.26.0",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-computed-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-duplicate-keys": "^6.24.1",
+    "babel-plugin-transform-es2015-for-of": "^6.23.0",
+    "babel-plugin-transform-es2015-function-name": "^6.24.1",
+    "babel-plugin-transform-es2015-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-object-super": "^6.24.1",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.24.1",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-typeof-symbol": "^6.23.0",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "eslint": "4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.1.2",
+    "lasso-babel": "^1.0.3",
     "prettier": "^1.5.2"
   },
   "dependencies": {
+    "src": "./src",
+    "lasso-babel-transform": "^1.0.1",
+    "lasso-require": "^3.4.9",
     "marko": "^4.2.4",
     "marko-starter": "^1.0.0"
   },
   "scripts": {
-    "start": "marko-starter server",
-    "build": "NODE_ENV=production marko-starter build",
+    "start": "NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/marko-starter/bin/marko-starter server",
+    "build": "NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/marko-starter/bin/marko-starter build",
     "serve-static": "NODE_ENV=production marko-starter serve-static",
     "lint": "eslint src/",
     "test": "npm run lint",
-    "prettier": "prettier src/**/*.{js,css,less} *.js --write"
+    "prettier": "prettier src/**/*.{js,css,less} *.js --write",
+    "publish": "NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/marko-starter/bin/marko-starter ./publish"
   },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "prettier"
-    ],
-    "rules": {
-      "no-console": "off"
-    },
-    "env": {
-      "browser": true,
-      "node": true
-    }
-  },
-  "eslintIgnore": [
-    "*.marko.js"
-  ],
-  "private": true
+  "static-repo": "git@github.com:marko-js/markojs-website.git#gh-pages",
+  "baseurl": "/"
 }

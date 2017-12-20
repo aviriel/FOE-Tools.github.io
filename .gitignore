@@ -1,4 +1,6 @@
 .git/
+.idea/
+.src*/
 node_modules/
 dist/
 .cache/

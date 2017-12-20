@@ -1,52 +1,83 @@
-# Marko Starter Demo
-This repo demos the basic features of [`marko-starter`](https://github.com/marko-js/marko-starter).
+# FOE Tools
+
+This repo is the [website](https://foe-tools.github.io/) of FOE Tools, a set of tools for [Forge Of Empire](https://forgeofempires.com).
 
 ## Install
+
+Using npm:
 
 ```bash
 npm install
 ```
 
+Using yarn:
+
+```
+yarn
+```
+
 ## Starting the server
+
+Using npm:
 
 ```bash
 npm start
 ```
 
-Start the server in production mode (minification enabled, etc.):
+Using yarn:
 
-```bash
-NODE_ENV=production npm start
 ```
+yarn start
+```
+
+
 
 ## Build a static site
 Build the project in production mode:
+
+Using npm:
 
 ```bash
 npm run build
 ```
 
-By default, the generated static site will be placed in `dist/`.
+Using yarn:
 
-## Feature Demos
+```
+yarn run build
+```
 
-### Live reload
 
-Change a file and the server will restart and the browser will refresh.  Hot reload is enabled for certain files.
 
-### Components
+The generated static site will be placed in `dist/`.
 
-See example components and how they can be scoped to pages or the whole site.
+*Note: if you're having trouble while testing the static site, removing the `dist/` and `.cache/` directories and rebuilding the project.*
 
-### Routing
+## TODO
 
-Learn to create routes and use route parameters.
+- [ ] Internationalization (preferably use [i18next](https://www.i18next.com/)) [#1](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/1)
+- [ ] Improve UX 
+      - [ ] GB display [#2](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/2)
+      - [ ] Add cookie [#3](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/3)
+- [ ] Tests
 
-### Layouts
 
-Learn to create components that can be passed content and include that content in their own template.
+And (obviously) make other tools.
 
-### Styles and Images
 
-Learn how to use styles within a component and how to use resources (like images) in a component.
 
+## Changelog
+
+See [CHANGELOG.md](https://github.com/FOE-Tools/FOE-Tools.github.io/blob/master/CHANGELOG.md)
+
+
+
+## Code of Conduct
+
+This project adheres to the [Contributor Covenant](https://www.contributor-covenant.org/). By participating in this project you agree to abide by its terms.
+
+
+
+## License
+
+MIT

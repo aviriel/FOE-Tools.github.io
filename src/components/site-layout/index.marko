@@ -1,22 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title><include(input.title)/></title>
-</head>
-<body>
-  <header>
-    <img.logo src="./logo.png" alt="marko logo"/>
-    <h1><include(input.title)/></h1>
-    <nav.menu>
-      <a href="/">home</a>
-      <a href="/hello/routing">routes</a>
-      <a href="/layouts">layouts</a>
-    </nav>
-  </header>
-  <div.content>
-    <include(input.content)/>
-  </div>
-  </body>
-</html>
+html lang="fr-FR"
+   head
+      meta charset="utf-8"
+      meta name="viewport" content="width=device-width, initial-scale=1"
+      title include(input.title)
+      link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"
+      link rel="icon" type="image/png" href="./favicon.png"
+   body
+      header
+         nav class="navbar is-transparent"
+            div.navbar-brand
+               a class="navbar-item" href="/"
+                  img src="./logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="28" height="28"
+               div.navbar-burger.burger data-target="mainNavbar"
+                  span
+                  span
+                  span
+
+            div#mainNavbar.navbar-menu
+               div.navbar-start
+                  for(url_data in state.navbar_link)
+                     if(input.currentLocation && (input.currentLocation == url_data.key))
+                        a.navbar-item.is-active href=url_data.link -- ${url_data.name}
+                     else
+                        a.navbar-item href=url_data.link -- ${url_data.name}
+
+               div.navbar-end
+                  div.navbar-item
+                     div.field.is-grouped
+                        p.control
+                           a.button href="https://github.com/FOE-Tools/FOE-Tools.github.io"
+                              span.icon
+                                 i.fa.fa-github
+                              span -- GitHub
+
+      section.hero.is-light
+         div.hero-body
+            div.container
+               div.columns
+                  div.column.is-8-desktop.is-offset-2-desktop
+                     if(input.hero)
+                        include(input.hero)
+                     else
+                        h1.title.is-2.is-spaced -- FOE Tools
+                        h2.subtitle.is-4 -- Un ensemble d'outils pour se simplifier la vie sur <a href="https://forgeofempires.com">Forge Of Empire</a>
+
+      section.section
+         div.container
+            div.columns
+               div.column.is-8-desktop.is-offset-2-desktop
+                  div.content
+                     include(input.content)
+
+      footer.footer.has-text-centered
+         div.container
+            div.columns
+               div.column.is-8-desktop.is-offset-2-desktop
+                  a href="/about" -- À propos
+                  p
+                     small
+                        ---
+                        Code source sous licence <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+                        ---
+                  p -- Version ${state.site_version}

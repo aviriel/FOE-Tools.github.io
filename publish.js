@@ -40,7 +40,6 @@ prompt.get(promptSchema, (err, res) => {
   require("./project")
     .build()
     .then(async () => {
-
       // create publish directory
       execLogged(`mkdir ${publishDir}`);
 
@@ -80,4 +79,3 @@ git fetch`
       console.error("Error building project", err);
     });
 });
-

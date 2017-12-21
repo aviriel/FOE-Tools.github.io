@@ -1,0 +1,11 @@
+label.label for="gb-list" -- Changer de Grand Monument
+div.control
+   div.select
+      select name="gb-list" id="gb-list" onchange="location = this.value;"
+         for(i, age in state.data.GBs_BY_AGE)
+            optgroup label="${age.display_name}"
+               for(gb in age.gbs)
+                  if(input.gb == gb.key)
+                     option selected value="/gb-investment/${gb.key}" -- ${gb.display_name}
+                  else
+                     option value="/gb-investment/${gb.key}" -- ${gb.display_name}

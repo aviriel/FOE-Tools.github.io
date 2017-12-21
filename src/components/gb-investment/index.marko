@@ -5,7 +5,10 @@ div.columns
    div.column.is-half
       div.field
          a#permalink.level-right href="/gb-investment/${state.data.gbs[input.gb].key}?level=${state.level}&pg=${state['percentage-value-global']}&p1=${state['percentage-value'][0]}&p2=${state['percentage-value'][1]}&p3=${state['percentage-value'][2]}&p4=${state['percentage-value'][3]}&p5=${state['percentage-value'][4]}" -- Lien permanent
-
+div.columns
+   div.column.is-half
+      div.field
+         gb-list-select gb="${input.gb}"
 div.columns
    div.column.is-half
       div.field

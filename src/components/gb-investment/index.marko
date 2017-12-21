@@ -14,13 +14,21 @@ div.columns
 div.columns
    div.column
       div.field
-         section.message
-            div.message-body
-               ---
-               Saisissez les valeurs pour le niveau et le pourcentage de bonus.
-               La valeur ce met à jour automatiquement. Si ce n'est pas le cas,
-               cliquez sur le bouton « Valider ».
-               ---
+         p
+            ---
+            Saisissez les valeurs pour le niveau et le pourcentage de bonus.
+            Les valeurs du tableau se mettent à jour automatiquement.
+            ---
+         p
+            ---
+            <strong>Note</strong> : Si la mise à jour ne ce fait pas
+            automatiquement, dans un premier temps, définissez le niveau
+            du GM et la valeur d'investissement globale et cliquée sur
+            « Calcul global ». Si vous souhaitez ajuster les valeurs
+            de chaque place, ajuster à votre convenance et cliquer sur
+            « Calcul personnalisé ».
+
+            ---
 
 div.columns
    div.column.is-half
@@ -33,6 +41,12 @@ div.columns
          label.label for="investor-percentage" -- % de bonus (grosses arches) globale des investisseurs
          div.control
             input.input type="number" min="0" value="${state['percentage-value-global']}" name="investor-percentage" id="investor-percentage" key="percentage-value-global" autocomplete="off"
+
+div.columns
+   div.column
+      div.field
+         div.control.level-item
+            button.button.is-link key="submit-global" -- Calcul global
 
 table.table.is-bordered.is-striped.is-narrow.is-fullwidth
    thead
@@ -66,6 +80,12 @@ table.table.is-bordered.is-striped.is-narrow.is-fullwidth
          th colspan=4 -- Coût du niveau
          td
             p.level-right -- ${state.gb.cost}
+
+div.columns
+   div.column
+      div.field
+         div.control.level-item
+            button.button.is-link key="submit-custom" -- Calcul personnalisé
 
 p -- Message de promotion : ${state.data.gbs[input.gb].display_name}
    for(i, place in state.gb.investment)

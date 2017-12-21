@@ -1,6 +1,15 @@
 # 1.x
 
-## 1.0.X
+## 1.1.x
+
+### 1.1.0
+
+- Added a select to switch quickly between GB in GB-Investment
+- Added indication for input data in GB-Investment
+- Added buttons for running calculation if auto-mode not work
+- Updated GB values for Future Era
+
+## 1.0.x
 
 ### 1.0.1
 

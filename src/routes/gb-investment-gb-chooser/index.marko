@@ -1,3 +1,22 @@
+static function reverseIterator(arrayList, callback) {
+   const BY_LINE = 2;
+   let i         = 0;
+   let result    = [];
+
+   for (let gb in arrayList) {
+      result[i % BY_LINE] = arrayList[gb];
+      if ((i % BY_LINE) === (BY_LINE - 1)) {
+         callback(result);
+         for (let j = 0; j < result.length; j++) { result[j] = null; }
+      }
+      i++;
+   }
+
+   if ((result[0] !== null) && (result[result.length - 1] === null)) {
+      callback(result);
+   }
+}
+
 site-layout currentLocation="gb_investment"
    @title
       ---
@@ -15,12 +34,16 @@ site-layout currentLocation="gb_investment"
          taux (grosses arches).
          ---
    @content
-      p -- Veuillez choisir un Grand Monument :
-      ul
-         li for(i, age in state.data.GBs_BY_AGE)
-            ---
-            ${age.display_name}
-            ---
-            ul
-               li for(gb in age.gbs)
-                  a href="/gb-investment/${gb.key}" -- ${gb.display_name}
+      p.uiae -- Veuillez choisir un Grand Monument :
+
+      for(item in state.data.GBs_BY_AGE | iterator=reverseIterator)
+         div.tile.is-ancestor
+            for(age in item)
+               if(age !== null)
+                  div.tile.is-parent
+                     article.tile.is-child.box
+                        p class="${age.key}-header title" -- ${age.display_name}
+                        div.content
+                           ul
+                              li for(gb in age.gbs)
+                                 a href="/gb-investment/${gb.key}" -- ${gb.display_name}

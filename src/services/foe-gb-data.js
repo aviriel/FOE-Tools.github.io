@@ -1418,6 +1418,7 @@ export default {
   ages: ages,
   GBs_BY_AGE: {
     NoAge: {
+      key: "NoAge",
       display_name: "Aucun âge",
       gbs: [
         gbs["Observatory"],
@@ -1426,62 +1427,77 @@ export default {
       ]
     },
     BronzeAge: {
+      key: "BronzeAge",
       display_name: "Âge du Bronze",
       gbs: [gbs["Tower_of_Babel"], gbs["Statue_of_Zeus"]]
     },
     IronAge: {
+      key: "IronAge",
       display_name: "Âge du Fer",
       gbs: [gbs["Colosseum"], gbs["Lighthouse_of_Alexandria"]]
     },
     EarlyMiddleAges: {
+      key: "EarlyMiddleAges",
       display_name: "Haut Moyen Âge",
       gbs: [gbs["Hagia_Sophia"], gbs["Cathedral_of_Aachen"]]
     },
     HighMiddleAges: {
+      key: "HighMiddleAges",
       display_name: "Moyen Âge Classique",
       gbs: [gbs["St_Mark_s_Basilica"], gbs["Notre_Dame"]]
     },
     LateMiddleAges: {
+      key: "LateMiddleAges",
       display_name: "Renaissance",
       gbs: [gbs["Saint_Basil_s_Cathedral"], gbs["Castel_del_Monte"]]
     },
     ColonialAge: {
+      key: "ColonialAge",
       display_name: "Âge Colonial",
       gbs: [gbs["Deal_Castle"], gbs["Frauenkirche_of_Dresden"]]
     },
     IndustrialAge: {
+      key: "IndustrialAge",
       display_name: "Âge Industriel",
       gbs: [gbs["Capitol"], gbs["Royal_Albert_Hall"]]
     },
     ProgressiveEra: {
+      key: "ProgressiveEra",
       display_name: "Ère Progressiste",
       gbs: [gbs["Chateau_Frontenac"], gbs["Alcatraz"]]
     },
     ModernEra: {
+      key: "ModernEra",
       display_name: "Ère Moderne",
       gbs: [gbs["Space_Needle"], gbs["Atomium"]]
     },
     PostmodernEra: {
+      key: "PostmodernEra",
       display_name: "Ère Postmoderne",
       gbs: [gbs["Cape_Canaveral"], gbs["The_Habitat"]]
     },
     ContemporaryEra: {
+      key: "ContemporaryEra",
       display_name: "Ère Contemporaine",
       gbs: [gbs["Lotus_Temple"], gbs["Innovation_Tower"]]
     },
     Tomorrow: {
+      key: "Tomorrow",
       display_name: "Ère de Demain",
       gbs: [gbs["Dynamic_Tower"], gbs["Voyager_V1"]]
     },
     TheFuture: {
+      key: "TheFuture",
       display_name: "Ère du Futur",
       gbs: [gbs["The_Arc"], gbs["Rain_Forest_Project"]]
     },
     ArcticFuture: {
+      key: "ArcticFuture",
       display_name: "Futur Arctique",
       gbs: [gbs["Gaea_Statue"], gbs["Arctic_Orangery"], gbs["Seed_Vault"]]
     },
     OceanicFuture: {
+      key: "OceanicFuture",
       display_name: "Futur Océanique",
       gbs: [gbs["Atlantis_Museum"], gbs["The_Kraken"]]
     }

@@ -56,8 +56,7 @@ The generated static site will be placed in `dist/`.
 ## TODO
 
 - [ ] Internationalization (preferably use [i18next](https://www.i18next.com/)) [#1](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/1)
-- [ ] Improve UX 
-      -   GB display [#2](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/2)
+- [ ] Improve UX
       -   Add cookie [#3](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/3)
 - [ ] Tests
 

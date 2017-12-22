@@ -21,11 +21,11 @@ div.columns
             ---
          p
             ---
-            <strong>Note</strong> : Si la mise à jour ne ce fait pas
+            <strong>Note</strong> : Si la mise à jour ne se fait pas
             automatiquement, dans un premier temps, définissez le niveau
-            du GM et la valeur d'investissement globale et cliquée sur
+            du GM et la valeur d'investissement globale et cliquez sur
             « Calcul global ». Si vous souhaitez ajuster les valeurs
-            de chaque place, ajuster à votre convenance et cliquer sur
+            de chaque place, ajuster à votre convenance et cliquez sur
             « Calcul personnalisé ».
 
             ---
@@ -38,7 +38,7 @@ div.columns
             input.input type="number" min="1" max="${state['max-level']}" value="${state.level}" name="level" id="level" key="level" autocomplete="off" autofocus
    div.column.is-half
       div.field
-         label.label for="investor-percentage" -- % de bonus (grosses arches) globale des investisseurs
+         label.label for="investor-percentage" -- % de bonus (grosses arches) global des investisseurs
          div.control
             input.input type="number" min="0" value="${state['percentage-value-global']}" name="investor-percentage" id="investor-percentage" key="percentage-value-global" autocomplete="off"
 
@@ -54,10 +54,10 @@ table.table.is-bordered.is-striped.is-narrow.is-fullwidth
          th colspan=5
             p.level-item -- ${state.data.gbs[input.gb].display_name} niveau ${state.gb.level}
       tr
-         th -- Place
-         th -- Recompense de base
-         th -- PF à mettre par le propriétaire pour sécurisé la place
-         th -- Recompense avec taux
+         th -- Places
+         th -- Récompenses de base
+         th -- PF à mettre par le propriétaire pour sécuriser la place
+         th -- Récompenses avec taux
          th -- % de bonus (grosses arches) des investisseurs
    tbody
       tr for(i, place in state.gb.investment)
@@ -73,7 +73,7 @@ table.table.is-bordered.is-striped.is-narrow.is-fullwidth
             input.input type="number" min="0" value="${state['percentage-value'][i]}" name="investor-percentage-${i}" id="investor-percentage-${i}" key="percentage-value-${i}" autocomplete="off"
    tfoot
       tr
-         th colspan=4 -- Investissement totale du propriétaire
+         th colspan=4 -- Investissement total du propriétaire
          td
             p.level-right -- ${state.gb.totalPreparations}
       tr
@@ -87,9 +87,23 @@ div.columns
          div.control.level-item
             button.button.is-link key="submit-custom" -- Calcul personnalisé
 
-p -- Message de promotion : ${state.data.gbs[input.gb].display_name}
-   for(i, place in state.gb.investment)
-      if(place.participation > 0)
-         --
-          P${i + 1}(${place.participation})
-         --
+p -- Message de promotion :
+ul
+   li
+      ---
+      ${state.data.gbs[input.gb].display_name}
+      ---
+      for(i, place in state.gb.investment)
+         if(place.participation > 0)
+            --
+             P${i + 1}(${place.participation})
+            --
+   li
+      for(i, place in state.gb.investment)
+         if(place.participation > 0)
+            --
+             P${i + 1}(${place.participation})
+            --
+      ---
+       ${state.data.gbs[input.gb].display_name}
+      ---

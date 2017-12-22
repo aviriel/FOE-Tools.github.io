@@ -18,6 +18,7 @@ export default projectConfig({
           }
         }
       ]
-    }
+    },
+    plugins: ["lasso-marko", "lasso-cson", "lasso-sass"]
   }
 });

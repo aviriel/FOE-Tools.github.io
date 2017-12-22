@@ -43,6 +43,10 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.1.2",
     "lasso-babel": "^1.0.3",
+    "lasso-cson": "^2.0.0",
+    "lasso-marko": "^2.4.0",
+    "lasso-sass": "^3.0.0",
+    "node-sass": "^4.7.2",
     "prettier": "^1.5.2",
     "prompt": "^1.0.0"
   },

@@ -1,31 +1,18 @@
 site-layout currentLocation="gb_investment"
    @title
       ---
-      FOE Tools | Investissement GM
+      FOE Tools | Investissement GM - ${state.data.gbs[input.params.gb].display_name}
       ---
-      if(input.params.gb) --  - ${state.data.gbs[input.params.gb].display_name}
    @hero
       h1.title.is-2.is-spaced
          ---
-         Investissement GM
+         Investissement GM - ${state.data.gbs[input.params.gb].display_name}
          ---
-         if(input.params.gb) --  - ${state.data.gbs[input.params.gb].display_name}
       h2.subtitle.is-4
          ---
-         Cet outil permet de calculer le nombre de points qu'un joueur doit 
+         Cet outil permet de calculer le nombre de points qu'un joueur doit
          mettre sur son GM pour sécuriser les 5 premières places suivant un
          taux (grosses arches).
          ---
    @content
-      if(input.params.gb)
-         gb-investment gb=input.params.gb query=input.query
-      else
-         p -- Veuillez choisir un Grand Monument :
-         ul
-            li for(i, age in state.data.GBs_BY_AGE)
-               ---
-               ${age.display_name}
-               ---
-               ul
-                  li for(gb in age.gbs)
-                     a href="/gb-investment/${gb.key}" -- ${gb.display_name}
+      gb-investment gb=input.params.gb query=input.query

@@ -1,9 +1,15 @@
+import Cookies from "js-cookie";
 import packagejson from '~/package.json';
 
 export default class {
    onCreate() {
+      if (Cookies.get('has_read_cookie_message') === undefined) {
+         Cookies.set('has_read_cookie_message', false);
+      }
+
       this.state = {
          site_version: packagejson.version,
+         'has-read-cookie-message': true,
          navbar_link: [
             {name: "Accueil", key: "home", link: "/"},
             {name: "Investissement GM", key: "gb_investment", link: "/gb-investment"},
@@ -12,6 +18,8 @@ export default class {
    }
 
    onMount() {
+      this.state['has-read-cookie-message'] = Cookies.get('has_read_cookie_message') === 'true';
+
       this.subscribeTo(window).on('DOMContentLoaded', () => {
          // Get all "navbar-burger" elements
          let $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

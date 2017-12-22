@@ -34,7 +34,7 @@ site-layout currentLocation="gb_investment"
          taux (grosses arches).
          ---
    @content
-      p.uiae -- Veuillez choisir un Grand Monument :
+      h3 -- Choisir un Grand Monument
 
       for(item in state.data.GBs_BY_AGE | iterator=reverseIterator)
          div.tile.is-ancestor
@@ -46,4 +46,4 @@ site-layout currentLocation="gb_investment"
                         div.content
                            ul
                               li for(gb in age.gbs)
-                                 a href="/gb-investment/${gb.key}" -- ${gb.display_name}
+                                 a href="/gb-investment/${gb.key}/" -- ${gb.display_name}

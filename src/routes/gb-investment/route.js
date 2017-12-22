@@ -1,4 +1,4 @@
-exports.path = "/gb-investment/:gb";
+exports.path = "/gb-investment/:gb/";
 
 exports.params = [
    {gb: "Observatory"},

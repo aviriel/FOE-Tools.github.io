@@ -1,6 +1,7 @@
 import {Enum} from "~/src/services/enumify";
 import data from "~/src/services/foe-gb-data";
 import gbProcess from "~/src/services/foe-gb-investment";
+import Cookies from "js-cookie";
 
 class FormCheck extends Enum {}
 FormCheck.initEnum(['VALID', 'INVALID', 'NO_CHANGE']);
@@ -43,6 +44,14 @@ function inRange(value, lowerBound, upperBound) {
  * Call for calculate investments
  */
 function submitForm () {
+   if (!this.state['is-permalink']) {
+      Cookies.set('gb_level', this.state.level, { path: '' });
+      Cookies.set('gb_global_investment', this.state['percentage-value-global'], { path: '' });
+      for (let i = 0; i < 5; i++) {
+         Cookies.set('gb_investment_' + i, this.state['percentage-value'][i], { path: '' });
+      }
+   }
+
    this.state.gb = gbProcess.Submit(this.state.level,
       this.state['percentage-value'],
       this.state.current_gb.levels);
@@ -51,7 +60,7 @@ function submitForm () {
 /**
  * Remove all errors class from the percentages attributes
  */
-function  removeErrorsFromPercentageArray() {
+function removeErrorsFromPercentageArray() {
    for (let i = 0; i < 5; i++) {
       this.getEl('percentage-value-' + i).classList.remove('is-danger');
    }
@@ -107,12 +116,19 @@ export default class {
       this.state = {
          data: data,
          current_gb: data.gbs[input.gb],
-         level : 10,
+         level : Cookies.get('gb_level') === undefined ? 10 : Cookies.get('gb_level'),
          'max-level': data.gbs[input.gb].levels.length,
-         'percentage-value-global' : 90,
+         'percentage-value-global' : Cookies.get('gb_global_investment') === undefined ? 90 : Cookies.get('gb_global_investment'),
          'percentage-value': [90, 90, 90, 90, 90],
-         gb: null
+         gb: null,
+         'is-permalink': false
       };
+
+      for (let i = 0; i < 5; i++) {
+         if (Cookies.get('gb_investment_' + i) !== undefined) {
+            this.state['percentage-value'][i] = parseFloat(Cookies.get('gb_investment_' + i));
+         }
+      }
 
       this::submitForm();
    }
@@ -132,7 +148,7 @@ export default class {
 
             if (!isNaN(elt.value) && (parseFloat(elt.value) >= 0)) {
                elt.classList.remove('is-danger');
-               if (parseFloat(elt.value) != this.state['percentage-value'][i]) {
+               if (parseFloat(elt.value) !== this.state['percentage-value'][i]) {
                   this.state['percentage-value'][i] = parseFloat(elt.value);
                   this::submitForm();
                }
@@ -145,14 +161,17 @@ export default class {
       this.subscribeTo(window).on('DOMContentLoaded', () => {
          let level = getGetParameter(window, 'level');
          let pg    = getGetParameter(window, 'pg');
+         let change = false;
 
          // Check level
          if (level && !isNaN(level) && (parseInt(level) <= this.state['max-level'])) {
+            change = true;
             this.state.level = parseInt(level);
          }
 
          // Check global investors percentage
          if (pg && !isNaN(pg) && (parseFloat(pg) >= 0)) {
+            change = true;
             this.state['percentage-value-global'] = parseFloat(pg);
          }
 
@@ -160,11 +179,12 @@ export default class {
          for (let i = 0; i < 5; i++) {
             let val = getGetParameter(window, 'p' + (i + 1));
             if (val && !isNaN(val) && (parseFloat(val) >= 0)) {
+               change = true;
                this.state['percentage-value'][i] = parseFloat(val);
-            } else {
-               this.state['percentage-value'][i] = this.state['percentage-value-global'];
             }
          }
+
+         this.state['is-permalink'] = change;
          this::submitForm();
       });
 

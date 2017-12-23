@@ -4,6 +4,10 @@
 
 ## 1.2.x
 
+### 1.2.1
+
+- Updated home page
+
 ### 1.2.0
 
 - Added tool: Secure position (and integrating it to GB Investment)

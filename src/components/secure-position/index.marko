@@ -1,0 +1,75 @@
+static function checkInputLevelCost(input) {
+   return (input.levelCost !== undefined) && !isNaN(input.levelCost);
+}
+
+static function getNumberOfRemainingPoints(state) {
+   if (isNaN(state['level-cost']) || isNaN(state['current-deposits']) ||
+      ((state['level-cost'] - state['current-deposits']) < 0 )) {
+      return 'inconnu';
+   }
+   return state['level-cost'] - state['current-deposits'];
+}
+
+div.columns
+   div.column.is-half
+      div.field
+         h4 -- Bloquer sa place
+
+div.columns
+   div.column
+      div.field
+         p
+            ---
+            Saisissez les diférentes valeurs. Le résultat se met à jour automatiquement.
+            ---
+         p
+            ---
+            <strong>Note</strong> : Si la mise à jour ne se fait pas
+            automatiquement, cliquez sur « Calculer ».
+            ---
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="level-cost" -- Coût du niveau
+         div.control
+            input.input type="number" min="0" value="${state['level-cost']}" name="level-cost" id="level-cost" key="level-cost" autocomplete="off" disabled=(checkInputLevelCost(input))
+   div.column.is-half
+      div.field
+         label.label for="current-deposits" -- Somme des dépôts actuels
+         div.control
+            input.input type="number" min="0" value="${state['current-deposits']}" name="current-deposits" id="current-deposits" key="current-deposits" autocomplete="off"
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="your-participation" -- Votre participation actuelle
+         div.control
+            input.input type="number" min="0" value="${state['your-participation']}" name="your-participation" id="your-participation" key="your-participation" autocomplete="off"
+   div.column.is-half
+      div.field
+         label.label for="other-participation" -- Participation du joueur à dépasser
+         div.control
+             input.input type="number" min="0" value="${state['other-participation']}" name="other-participation" id="other-participation" key="other-participation" autocomplete="off"
+
+div.columns
+   div.column
+      div.field
+         div.control.level-item
+            button.button.is-link key="submit-secure-position" -- Calculer
+
+p -- Nombre de PF(s) restant pour compléter le niveau : ${getNumberOfRemainingPoints(state)}
+
+p
+   if(!state.formValid)
+      ---
+      Une ou plusieurs valeurs ne sont pas valide.
+      ---
+   else-if(state.fp > 0)
+      ---
+      Vous devez avoir mis au total ${state.fp} FP(s) pour bloquer la place.
+      ---
+   else
+      ---
+      Vous ne pouvez pas bloquer la place.
+      ---

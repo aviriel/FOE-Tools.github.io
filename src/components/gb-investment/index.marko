@@ -12,6 +12,11 @@ div.columns
          gb-list-select gb="${input.gb}"
 
 div.columns
+   div.column.is-half
+      div.field
+         h4 -- Investissement GM
+
+div.columns
    div.column
       div.field
          p
@@ -87,7 +92,11 @@ div.columns
          div.control.level-item
             button.button.is-link key="submit-custom" -- Calcul personnalisé
 
-p -- Message de promotion :
+div.columns
+   div.column.is-half
+      div.field
+         h4 -- Message de promotion
+
 ul
    li
       ---
@@ -107,3 +116,5 @@ ul
       ---
        ${state.data.gbs[input.gb].display_name}
       ---
+
+secure-position levelCost=state.gb.cost

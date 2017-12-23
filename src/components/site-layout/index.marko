@@ -1,3 +1,5 @@
+<!-- import cookieMessage from './components/cookie-message/index.marko' -->
+
 <!DOCTYPE html>
 html lang="fr-FR"
    head
@@ -14,7 +16,7 @@ html lang="fr-FR"
          nav class="navbar is-transparent"
             div.navbar-brand
                a class="navbar-item" href="/"
-                  img src="./logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="28" height="28"
+                  img src="./logo.png" alt="FOE-Tools logo" width="28" height="28"
                div.navbar-burger.burger data-target="mainNavbar"
                   span
                   span
@@ -37,8 +39,8 @@ html lang="fr-FR"
                                  i.fa.fa-github
                               span -- GitHub
 
-         if(!state['has-read-cookie-message'])
-            cookie-message
+      <!-- FIXME: Not implemented yet due to Marko bug -->
+      <!-- cookie-message -->
 
       section.hero.is-light
          div.hero-body

@@ -1,4 +1,16 @@
+# Changelog
+
 # 1.x
+
+## 1.2.x
+
+### 1.2.0
+
+- Added tool: Secure position (and integrating it to GB Investment)
+- Correction of mistakes in texts
+- Added cookies for improve UX
+- Imporved display of GB
+- Prevent bugs (GB Investment and Cookie)
 
 ## 1.1.x
 

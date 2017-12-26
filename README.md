@@ -79,7 +79,7 @@ For commit message, follow [this recommendation](https://chris.beams.io/posts/gi
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/FOE-Tools/FOE-Tools.github.io/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/FOE-Tools/FOE-Tools.github.io/blob/dev/CHANGELOG.md)
 
 
 

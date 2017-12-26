@@ -4,6 +4,10 @@
 
 ## 1.2.x
 
+### 1.2.2
+
+- Improve readability of secure-position
+
 ### 1.2.1
 
 - Updated home page

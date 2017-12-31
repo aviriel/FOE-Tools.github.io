@@ -1,0 +1,203 @@
+{
+   "translation": {
+      "main_menu": {
+         "home": "Home",
+         "gb_investment": "GB Investment",
+         "secure_position": "Secure place"
+      },
+      "footer_menu": {
+         "about": "About"
+      },
+      "components": {
+         "gb_investment": {
+            "gb_list_select": {
+               "label": "Switch Great Building"
+            },
+            "gb_investment": {
+               "title": "GB Investment",
+               "permalink": "permalink",
+               "description": {
+                  "p1": "Enter the values for level and bonus percentage. The values in the table update automatically.",
+                  "p2_html": "<strong>Note</strong>: If the update is not done automatically, first set the GM level and the overall investment value and click on \"$t(components.gb_investment.gb_investment.form.submit_global)\". If you want to adjust the values of each place, adjust to your convenience and click on \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+               },
+               "form": {
+                  "level": "GB Level (between 1 and {{max}})",
+                  "investor_percentage": "% of global investors bonus (arc bonus)",
+                  "submit_global": "Global calculation",
+                  "submit_custom": "Custom calculation"
+               },
+               "table": {
+                  "title": "$t({{gb_key}}) level {{level}}",
+                  "thead": {
+                     "th1": "Places",
+                     "th2": "Default rewards",
+                     "th3": "FP to put by the owner to secure the place",
+                     "th4": "Rewards with rate",
+                     "th5": "% of investors bonus (arc bonus)"
+                  },
+                  "tfoot": {
+                     "total_preparation": "Total investment of the owner",
+                     "level_cost": "Level cost"
+                  }
+               }
+            },
+            "promotion": {
+               "title": "Promotion message",
+               "promo": [
+                  "P1({{investment}})",
+                  "P2({{investment}})",
+                  "P3({{investment}})",
+                  "P4({{investment}})",
+                  "P5({{investment}})"
+               ]
+            }
+         },
+         "secure_position": {
+            "block_place": {
+               "title": "Block his place",
+               "description": {
+                  "p1": "Enter the different values. The result is updated automatically.",
+                  "p2_html": "<strong>Note</strong>: If the update is not done automatically, click on \"$t(components.secure_position.block_place.submit)\"."
+               },
+               "level_cost": "Level cost",
+               "current_deposits": "Sum of current deposits",
+               "your_participation": "Your current participation",
+               "other_participation": "Participation of the player to overtake",
+               "submit": "Calculate",
+               "fp_to_complete_level": "Number of FP remaining to complete the level: {{count}}",
+               "fp_to_complete_level_plural": "Number of FPs remaining to complete the level: {{count}}",
+               "result": {
+                  "error": "One or more values are not valid.",
+                  "already_blocked": "Your place is blocked.",
+                  "default": "You must have totaled {{count}} FP to block the place.",
+                  "default_plural": "You must have totaled {{count}} FPs to block the place.",
+                  "fp_to_secure_html": "You still have to put {{count}} FP.",
+                  "fp_to_secure_html_plural": "You still have to put {{count}} FPs.",
+                  "cant_block": "You can not block the place."
+               },
+               "unknown": "unknown"
+            }
+         },
+         "site_layout": {
+            "hero": {
+               "title": "FOE Tools",
+               "slogan_html": "A set of tools to simplify life on <a href=\"https://forgeofempires.com\">Forge Of Empire</a>"
+            },
+            "footer": {
+               "license_html": "Source code under <a href=\"http://opensource.org/licenses/mit-license.php\">MIT</a> license",
+               "version": "Version {{version}}"
+            }
+         }
+      },
+      "routes": {
+         "home": {
+            "title": "FOE Tools",
+            "info": {
+               "title": "Information",
+               "p1": "The site currently has a tool to calculate the number of points a player must put on his GM to secure the first 5 places following a rate (arc bonus).",
+               "p2": "A second tool is available, \"$t(routes.secure_position.hero.title)\". This tool calculates the number of FP that a player must put on a GM to block his place. It is integrated in \"$t(routes.gb_investment_gb_chooser.hero.title)\" and also has a standalone version."
+            }
+         },
+         "about": {
+            "title": "About FOE Tools",
+            "general_info": {
+               "title": "General information",
+               "p1_html": "Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> FOE Tools is an unofficial third party site and is not affiliated with InnoGames.",
+               "p2_html": "FOE Tools was created by the French player <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+               "p3_html": "The site is OpenSource, the code is freely available and free on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."
+            },
+            "cookie": {
+               "title": "Cookies",
+               "p1": "To improve your comfort of use, the site uses cookies.",
+               "p2_html": "In GM's Investment Tool, we store for each GM the level and various percentages of investors so we do not have to re-enter them each time. <br /> Please note that when you visit a page \"$t(translation.components.gb_investment.gb_investment.permalink)\", no information on the level of GM and the various percentages of investors is stored."
+            },
+            "dev_info": {
+               "title": "Development information",
+               "p1": "The site is a simple static site hosted on GitHub.",
+               "p2_html": "The development is done in Node.js using <a href=\"https://markojs.com/\">Marko</a>, a template engine for reactive component developed by eBay. The style is made using <a href=\"https://bulma.io/\">Bulma</a>.",
+               "p3_html": "An idea of functionality? A problem ? Feel free to create an issue on GitHub or send me an email (in English or in French) at <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",
+               "message_info_github_issue": "<b>Note:</b> Regarding issues on GitHub, please make sure to write them in English to facilitate understanding for the greatest number."
+            }
+         },
+         "gb_investment": {
+            "title": "FOE Tools | GB Investment - $t({{gb_key}})",
+            "hero": {
+               "title": "GB Investment - $t({{gb_key}})"
+            }
+         },
+         "gb_investment_gb_chooser": {
+            "title": "FOE Tools | GB Investment",
+            "hero": {
+               "title": "GB Investment",
+               "subtitle": "This tool makes it possible to calculate the number of points that a player must put on his GM to secure the first 5 places following a rate (arc bonus)."
+            },
+            "choose_gb": {
+               "title": "Choose a Great Building"
+            }
+         },
+         "secure_position": {
+            "title": "FOE Tools | Secure place",
+            "hero": {
+               "title": "Secure place",
+               "subtitle": "This tool calculates the number of FP that a player must put on a GM to block his place."
+            }
+         }
+      },
+      "foe_data": {
+         "age": {
+            "NoAge": "No Age",
+            "BronzeAge": "Bronze Age",
+            "IronAge": "Iron Age",
+            "EarlyMiddleAges": "Early Middle Ages",
+            "HighMiddleAges": "High Middle Ages",
+            "LateMiddleAges": "Late Middle Ages",
+            "ColonialAge": "Colonial Age",
+            "IndustrialAge": "Industrial Age",
+            "ProgressiveEra": "Progressive Era",
+            "ModernEra": "Modern Era",
+            "PostmodernEra": "Postmodern Era",
+            "ContemporaryEra": "Contemporary Era",
+            "Tomorrow": "Tomorrow",
+            "TheFuture": "The Future",
+            "ArcticFuture": "Arctic Future",
+            "OceanicFuture": "Oceanic Future"
+         },
+         "gb": {
+            "Observatory": "Observatory",
+            "Temple_of_Relics": "Temple of Relics",
+            "Oracle_of_Delphi": "Oracle of Delphi",
+            "Tower_of_Babel": "Tower of Babel",
+            "Statue_of_Zeus": "Statue of Zeus",
+            "Colosseum": "Colosseum",
+            "Lighthouse_of_Alexandria": "Lighthouse of Alexandria",
+            "Hagia_Sophia": "Hagia Sophia",
+            "Cathedral_of_Aachen": "Cathedral of Aachen",
+            "St_Mark_s_Basilica": "St. Mark's Basilica",
+            "Notre_Dame": "Notre Dame",
+            "Saint_Basil_s_Cathedral": "St. Basil's Cathedral",
+            "Castel_del_Monte": "Castel del Monte",
+            "Deal_Castle": "Deal Castle",
+            "Frauenkirche_of_Dresden": "Frauenkirche of Dresden",
+            "Capitol": "Capitol",
+            "Royal_Albert_Hall": "Royal Albert Hall",
+            "Chateau_Frontenac": "Château Frontenac",
+            "Alcatraz": "Alcatraz",
+            "Space_Needle": "Space Needle",
+            "Atomium": "Atomium",
+            "Cape_Canaveral": "Cape Canaveral",
+            "The_Habitat": "The Habitat",
+            "Lotus_Temple": "Lotus Temple",
+            "Innovation_Tower": "Innovation Tower",
+            "Dynamic_Tower": "Dynamic Tower",
+            "Voyager_V1": "Voyager V1",
+            "The_Arc": "The Arc",
+            "Rain_Forest_Project": "Rain Forest Project",
+            "Gaea_Statue": "Gaea Statue",
+            "Arctic_Orangery": "Arctic Orangery",
+            "Seed_Vault": "Seed Vault",
+            "Atlantis_Museum": "Atlantis Museum",
+            "The_Kraken": "The Kraken"
+         }
+      }
+   }
+}

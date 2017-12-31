@@ -17,24 +17,15 @@ static function reverseIterator(arrayList, callback) {
    }
 }
 
+$ let i18nPrefix = 'routes.gb_investment_gb_chooser.';
+
 site-layout currentLocation="gb_investment"
-   @title
-      ---
-      FOE Tools | Investissement GM
-      ---
+   @title -- ${global.i18n(i18nPrefix + 'title')}
    @hero
-      h1.title.is-2.is-spaced
-         ---
-         Investissement GM
-         ---
-      h2.subtitle.is-4
-         ---
-         Cet outil permet de calculer le nombre de points qu'un joueur doit
-         mettre sur son GM pour sécuriser les 5 premières places suivant un
-         taux (grosses arches).
-         ---
+      h1.title.is-2.is-spaced -- ${global.i18n(i18nPrefix + 'hero.title')}
+      h2.subtitle.is-4 -- ${global.i18n(i18nPrefix + 'hero.subtitle')}
    @content
-      h3 -- Choisir un Grand Monument
+      h3 -- ${global.i18n(i18nPrefix + 'choose_gb.title')}
 
       for(item in state.data.GBs_BY_AGE | iterator=reverseIterator)
          div.tile.is-ancestor
@@ -42,8 +33,8 @@ site-layout currentLocation="gb_investment"
                if(age !== null)
                   div.tile.is-parent
                      article.tile.is-child.box
-                        p class="${age.key}-header title" -- ${age.display_name}
+                        p class="${age.key}-header title" -- ${global.i18n('foe_data.age.' + age.key)}
                         div.content
                            ul
                               li for(gb in age.gbs)
-                                 a href="/gb-investment/${gb.key}/" -- ${gb.display_name}
+                                 a href="/gb-investment/${gb.key}/" -- ${global.i18n('foe_data.gb.' + gb.key)}

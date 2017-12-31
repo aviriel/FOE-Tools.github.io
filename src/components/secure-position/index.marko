@@ -5,50 +5,45 @@ static function checkInputLevelCost(input) {
 static function getNumberOfRemainingPoints(state) {
    if (isNaN(state['level-cost']) || isNaN(state['current-deposits']) ||
       ((state['level-cost'] - state['current-deposits']) < 0 )) {
-      return 'inconnu';
+      return global.i18n('components.secure_position.block_place.unknown');
    }
    return state['level-cost'] - state['current-deposits'];
 }
 
+$ let i18nPrefix = 'components.secure_position.';
+
 div.columns
    div.column.is-half
       div.field
-         h4 -- Bloquer sa place
+         h4 -- ${global.i18n(i18nPrefix + 'block_place.title')}
 
 div.columns
    div.column
       div.field
-         p
-            ---
-            Saisissez les diférentes valeurs. Le résultat se met à jour automatiquement.
-            ---
-         p
-            ---
-            <strong>Note</strong> : Si la mise à jour ne se fait pas
-            automatiquement, cliquez sur « Calculer ».
-            ---
+         p -- ${global.i18n(i18nPrefix + 'block_place.description.p1')}
+         p -- $!{global.i18n(i18nPrefix + 'block_place.description.p2_html')}
 
 div.columns
    div.column.is-half
       div.field
-         label.label for="level-cost" -- Coût du niveau
+         label.label for="level-cost" -- ${global.i18n(i18nPrefix + 'block_place.level_cost')}
          div.control
             input.input type="number" min="0" value="${state['level-cost']}" name="level-cost" id="level-cost" key="level-cost" autocomplete="off" disabled=(checkInputLevelCost(input))
    div.column.is-half
       div.field
-         label.label for="current-deposits" -- Somme des dépôts actuels
+         label.label for="current-deposits" -- ${global.i18n(i18nPrefix + 'block_place.current_deposits')}
          div.control
             input.input type="number" min="0" value="${state['current-deposits']}" name="current-deposits" id="current-deposits" key="current-deposits" autocomplete="off"
 
 div.columns
    div.column.is-half
       div.field
-         label.label for="your-participation" -- Votre participation actuelle
+         label.label for="your-participation" -- ${global.i18n(i18nPrefix + 'block_place.your_participation')}
          div.control
             input.input type="number" min="0" value="${state['your-participation']}" name="your-participation" id="your-participation" key="your-participation" autocomplete="off"
    div.column.is-half
       div.field
-         label.label for="other-participation" -- Participation du joueur à dépasser
+         label.label for="other-participation" -- ${global.i18n(i18nPrefix + 'block_place.other_participation')}
          div.control
              input.input type="number" min="0" value="${state['other-participation']}" name="other-participation" id="other-participation" key="other-participation" autocomplete="off"
 
@@ -56,30 +51,29 @@ div.columns
    div.column
       div.field
          div.control.level-item
-            button.button.is-link key="submit-secure-position" -- Calculer
+            button.button.is-link key="submit-secure-position" -- ${global.i18n(i18nPrefix + 'block_place.submit')}
 
-p -- Nombre de PF${(getNumberOfRemainingPoints(state) > 1) ? 's' : ''} restant pour compléter le niveau : ${getNumberOfRemainingPoints(state)}
+p -- ${global.i18n(i18nPrefix + 'block_place.fp_to_complete_level', {count: getNumberOfRemainingPoints(state)})}
 
 p
    if(!state.formValid)
       ---
-      Une ou plusieurs valeurs ne sont pas valide.
+      ${global.i18n(i18nPrefix + 'block_place.result.error')}
       ---
    else-if(state.fp > 0)
       if(state.fp <= state['your-participation'])
          ---
-         Votre place est bloquée.
+         ${global.i18n(i18nPrefix + 'block_place.result.already_blocked')}
          ---
       else
          ---
-         Vous devez avoir mis au total ${state.fp} PF${(state.fp > 1) ? 's' : ''} pour bloquer la place.
+         ${global.i18n(i18nPrefix + 'block_place.result.default', {count: state.fp})}
          ---
          if(((state.fp - state['your-participation']) > 0) && (state['your-participation'] > 0))
             ---
-            <br />
-            Vous devez encore mettre ${state.fp - state['your-participation']} PF${((state.fp - state['your-participation']) > 1) ? 's' : ''}.
+            ${global.i18n(i18nPrefix + 'block_place.result.fp_to_secure_html', {count: state.fp - state['your-participation']})}
             ---
    else
       ---
-      Vous ne pouvez pas bloquer la place.
+      ${global.i18n(i18nPrefix + 'block_place.result.cant_block')}
       ---

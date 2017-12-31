@@ -56,7 +56,7 @@
             "block_place": {
                "title": "Bloquer sa place",
                "description": {
-                  "p1": "Saisissez les diférentes valeurs. Le résultat se met à jour automatiquement.",
+                  "p1": "Saisissez les différentes valeurs. Le résultat se met à jour automatiquement.",
                   "p2_html": "<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, cliquez sur « $t(components.secure_position.block_place.submit) »."
                },
                "level_cost": "Coût du niveau",
@@ -95,7 +95,7 @@
             "info": {
                "title": "Informations",
                "p1": "Le site dispose pour l'instant d'un outil permettant de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches).",
-               "p2": "Un second outil est disponible, « Sécurisation de place ». Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place. Il est intégré dans « Investissement GM » et dispose également d'une version standalone."
+               "p2": "Un second outil est disponible, « $t(routes.secure_position.hero.title) ». Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place. Il est intégré dans « $t(routes.gb_investment_gb_chooser.hero.title) » et dispose également d'une version standalone."
             }
          },
          "about": {
@@ -109,13 +109,13 @@
             "cookie": {
                "title": "Cookies",
                "p1": "Pour améliorer votre confort d'utilisation, le site utilise des cookies.",
-               "p2_html": "Nous stockons le fait que vous avez pris connaissance que le site utiliser des cookies (pour ne pas vous afficher le message à chaque fois).<br />Dans l'outil d'investissement de GM, nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « lien permanent », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée."
+               "p2_html": "Dans l'outil d'investissement de GM, nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « $t(translation.components.gb_investment.gb_investment.permalink) », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée."
             },
             "dev_info": {
                "title": "Informations développement",
                "p1": "Le site est un simple site static hébergé sur GitHub.",
-               "p2_html": "Le développement se fait en Node.js à l'aide de <a href=\"https://markojs.com/\">Marko</a>, un moteur de template à composant réactif développé par Ebay. Le style est réalisé à l'aide de <a href=\"https://bulma.io/\">Bulma</a>.",
-               "p3_html": "Une idée de fonctionnalité ? Un problème ? N'hésiter pas à créer une issue sur GitHub ou à m'envoyer un mail à <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",
+               "p2_html": "Le développement se fait en Node.js à l'aide de <a href=\"https://markojs.com/\">Marko</a>, un moteur de template à composant réactif développé par eBay. Le style est réalisé à l'aide de <a href=\"https://bulma.io/\">Bulma</a>.",
+               "p3_html": "Une idée de fonctionnalité ? Un problème ? N'hésitez pas à créer une issue sur GitHub ou à m'envoyer un mail à <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",
                "message_info_github_issue": "<b>Note :</b> Concernant les issues sur GitHub, veuillez veiller à les rédiger en anglais pour faciliter la compréhension pour le plus grand nombre."
             }
          },

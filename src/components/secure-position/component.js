@@ -1,13 +1,15 @@
 function calculate() {
    if (this::formValid()) {
-         if ((this.state['level-cost'] - this.state['current-deposits']) <= this.state['other-participation']) {
-            this.state.fp = -1;
-         } else {
-            this.state.fp = Math.ceil((this.state['level-cost'] -
-               this.state['current-deposits'] -
-               (this.state['other-participation'] - this.state['your-participation'])
-            ) / 2) + this.state['other-participation'];
-         }
+      let result = Math.ceil((this.state['level-cost'] -
+            this.state['current-deposits'] -
+            (this.state['other-participation'] - this.state['your-participation'])
+         ) / 2) + this.state['other-participation'];
+
+      if (result <= this.state['other-participation']) {
+         this.state.fp = -1;
+      } else {
+         this.state.fp = result;
+      }
    }
 }
 

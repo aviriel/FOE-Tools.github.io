@@ -5,9 +5,9 @@ export default class {
       this.state = {
          site_version: packagejson.version,
          navbar_link: [
-            {name: "Accueil", key: "home", link: "/"},
-            {name: "Investissement GM", key: "gb_investment", link: "/gb-investment"},
-            {name: "Sécurisation de place", key: "secure_position", link: "/secure-position"}
+            {key: "home", link: "/"},
+            {key: "gb_investment", link: "/gb-investment"},
+            {key: "secure_position", link: "/secure-position"}
          ]
       };
    }

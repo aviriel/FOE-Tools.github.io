@@ -51,6 +51,7 @@
     "prompt": "^1.0.0"
   },
   "dependencies": {
+    "i18next": "^10.2.1",
     "js-cookie": "^2.2.0",
     "lasso-babel-transform": "^1.0.1",
     "lasso-require": "^3.4.9",

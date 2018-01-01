@@ -1,13 +1,35 @@
+<!-- FIXME: Not implemented yet due to Marko bug -->
 <!-- import cookieMessage from './components/cookie-message/index.marko' -->
+import {i18next} from '~/src/services/i18next';
+
+
+$ global.i18n = function (key, param) {
+   return i18next.t(key, param || {});
+}
+
+$ global.changeLanguage = function (lng, callback) {
+   i18next.changeLanguage(lng, callback);
+}
+
+$ global.language = function () {
+   return i18next.language;
+}
+
+$ global.languages = function () {
+   return i18next.languages;
+}
+
+$ let i18nPrefix = 'components.site_layout.';
 
 <!DOCTYPE html>
-html lang="fr-FR"
+html lang="${global.language()}"
    head
       meta charset="utf-8"
       meta name="viewport" content="width=device-width, initial-scale=1"
       title include(input.title)
       link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"
+      lasso-head
       link rel="icon" type="image/png" href="./favicon.png"
       if(input.style)
          include(input.style)
@@ -25,12 +47,13 @@ html lang="fr-FR"
             div#mainNavbar.navbar-menu
                div.navbar-start
                   for(url_data in state.navbar_link)
-                     if(input.currentLocation && (input.currentLocation == url_data.key))
-                        a.navbar-item.is-active href=url_data.link -- ${url_data.name}
-                     else
-                        a.navbar-item href=url_data.link -- ${url_data.name}
+                     a class=['navbar-item',
+                        ((input.currentLocation && (input.currentLocation == url_data.key)) && 'is-active')
+                     ] href=url_data.link -- ${global.i18n('main_menu.' + url_data.key)}
 
                div.navbar-end
+                  div.navbar-item
+                     language-selector
                   div.navbar-item
                      div.field.is-grouped
                         p.control
@@ -50,8 +73,8 @@ html lang="fr-FR"
                      if(input.hero)
                         include(input.hero)
                      else
-                        h1.title.is-2.is-spaced -- FOE Tools
-                        h2.subtitle.is-4 -- Un ensemble d'outils pour se simplifier la vie sur <a href="https://forgeofempires.com">Forge Of Empire</a>
+                        h1.title.is-2.is-spaced -- ${global.i18n(i18nPrefix + 'hero.title')}
+                        h2.subtitle.is-4 -- $!{global.i18n(i18nPrefix + 'hero.slogan_html')}
 
       section.section
          div.container
@@ -64,13 +87,11 @@ html lang="fr-FR"
          div.container
             div.columns
                div.column.is-8-desktop.is-offset-2-desktop
-                  a href="/about" -- À propos
+                  a href="/about" -- ${global.i18n('footer_menu.about')}
                   p
-                     small
-                        ---
-                        Code source sous licence <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
-                        ---
-                  p -- Version ${state.site_version}
+                     small -- $!{global.i18n(i18nPrefix + 'footer.license_html')}
+                  p -- ${global.i18n(i18nPrefix + 'footer.version', {version: state.site_version})}
 
+      lasso-body
       if(input.script)
          include(input.script)

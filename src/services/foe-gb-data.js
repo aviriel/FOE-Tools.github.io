@@ -1251,164 +1251,132 @@ const ages = {
 const gbs = {
   Observatory: {
     key: "Observatory",
-    display_name: "Observatoire",
     levels: ages.NoAge
   },
   Temple_of_Relics: {
     key: "Temple_of_Relics",
-    display_name: "Temple des reliques",
     levels: ages.NoAge
   },
   Oracle_of_Delphi: {
     key: "Oracle_of_Delphi",
-    display_name: "Oracle de Delphes",
     levels: ages.NoAge
   },
   Tower_of_Babel: {
     key: "Tower_of_Babel",
-    display_name: "Tour de Babel",
     levels: ages.BronzeAge
   },
   Statue_of_Zeus: {
     key: "Statue_of_Zeus",
-    display_name: "Statue de Zeus",
     levels: ages.BronzeAge
   },
   Colosseum: {
     key: "Colosseum",
-    display_name: "Colisée",
     levels: ages.IronAge
   },
   Lighthouse_of_Alexandria: {
     key: "Lighthouse_of_Alexandria",
-    display_name: "Phare d'Alexandrie",
     levels: ages.IronAge
   },
   Hagia_Sophia: {
     key: "Hagia_Sophia",
-    display_name: "Hagia Sophia",
     levels: ages.EarlyMiddleAges
   },
   Cathedral_of_Aachen: {
     key: "Cathedral_of_Aachen",
-    display_name: "Cathédrale d'Aix la Chapelle",
     levels: ages.EarlyMiddleAges
   },
   St_Mark_s_Basilica: {
     key: "St_Mark_s_Basilica",
-    display_name: "Basilique Saint-Marc",
     levels: ages.HighMiddleAges
   },
   Notre_Dame: {
     key: "Notre_Dame",
-    display_name: "Notre-Dame",
     levels: ages.HighMiddleAges
   },
   Saint_Basil_s_Cathedral: {
     key: "Saint_Basil_s_Cathedral",
-    display_name: "Cathédrale Saint-Basile",
     levels: ages.LateMiddleAges
   },
   Castel_del_Monte: {
     key: "Castel_del_Monte",
-    display_name: "Castel del Monte",
     levels: ages.LateMiddleAges
   },
   Deal_Castle: {
     key: "Deal_Castle",
-    display_name: "Château de Deal",
     levels: ages.ColonialAge
   },
   Frauenkirche_of_Dresden: {
     key: "Frauenkirche_of_Dresden",
-    display_name: "Frauenkirche de Dresde",
     levels: ages.ColonialAge
   },
   Capitol: {
     key: "Capitol",
-    display_name: "Capitole",
     levels: ages.IndustrialAge
   },
   Royal_Albert_Hall: {
     key: "Royal_Albert_Hall",
-    display_name: "Royal Albert Hall",
     levels: ages.IndustrialAge
   },
   Chateau_Frontenac: {
     key: "Chateau_Frontenac",
-    display_name: "Château Frontenac",
     levels: ages.ProgressiveEra
   },
   Alcatraz: {
     key: "Alcatraz",
-    display_name: "Alcatraz",
     levels: ages.ProgressiveEra
   },
   Space_Needle: {
     key: "Space_Needle",
-    display_name: "Space Needle",
     levels: ages.ModernEra
   },
   Atomium: { key: "Atomium", display_name: "Atomium", levels: ages.ModernEra },
   Cape_Canaveral: {
     key: "Cape_Canaveral",
-    display_name: "Cap Canaveral",
     levels: ages.PostmodernEra
   },
   The_Habitat: {
     key: "The_Habitat",
-    display_name: "L'Habitat",
     levels: ages.PostmodernEra
   },
   Lotus_Temple: {
     key: "Lotus_Temple",
-    display_name: "Temple du lotus",
     levels: ages.ContemporaryEra
   },
   Innovation_Tower: {
     key: "Innovation_Tower",
-    display_name: "Tour de l'innovation",
     levels: ages.ContemporaryEra
   },
   Dynamic_Tower: {
     key: "Dynamic_Tower",
-    display_name: "Dynamic Tower",
     levels: ages.Tomorrow
   },
   Voyager_V1: {
     key: "Voyager_V1",
-    display_name: "Voyager V1",
     levels: ages.Tomorrow
   },
   The_Arc: { key: "The_Arc", display_name: "L'Arche", levels: ages.TheFuture },
   Rain_Forest_Project: {
     key: "Rain_Forest_Project",
-    display_name: "Forêt tropicale",
     levels: ages.TheFuture
   },
   Gaea_Statue: {
     key: "Gaea_Statue",
-    display_name: "Statue de Gaïa",
     levels: ages.ArcticFuture
   },
   Arctic_Orangery: {
     key: "Arctic_Orangery",
-    display_name: "Orangerie arctique",
     levels: ages.ArcticFuture
   },
   Seed_Vault: {
     key: "Seed_Vault",
-    display_name: "Chambre forte des graines",
     levels: ages.ArcticFuture
   },
   Atlantis_Museum: {
     key: "Atlantis_Museum",
-    display_name: "Musée de l'Atlantide",
     levels: ages.OceanicFuture
   },
   The_Kraken: {
     key: "The_Kraken",
-    display_name: "Le Kraken",
     levels: ages.OceanicFuture
   }
 };
@@ -1419,7 +1387,6 @@ export default {
   GBs_BY_AGE: {
     NoAge: {
       key: "NoAge",
-      display_name: "Aucun âge",
       gbs: [
         gbs["Observatory"],
         gbs["Temple_of_Relics"],
@@ -1428,77 +1395,62 @@ export default {
     },
     BronzeAge: {
       key: "BronzeAge",
-      display_name: "Âge du Bronze",
       gbs: [gbs["Tower_of_Babel"], gbs["Statue_of_Zeus"]]
     },
     IronAge: {
       key: "IronAge",
-      display_name: "Âge du Fer",
       gbs: [gbs["Colosseum"], gbs["Lighthouse_of_Alexandria"]]
     },
     EarlyMiddleAges: {
       key: "EarlyMiddleAges",
-      display_name: "Haut Moyen Âge",
       gbs: [gbs["Hagia_Sophia"], gbs["Cathedral_of_Aachen"]]
     },
     HighMiddleAges: {
       key: "HighMiddleAges",
-      display_name: "Moyen Âge Classique",
       gbs: [gbs["St_Mark_s_Basilica"], gbs["Notre_Dame"]]
     },
     LateMiddleAges: {
       key: "LateMiddleAges",
-      display_name: "Renaissance",
       gbs: [gbs["Saint_Basil_s_Cathedral"], gbs["Castel_del_Monte"]]
     },
     ColonialAge: {
       key: "ColonialAge",
-      display_name: "Âge Colonial",
       gbs: [gbs["Deal_Castle"], gbs["Frauenkirche_of_Dresden"]]
     },
     IndustrialAge: {
       key: "IndustrialAge",
-      display_name: "Âge Industriel",
       gbs: [gbs["Capitol"], gbs["Royal_Albert_Hall"]]
     },
     ProgressiveEra: {
       key: "ProgressiveEra",
-      display_name: "Ère Progressiste",
       gbs: [gbs["Chateau_Frontenac"], gbs["Alcatraz"]]
     },
     ModernEra: {
       key: "ModernEra",
-      display_name: "Ère Moderne",
       gbs: [gbs["Space_Needle"], gbs["Atomium"]]
     },
     PostmodernEra: {
       key: "PostmodernEra",
-      display_name: "Ère Postmoderne",
       gbs: [gbs["Cape_Canaveral"], gbs["The_Habitat"]]
     },
     ContemporaryEra: {
       key: "ContemporaryEra",
-      display_name: "Ère Contemporaine",
       gbs: [gbs["Lotus_Temple"], gbs["Innovation_Tower"]]
     },
     Tomorrow: {
       key: "Tomorrow",
-      display_name: "Ère de Demain",
       gbs: [gbs["Dynamic_Tower"], gbs["Voyager_V1"]]
     },
     TheFuture: {
       key: "TheFuture",
-      display_name: "Ère du Futur",
       gbs: [gbs["The_Arc"], gbs["Rain_Forest_Project"]]
     },
     ArcticFuture: {
       key: "ArcticFuture",
-      display_name: "Futur Arctique",
       gbs: [gbs["Gaea_Statue"], gbs["Arctic_Orangery"], gbs["Seed_Vault"]]
     },
     OceanicFuture: {
       key: "OceanicFuture",
-      display_name: "Futur Océanique",
       gbs: [gbs["Atlantis_Museum"], gbs["The_Kraken"]]
     }
   }

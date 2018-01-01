@@ -1,11 +1,10 @@
-label.label for="gb-list" -- Changer de Grand Monument
+$ let i18nPrefix = 'components.gb_investment.gb_list_select.';
+
+label.label for="gb-list" -- ${global.i18n(i18nPrefix + 'label')}
 div.control
    div.select
       select name="gb-list" id="gb-list" onchange="location = this.value + '/';"
          for(i, age in state.data.GBs_BY_AGE)
-            optgroup label="${age.display_name}"
+            optgroup label="${global.i18n('foe_data.age.' + age.key)}"
                for(gb in age.gbs)
-                  if(input.gb == gb.key)
-                     option selected value="/gb-investment/${gb.key}" -- ${gb.display_name}
-                  else
-                     option value="/gb-investment/${gb.key}" -- ${gb.display_name}
+                     option selected=(input.gb == gb.key) value="/gb-investment/${gb.key}" -- ${global.i18n('foe_data.gb.' + gb.key)}

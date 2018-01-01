@@ -1,18 +1,9 @@
+$ let i18nPrefix = 'routes.gb_investment.';
+
 site-layout currentLocation="gb_investment"
-   @title
-      ---
-      FOE Tools | Investissement GM - ${state.data.gbs[input.params.gb].display_name}
-      ---
+   @title -- ${global.i18n(i18nPrefix + 'title', {gb_key: 'foe_data.gb.' + input.params.gb})}
    @hero
-      h1.title.is-2.is-spaced
-         ---
-         Investissement GM - ${state.data.gbs[input.params.gb].display_name}
-         ---
-      h2.subtitle.is-4
-         ---
-         Cet outil permet de calculer le nombre de points qu'un joueur doit
-         mettre sur son GM pour sécuriser les 5 premières places suivant un
-         taux (grosses arches).
-         ---
+      h1.title.is-2.is-spaced -- ${global.i18n(i18nPrefix + 'hero.title', {gb_key: 'foe_data.gb.' + input.params.gb})}
+      h2.subtitle.is-4 -- ${global.i18n('routes.gb_investment_gb_chooser.hero.subtitle')}
    @content
       gb-investment gb=input.params.gb query=input.query

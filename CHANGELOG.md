@@ -2,6 +2,14 @@
 
 # 1.x
 
+## 1.3.x
+
+### 1.3.0
+
+-   Added support of internationalization
+-   Added support of English
+-   Fix issue with secure position (bad checking for rest of cost of level)
+
 ## 1.2.x
 
 ### 1.2.2

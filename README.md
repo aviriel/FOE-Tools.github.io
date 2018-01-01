@@ -55,7 +55,6 @@ The generated static site will be placed in `dist/`.
 
 ## TODO
 
-- [ ] Internationalization (preferably use [i18next](https://www.i18next.com/)) [#1](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/1)
 - [ ] Tests
 
 
@@ -76,6 +75,14 @@ For commit message, follow [this recommendation](https://chris.beams.io/posts/gi
 **PR are accepted on `dev` branch**. Master branch it is only for website GitHub static page (so, production).
 
 
+
+### Adding language
+
+For adding language, create a json file in `i18n/` where the name is a code of language.
+
+Next, in `src/services/i18next.js` add your langue in whitelist.
+
+*Note: the code of language respect [ISO 639-1](https://www.loc.gov/standards/iso639-2/php/code_list.php) standard.*
 
 ## Changelog
 

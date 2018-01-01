@@ -9,6 +9,7 @@ export default projectConfig({
     fingerprintsEnabled: isProduction,
     minify: isProduction,
     noConflict: "foe_tools",
+    resolveCssUrls: true,
     require: {
       transforms: [
         {

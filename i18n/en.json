@@ -109,7 +109,7 @@
             "cookie": {
                "title": "Cookies",
                "p1": "To improve your comfort of use, the site uses cookies.",
-               "p2_html": "In GM's Investment Tool, we store for each GM the level and various percentages of investors so we do not have to re-enter them each time. <br /> Please note that when you visit a page \"$t(translation.components.gb_investment.gb_investment.permalink)\", no information on the level of GM and the various percentages of investors is stored."
+               "p2_html": "We store the display language.<br />In GM's Investment Tool, we store for each GM the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a page \"$t(translation.components.gb_investment.gb_investment.permalink)\", no information on the level of GM and the various percentages of investors is stored."
             },
             "dev_info": {
                "title": "Development information",
@@ -198,6 +198,10 @@
             "Atlantis_Museum": "Atlantis Museum",
             "The_Kraken": "The Kraken"
          }
+      },
+      "lang": {
+         "en": "English",
+         "fr": "Français"
       }
    }
 }

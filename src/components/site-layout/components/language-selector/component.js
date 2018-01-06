@@ -38,7 +38,7 @@ export default class {
              });
            });
 
-           document.addEventListener('click', event => {
+           document.addEventListener('click', () => {
              closeDropdowns();
            });
          }
@@ -53,7 +53,7 @@ export default class {
                });
                $el.classList.toggle('is-active');
 
-               global.changeLanguage($el.getAttribute('data-lang'), (err, t) => {
+               global.changeLanguage($el.getAttribute('data-lang'), (err) => {
                  if (err) return console.error('something went wrong loading', err);
                  Cookies.set('lang', $el.getAttribute('data-lang'));
                  location.reload();

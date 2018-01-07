@@ -4,6 +4,10 @@
 
 ## 1.3.x
 
+### 1.3.2
+
+- Fix English translation
+
 ### 1.3.1
 
 - Fix permalink i18n key in about

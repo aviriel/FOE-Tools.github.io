@@ -49,7 +49,7 @@ $_mod_foe_tools.def("/marko$4.7.4/dist/components/registry-browser",function(n,o
 $_mod_foe_tools.def("/marko$4.7.4/dist/components/init-components-browser",function(e,n,o,t,i){"use strict";function r(e){var n;for(e=e.firstChild;e;){if(8===e.nodeType){var o=e.nodeValue;if("M"===o[0]){n=o.substring(2);var t=o[1];if("/"===t)k[n]=e;else{if("#"===t){$[n]=e;for(var i="M/"+n;(e=e.nextSibling)&&e.nodeValue!==i;);continue}"^"===t&&($[n]=e)}}}else if(1===e.nodeType){var a=e.getAttribute("data-marko-key");if(a){var d=a.indexOf(" ");n=a.substring(d+1),a=a.substring(0,d);var _=y[n]||(y[n]={});_[a]=e}r(e)}e=e.nextSibling}}function a(e,n,o){var t=e[n];if(!t)throw Error("Method not found: "+n);t.apply(e,o)}function d(e,n,o){return e.addEventListener(n,o,!1),function(){e.removeEventListener(n,o)}}function _(e,n,o,t,i,r){var _=d(n,o,function(o){var r=[o,n];i&&(r=i.concat(r)),a(e,t,r)});r.push(_)}function f(e,n){var o=e._a_;if(o&&o.y_){o.e_(),o.v_=n;var t=e._c_,i=o.id;if(b[i]=o,e._e_&E)return void o.M_(!0);t&&o.C_();var r=e._b_;if(r){var a=[];r.forEach(function(e){var n=e[0],t=e[1],i=o.w_[e[2]],r=e[3];_(o,i,n,t,r,a)}),a.length&&(o.k_=a)}o.p_?o.b_("update"):(o.p_=!0,o.b_("mount"))}}function c(e,n){v._L_(n),n=n||l;for(var o=e.length-1;o>=0;o--){f(e[o],n)}}function u(e,n){if(!e)return e=m.$components,e&&e.forEach&&e.forEach(function(e){u(e,n)}),void(m.$components={concat:u});n=n||l,v._L_(n),e=s(e);var o=e.w,t=e.t,i=window.$MG;i&&(g=s(i),delete window.$MG),o.forEach(function(e){e=h._m_(e,t,g,w);var o,i,a=e.id,d=e._a_,_=e._e_;if(6==(6&_))o=document.head,i=document.body;else if(_&M)o=i=document.body;else if(_&C)o=i=document.head;else{var c=$[a];c||(r(n),c=$[a]);var u=k[a];o=c.nextSibling,o===u?o=i=c:(c.parentNode.removeChild(c),i=o.parentNode===document?o=document.documentElement:u.previousSibling),u&&u.parentNode.removeChild(u)}d.w_=y[a]||{},d.h_=o,d.i_=i,o.B_=d,delete y[a],o.h_=!0,i.i_=!0,f(e,n||l)})}var s=e("/warp10$1.3.6/finalize"),v=e("/marko$4.7.4/dist/components/event-delegation"),m=window,l=document,p=e("/marko$4.7.4/dist/components/util-browser"),b=p.a_,h=e("/marko$4.7.4/dist/components/ComponentDef"),w=e("/marko$4.7.4/dist/components/registry-browser"),g={},$={},k={},y={},E=1,M=2,C=4;n._u_=c,n._O_=u});
 $_mod_foe_tools.def("/marko$4.7.4/dist/components/index-browser",function(o,n,t,e,r){var s=o("/marko$4.7.4/dist/components/util-browser"),i=o("/marko$4.7.4/dist/components/init-components-browser"),m=o("/marko$4.7.4/dist/components/registry-browser");o("/marko$4.7.4/dist/components/ComponentsContext")._u_=i._u_,n.getComponentForEl=s._N_,n.init=window.$initComponents=i._O_,n.register=function(o,n){m._M_(o,function(){return n})}});
 $_mod_foe_tools.def("/marko$4.7.4/components-browser.marko",function(o,e,r,n,s){r.exports=o("/marko$4.7.4/dist/components/index-browser")});
-$_mod_foe_tools.main("/foe-tools$1.3.2/src","index.marko");
+$_mod_foe_tools.main("/foe-tools$1.3.2/src/routes/secure-position","index.marko");
 $_mod_foe_tools.main("/marko$4.7.4/dist/runtime/vdom","");
 $_mod_foe_tools.main("/marko$4.7.4/dist","");
 $_mod_foe_tools.remap("/marko$4.7.4/dist/index","/marko$4.7.4/dist/index-browser");
@@ -69,7 +69,266 @@ $_mod_foe_tools.remap("/marko$4.7.4/dist/components/endComponent","/marko$4.7.4/
 $_mod_foe_tools.def("/marko$4.7.4/dist/components/endComponent-browser",function(o,e,n,t,s){"use strict";n.exports=function(o){o.ee()}});
 $_mod_foe_tools.def("/marko$4.7.4/dist/components/renderer",function(_,o,n,r,t){function e(_,o,n){return"#"===o[0]?o.substring(1):n.id+"-"+n._h_(o)}function i(_){var o=_.parentOut,n=_.out,r=o._r_;void 0!==r&&(n._r_=new c(n,r)),n.c(o._Y_,o.a__,o._Z_)}function s(_,o,n){n=n||{};var r=n.onInput,t=o._l_,s=!0===o._X_,a=!0===o.ad_,c=s;return function(o,k){var y=k.global;!1===k.isSync()&&(y[$]||(y[$]=!0,k.on("beginAsync",i)));var g,w,C,Y,h,x=u(k),P=x.P_,Q=P.Q_,S=void 0!==Q;if(Q)g=Q.id,w=!0,P.Q_=null;else{h=x._p_;var U;if(U=k._Y_){Y=U.id,k._Y_=null,C=k._Z_;var W=k.a__;g=null!=W?e(P,W.toString(),U):U._k_()}else g=P._k_()}if(m)Q=l._n_(n,g,o,k,t,C,Y),o=Q._C_,Q._C_=void 0;else{if(!Q){if(S&&(Q=d[g])&&Q._l_!==t&&(Q.destroy(),Q=void 0),Q)w=!0;else if(w=!1,Q=l._n_(t,g),!0===c){c=!1;var Z="function"==typeof n?n.prototype:n;f(Z,Q.constructor.prototype)}if(Q.s_=!0,void 0!==C&&Q.W_(C,Y),!1===w&&p(Q,"create",o,k),o=Q.H_(o,r,k),!0===w&&(!1===Q.J_||!1===Q.shouldUpdate(o,Q.g_)))return k.ab_(Q),P._z_[g]=!0,void Q.e_()}Q.q_=y,p(Q,"render",k)}var q=v(x,Q,s,h,a);q._c_=w,_(o,k,q,Q,Q.U_),b(k,q),x._p_=h}}var a=_("/marko$4.7.4/dist/components/util-browser"),d=a.a_,p=a.b_,c=_("/marko$4.7.4/dist/components/ComponentsContext"),u=c.__,l=_("/marko$4.7.4/dist/components/registry-browser"),f=_("/raptor-util$3.2.0/copyProps"),m=!0===a.aa_,v=_("/marko$4.7.4/dist/components/beginComponent-browser"),b=_("/marko$4.7.4/dist/components/endComponent-browser"),$="$wa";n.exports=s,s._V_=e,s._W_=i});
 $_mod_foe_tools.def("/marko$4.7.4/dist/components/helpers-browser",function(o,e,r,n,s){o("/marko$4.7.4/dist/components/index-browser"),e.c=o("/marko$4.7.4/dist/components/defineComponent"),e.r=o("/marko$4.7.4/dist/components/renderer"),e.rc=o("/marko$4.7.4/dist/components/registry-browser")._M_});
-$_mod_foe_tools.def("/foe-tools$1.3.2/src/component",function(o,t,e,s,c){"use strict"});
+$_mod_foe_tools.def("/foe-tools$1.3.2/src/routes/secure-position/component",function(o,e,s,t,c){"use strict"});
+$_mod_foe_tools.main("/foe-tools$1.3.2/src/components/secure-position","index.marko");
+$_mod_foe_tools.def("/foe-tools$1.3.2/src/components/secure-position/component",function(t,s,e,i,a){"use strict";function o(t,s){if(!(t instanceof s))throw new TypeError("Cannot call a class as a function")}function r(){if(l.call(this)){var t=Math.ceil((this.state["level-cost"]-this.state["current-deposits"]-(this.state["other-participation"]-this.state["your-participation"]))/2)+this.state["other-participation"];t<=this.state["other-participation"]?this.state.fp=-1:this.state.fp=t}}function l(){return this.state.formValid=!0,this.getEl("level-cost").classList.remove("is-danger"),this.getEl("current-deposits").classList.remove("is-danger"),this.getEl("your-participation").classList.remove("is-danger"),this.getEl("other-participation").classList.remove("is-danger"),this.state["level-cost"]==this.state["current-deposits"]==this.state["your-participation"]==this.state["other-participation"]&&0==this.state["level-cost"]||(this.state["level-cost"]>0||(this.state.formValid=!1,this.getEl("level-cost").classList.add("is-danger")),this.state["current-deposits"]<this.state["level-cost"]||(this.state.formValid=!1,this.getEl("level-cost").classList.add("is-danger"),this.getEl("current-deposits").classList.add("is-danger")),this.state["your-participation"]<this.state["level-cost"]||(this.state.formValid=!1,this.getEl("your-participation").classList.add("is-danger"),this.getEl("level-cost").classList.add("is-danger")),this.state["other-participation"]<this.state["level-cost"]||(this.state.formValid=!1,this.getEl("other-participation").classList.add("is-danger"),this.getEl("level-cost").classList.add("is-danger")),this.state["your-participation"]+this.state["other-participation"]<=this.state["current-deposits"]||(this.state.formValid=!1,this.getEl("your-participation").classList.add("is-danger"),this.getEl("other-participation").classList.add("is-danger"),this.getEl("current-deposits").classList.add("is-danger")),this.state.formValid)}function n(t){return void 0!==t.levelCost&&!isNaN(t.levelCost)}function c(){var t=this.getEl("level-cost");return t.value.length>0&&!isNaN(t.value)?(t.classList.remove("is-danger"),this.state["level-cost"]=parseInt(t.value),!0):(t.classList.add("is-danger"),!1)}function u(){var t=this.getEl("current-deposits");return t.value.length>0&&!isNaN(t.value)?(t.classList.remove("is-danger"),this.state["current-deposits"]=parseInt(t.value),!0):(t.classList.add("is-danger"),!1)}function h(){var t=this.getEl("your-participation");return t.value.length>0&&!isNaN(t.value)?(t.classList.remove("is-danger"),this.state["your-participation"]=parseInt(t.value),!0):(t.classList.add("is-danger"),!1)}function d(){var t=this.getEl("other-participation");return t.value.length>0&&!isNaN(t.value)?(t.classList.remove("is-danger"),this.state["other-participation"]=parseInt(t.value),!0):(t.classList.add("is-danger"),!1)}Object.defineProperty(s,"__esModule",{value:!0});var p=function(){function t(t,s){for(var e=0;e<s.length;e++){var i=s[e];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(s,e,i){return e&&t(s.prototype,e),i&&t(s,i),s}}(),v=function(){function t(){o(this,t)}return p(t,[{key:"onCreate",value:function(t){this.state={fp:0,"your-participation":0,"other-participation":0,"level-cost":n(t)?t.levelCost:0,"current-deposits":0,formValid:!1,DOMReady:!1}}},{key:"onInput",value:function(t){this.state.DOMReady&&n(t)&&(this.state["level-cost"]=parseInt(t.levelCost),r.call(this))}},{key:"onMount",value:function(){var t=this;this.subscribeTo(this.getEl("level-cost")).on("keyup",function(){c.call(t)&&r.call(t)}),this.subscribeTo(this.getEl("current-deposits")).on("keyup",function(){u.call(t)&&r.call(t)}),this.subscribeTo(this.getEl("your-participation")).on("keyup",function(){h.call(t)&&r.call(t)}),this.subscribeTo(this.getEl("other-participation")).on("keyup",function(){d.call(t)&&r.call(t)}),this.subscribeTo(this.getEl("submit-secure-position")).on("click",function(){c.call(t)&&u.call(t)&&h.call(t)&&d.call(t)&&r.call(t)}),this.subscribeTo(window).on("DOMContentLoaded",function(){t.state.DOMReady=!0,r.call(t)})}}]),t}();s.default=v,e.exports=s.default});
+$_mod_foe_tools.def("/marko$4.7.4/dist/runtime/helpers",function(r,n,e,t,o){"use strict";function f(r){return"function"==typeof r}function i(r,n){var e;if(r)if("string"==typeof r)r&&n.push(r);else if("number"==typeof(e=r.length))for(var t=0;t<e;t++)i(r[t],n);else if("object"==typeof r)for(var o in r)if(r.hasOwnProperty(o)){var f=r[o];f&&n.push(o)}}function u(r){function n(r,e){n.renderer(r,e)}return n.renderer=function(e,t){var o=r.renderer||r._||r.render;if(!f(o))throw Error("Invalid renderer");n.renderer=o,o(e,t)},n}function c(r){var n=r.renderer||r._;return n||(f(r)?r:u(r))}var s=Array.isArray,a={s:function(r){return null==r?"":r.toString()},f:function(r,n){if(s(r))for(var e=0;e<r.length;e++)n(r[e]);else f(r)&&r(n)},t:function(r,n,e){return r&&(r=c(r)),function(n,e,t,o,f){e.c(t,o,f),r(n,e),e._Y_=null}},cl:function(){var r=[];return i(arguments,r),r.join(" ")}};e.exports=a});
+$_mod_foe_tools.def("/marko$4.7.4/dist/runtime/vdom/helpers",function(t,n,r,e,o){"use strict";var u=t("/marko$4.7.4/dist/runtime/vdom/vdom"),i=u.ak_,s=u.aH_,c=t("/marko$4.7.4/dist/runtime/helpers"),m=t("/raptor-util$3.2.0/extend"),a=c.cl,d=m({e:function(t,n,r,e,o,u,s){return new i(t,n,r,e,o,u,s)},t:function(t){return new s(t)},const:function(t){var n=0;return function(){return t+n++}},ca:function(t){return t?"string"==typeof t?t:a(t):null}},c);r.exports=d});
+$_mod_foe_tools.def("/foe-tools$1.3.2/src/components/secure-position/index.marko", function(require, exports, module, __filename, __dirname) { // Compiled using marko@4.7.4 - DO NOT EDIT
+"use strict";
+
+var marko_template = module.exports = require('/marko$4.7.4/dist/vdom'/*"marko/dist/vdom"*/).t(),
+    components_helpers = require('/marko$4.7.4/dist/components/helpers-browser'/*"marko/dist/components/helpers"*/),
+    marko_registerComponent = components_helpers.rc,
+    marko_componentType = marko_registerComponent("/foe-tools$1.3.2/src/components/secure-position/index.marko", function() {
+      return module.exports;
+    }),
+    marko_component = require('/foe-tools$1.3.2/src/components/secure-position/component'/*"./component"*/),
+    marko_renderer = components_helpers.r,
+    marko_defineComponent = components_helpers.c,
+    marko_helpers = require('/marko$4.7.4/dist/runtime/vdom/helpers'/*"marko/dist/runtime/vdom/helpers"*/),
+    marko_str = marko_helpers.s,
+    marko_attrs0 = {
+        "class": "columns"
+      },
+    marko_attrs1 = {
+        "class": "columns"
+      },
+    marko_attrs2 = {
+        "class": "column"
+      },
+    marko_attrs3 = {
+        "class": "field"
+      },
+    marko_attrs4 = {
+        "class": "columns"
+      },
+    marko_attrs5 = {
+        "class": "columns"
+      },
+    marko_attrs6 = {
+        "class": "columns"
+      },
+    marko_attrs7 = {
+        "class": "column is-half"
+      },
+    marko_attrs8 = {
+        "class": "field"
+      },
+    marko_attrs9 = {
+        "class": "column is-half"
+      },
+    marko_attrs10 = {
+        "class": "column is-half"
+      },
+    marko_attrs11 = {
+        "class": "field"
+      },
+    marko_attrs12 = {
+        "for": "level-cost",
+        "class": "label"
+      },
+    marko_attrs13 = {
+        "class": "control"
+      },
+    marko_attrs14 = {
+        "class": "field"
+      },
+    marko_attrs15 = {
+        "for": "current-deposits",
+        "class": "label"
+      },
+    marko_attrs16 = {
+        "class": "control"
+      },
+    marko_attrs17 = {
+        "class": "column is-half"
+      },
+    marko_attrs18 = {
+        "class": "column is-half"
+      },
+    marko_attrs19 = {
+        "class": "field"
+      },
+    marko_attrs20 = {
+        "for": "your-participation",
+        "class": "label"
+      },
+    marko_attrs21 = {
+        "class": "control"
+      },
+    marko_attrs22 = {
+        "class": "field"
+      },
+    marko_attrs23 = {
+        "for": "other-participation",
+        "class": "label"
+      },
+    marko_attrs24 = {
+        "class": "control"
+      },
+    marko_attrs25 = {
+        "class": "column"
+      },
+    marko_attrs26 = {
+        "class": "field"
+      },
+    marko_attrs27 = {
+        "class": "control level-item"
+      },
+    marko_attrs28 = {
+        "class": "button is-link"
+      };
+
+function checkInputLevelCost(input) {
+   return (input.levelCost !== undefined) && !isNaN(input.levelCost);
+};
+
+function getNumberOfRemainingPoints(state) {
+   if (isNaN(state['level-cost']) || isNaN(state['current-deposits']) ||
+      ((state['level-cost'] - state['current-deposits']) < 0 )) {
+      return global.i18n('components.secure_position.block_place.unknown');
+   }
+   return state['level-cost'] - state['current-deposits'];
+};
+
+function render(input, out, __component, component, state) {
+  var data = input;
+
+  let i18nPrefix = 'components.secure_position.';
+
+  out.e("DIV", marko_attrs0, "0", component, 1)
+    .e("DIV", marko_attrs7, "1", component, 1)
+      .e("DIV", marko_attrs8, "2", component, 1)
+        .e("H4", null, "3", component, 1)
+          .t(global.i18n(i18nPrefix + "block_place.title"));
+
+  out.be("DIV", marko_attrs1, "4", component);
+
+  out.be("DIV", marko_attrs2, "5", component);
+
+  out.be("DIV", marko_attrs3, "6", component);
+
+  out.e("P", null, "7", component, 1)
+    .t(global.i18n(i18nPrefix + "block_place.description.p1"));
+
+  out.be("P", null, "8", component);
+
+  out.h(global.i18n(i18nPrefix + "block_place.description.p2_html"));
+
+  out.ee();
+
+  out.ee();
+
+  out.ee();
+
+  out.ee();
+
+  out.e("DIV", marko_attrs4, "9", component, 2)
+    .e("DIV", marko_attrs9, "10", component, 1)
+      .e("DIV", marko_attrs11, "11", component, 2)
+        .e("LABEL", marko_attrs12, "12", component, 1)
+          .t(global.i18n(i18nPrefix + "block_place.level_cost"))
+        .e("DIV", marko_attrs13, "13", component, 1)
+          .e("INPUT", {
+              type: "number",
+              min: "0",
+              value: marko_str(state["level-cost"]),
+              name: "level-cost",
+              id: "level-cost",
+              autocomplete: "off",
+              disabled: checkInputLevelCost(input),
+              "class": "input"
+            }, "level-cost", component, 0)
+    .e("DIV", marko_attrs10, "14", component, 1)
+      .e("DIV", marko_attrs14, "15", component, 2)
+        .e("LABEL", marko_attrs15, "16", component, 1)
+          .t(global.i18n(i18nPrefix + "block_place.current_deposits"))
+        .e("DIV", marko_attrs16, "17", component, 1)
+          .e("INPUT", {
+              type: "number",
+              min: "0",
+              value: marko_str(state["current-deposits"]),
+              name: "current-deposits",
+              id: "current-deposits",
+              autocomplete: "off",
+              "class": "input"
+            }, "current-deposits", component, 0);
+
+  out.e("DIV", marko_attrs5, "18", component, 2)
+    .e("DIV", marko_attrs17, "19", component, 1)
+      .e("DIV", marko_attrs19, "20", component, 2)
+        .e("LABEL", marko_attrs20, "21", component, 1)
+          .t(global.i18n(i18nPrefix + "block_place.your_participation"))
+        .e("DIV", marko_attrs21, "22", component, 1)
+          .e("INPUT", {
+              type: "number",
+              min: "0",
+              value: marko_str(state["your-participation"]),
+              name: "your-participation",
+              id: "your-participation",
+              autocomplete: "off",
+              "class": "input"
+            }, "your-participation", component, 0)
+    .e("DIV", marko_attrs18, "23", component, 1)
+      .e("DIV", marko_attrs22, "24", component, 2)
+        .e("LABEL", marko_attrs23, "25", component, 1)
+          .t(global.i18n(i18nPrefix + "block_place.other_participation"))
+        .e("DIV", marko_attrs24, "26", component, 1)
+          .e("INPUT", {
+              type: "number",
+              min: "0",
+              value: marko_str(state["other-participation"]),
+              name: "other-participation",
+              id: "other-participation",
+              autocomplete: "off",
+              "class": "input"
+            }, "other-participation", component, 0);
+
+  out.e("DIV", marko_attrs6, "27", component, 1)
+    .e("DIV", marko_attrs25, "28", component, 1)
+      .e("DIV", marko_attrs26, "29", component, 1)
+        .e("DIV", marko_attrs27, "30", component, 1)
+          .e("BUTTON", marko_attrs28, "submit-secure-position", component, 1)
+            .t(global.i18n(i18nPrefix + "block_place.submit"));
+
+  out.e("P", null, "31", component, 1)
+    .t(global.i18n(i18nPrefix + "block_place.fp_to_complete_level", {
+        count: getNumberOfRemainingPoints(state)
+      }));
+
+  out.be("P", null, "32", component);
+
+  if (!state.formValid) {
+    out.t(global.i18n(i18nPrefix + "block_place.result.error"));
+  } else if (state.fp > 0) {
+    if (state.fp <= state["your-participation"]) {
+      out.t(global.i18n(i18nPrefix + "block_place.result.already_blocked"));
+    } else {
+      out.t(global.i18n(i18nPrefix + "block_place.result.default", {
+          count: state.fp
+        }));
+
+      if (((state.fp - state["your-participation"]) > 0) && (state["your-participation"] > 0)) {
+        out.t(global.i18n(i18nPrefix + "block_place.result.fp_to_secure_html", {
+            count: state.fp - state["your-participation"]
+          }));
+      }
+    }
+  } else {
+    out.t(global.i18n(i18nPrefix + "block_place.result.cant_block"));
+  }
+
+  out.ee();
+}
+
+marko_template._ = marko_renderer(render, {
+    _l_: marko_componentType
+  }, marko_component);
+
+marko_template.Component = marko_defineComponent(marko_component, marko_template._);
+
+});
 $_mod_foe_tools.main("/foe-tools$1.3.2/src/components/site-layout","index.marko");
 $_mod_foe_tools.def("/foe-tools$1.3.2/package",{name:"foe-tools",version:"1.3.2",description:"Set of tools for Forge Of Empire",repository:{type:"git",url:"https://github.com/FOE-Tools/FOE-Tools.github.io"},license:"MIT",devDependencies:{"babel-eslint":"^8.0.3","babel-plugin-add-module-exports":"^0.2.1","babel-plugin-check-es2015-constants":"^6.22.0","babel-plugin-dev-expression":"^0.2.1","babel-plugin-transform-class-properties":"^6.24.1","babel-plugin-transform-es2015-arrow-functions":"^6.22.0","babel-plugin-transform-es2015-block-scoped-functions":"^6.22.0","babel-plugin-transform-es2015-block-scoping":"^6.26.0","babel-plugin-transform-es2015-classes":"^6.24.1","babel-plugin-transform-es2015-computed-properties":"^6.24.1","babel-plugin-transform-es2015-destructuring":"^6.23.0","babel-plugin-transform-es2015-duplicate-keys":"^6.24.1","babel-plugin-transform-es2015-for-of":"^6.23.0","babel-plugin-transform-es2015-function-name":"^6.24.1","babel-plugin-transform-es2015-literals":"^6.22.0","babel-plugin-transform-es2015-object-super":"^6.24.1","babel-plugin-transform-es2015-parameters":"^6.24.1","babel-plugin-transform-es2015-shorthand-properties":"^6.24.1","babel-plugin-transform-es2015-spread":"^6.22.0","babel-plugin-transform-es2015-sticky-regex":"^6.24.1","babel-plugin-transform-es2015-template-literals":"^6.22.0","babel-plugin-transform-es2015-typeof-symbol":"^6.23.0","babel-plugin-transform-es2015-unicode-regex":"^6.24.1","babel-plugin-transform-runtime":"^6.23.0","babel-polyfill":"^6.26.0","babel-preset-env":"^1.6.1","babel-preset-stage-0":"^6.24.1","babel-register":"^6.26.0","babel-runtime":"^6.26.0",eslint:"4.9.0","eslint-config-airbnb-base":"^12.1.0","eslint-config-prettier":"^2.3.0","eslint-plugin-import":"^2.8.0","eslint-plugin-prettier":"^2.1.2","lasso-babel":"^1.0.3","lasso-cson":"^2.0.0","lasso-marko":"^2.4.0","lasso-sass":"^3.0.0","node-sass":"^4.7.2",prettier:"^1.5.2",prompt:"^1.0.0"},dependencies:{i18next:"^10.2.1","js-cookie":"^2.2.0","lasso-babel-transform":"^1.0.1","lasso-require":"^3.4.9",marko:"^4.7.4","marko-starter":"^1.0.0"},scripts:{start:"NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/marko-starter/bin/marko-starter server",build:"NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/marko-starter/bin/marko-starter build","serve-static":"NODE_ENV=production marko-starter serve-static",lint:"eslint src/",test:"npm run lint",prettier:"prettier src/**/*.{js,css,less} *.js --write",publish:"NODE_ENV=production node --trace-warnings -r babel-register ./publish"},"static-repo":"git@github.com:FOE-Tools/FOE-Tools.github.io.git#master",baseurl:"/"});
 $_mod_foe_tools.def("/foe-tools$1.3.2/src/components/site-layout/component",function(e,t,n,o,i){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),s=e("/foe-tools$1.3.2/package"),u=function(e){return e&&e.__esModule?e:{default:e}}(s),c=function(){function e(){r(this,e)}return a(e,[{key:"onCreate",value:function(){this.state={site_version:u.default.version,navbar_link:[{key:"home",link:"/"},{key:"gb_investment",link:"/gb-investment"},{key:"secure_position",link:"/secure-position"}]}}},{key:"onMount",value:function(){this.subscribeTo(window).on("DOMContentLoaded",function(){var e=Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"),0);e.length>0&&e.forEach(function(e){e.addEventListener("click",function(){var t=e.dataset.target,n=document.getElementById(t);e.classList.toggle("is-active"),n.classList.toggle("is-active")})})})}}]),e}();t.default=c,n.exports=t.default});
@@ -93,11 +352,9 @@ $_mod_foe_tools.def("/i18next$10.2.1/index",function(e,o,n,t,d){n.exports=e("/i1
 $_mod_foe_tools.installed("foe-tools$1.3.2","js-cookie","2.2.0");
 $_mod_foe_tools.main("/js-cookie$2.2.0","src/js.cookie");
 $_mod_foe_tools.def("/js-cookie$2.2.0/src/js.cookie",function(e,n,o,t,r){!function(e){var t=!1;if("function"==typeof define&&define.amd&&(define(e),t=!0),"object"==typeof n&&(o.exports=e(),t=!0),!t){var r=window.Cookies,i=window.Cookies=e();i.noConflict=function(){return window.Cookies=r,i}}}(function(){function e(){for(var e=0,n={};e<arguments.length;e++){var o=arguments[e];for(var t in o)n[t]=o[t]}return n}function n(o){function t(n,r,i){var c;if("undefined"!=typeof document){if(arguments.length>1){if(i=e({path:"/"},t.defaults,i),"number"==typeof i.expires){var s=new Date;s.setMilliseconds(s.getMilliseconds()+864e5*i.expires),i.expires=s}i.expires=i.expires?i.expires.toUTCString():"";try{c=JSON.stringify(r),/^[\{\[]/.test(c)&&(r=c)}catch(e){}r=o.write?o.write(r,n):encodeURIComponent(String(r)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),n=encodeURIComponent(String(n)),n=n.replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent),n=n.replace(/[\(\)]/g,escape);var f="";for(var a in i)i[a]&&(f+="; "+a,!0!==i[a]&&(f+="="+i[a]));return document.cookie=n+"="+r+f}n||(c={});for(var d=document.cookie?document.cookie.split("; "):[],p=/(%[0-9A-Z]{2})+/g,u=0;u<d.length;u++){var l=d[u].split("="),C=l.slice(1).join("=");this.json||'"'!==C.charAt(0)||(C=C.slice(1,-1));try{var g=l[0].replace(p,decodeURIComponent);if(C=o.read?o.read(C,g):o(C,g)||C.replace(p,decodeURIComponent),this.json)try{C=JSON.parse(C)}catch(e){}if(n===g){c=C;break}n||(c[g]=C)}catch(e){}}return c}}return t.set=t,t.get=function(e){return t.call(t,e)},t.getJSON=function(){return t.apply({json:!0},[].slice.call(arguments))},t.defaults={},t.remove=function(n,o){t(n,"",e(o,{expires:-1}))},t.withConverter=n,t}return n(function(){})})});
-$_mod_foe_tools.def("/foe-tools$1.3.2/i18n/en",{translation:{main_menu:{home:"Home",gb_investment:"GB Investment",secure_position:"Secure place"},footer_menu:{about:"About"},components:{gb_investment:{gb_list_select:{label:"Switch Great Building"},gb_investment:{title:"GB Investment",permalink:"permalink",description:{p1:"Enter the values for level and bonus percentage. The values in the table update automatically.",p2_html:'<strong>Note</strong>: If the update is not done automatically, first set the GB level and the overall investment value and click on "$t(components.gb_investment.gb_investment.form.submit_global)". If you want to adjust the values of each place, adjust to your convenience and click on "$t(components.gb_investment.gb_investment.form.submit_custom)".'},form:{level:"GB Level (between 1 and {{max}})",investor_percentage:"% of global investors bonus (arc bonus)",submit_global:"Global calculation",submit_custom:"Custom calculation"},table:{title:"$t({{gb_key}}) level {{level}}",thead:{th1:"Places",th2:"Default rewards",th3:"FP to put by the owner to secure the place",th4:"Rewards with rate",th5:"% of investors bonus (arc bonus)"},tfoot:{total_preparation:"Total investment of the owner",level_cost:"Level cost"}}},promotion:{title:"Promotion message",promo:["P1({{investment}})","P2({{investment}})","P3({{investment}})","P4({{investment}})","P5({{investment}})"]}},secure_position:{block_place:{title:"Block his place",description:{p1:"Enter the different values. The result is updated automatically.",p2_html:'<strong>Note</strong>: If the update is not done automatically, click on "$t(components.secure_position.block_place.submit)".'},level_cost:"Level cost",current_deposits:"Sum of current deposits",your_participation:"Your current participation",other_participation:"Participation of the player to overtake",submit:"Calculate",fp_to_complete_level:"Number of FP remaining to complete the level: {{count}}",fp_to_complete_level_plural:"Number of FPs remaining to complete the level: {{count}}",result:{error:"One or more values are not valid.",already_blocked:"Your place is blocked.",default:"You must have totaled {{count}} FP to block the place.",default_plural:"You must have totaled {{count}} FPs to block the place.",fp_to_secure_html:"You still have to put {{count}} FP.",fp_to_secure_html_plural:"You still have to put {{count}} FPs.",cant_block:"You can not block the place."},unknown:"unknown"}},site_layout:{hero:{title:"FOE Tools",slogan_html:'A set of tools to simplify life on <a href="https://forgeofempires.com">Forge Of Empire</a>'},footer:{license_html:'Source code under <a href="http://opensource.org/licenses/mit-license.php">MIT</a> license',version:"Version {{version}}"}}},routes:{home:{title:"FOE Tools",info:{title:"Information",p1:"The site currently has a tool to calculate the number of points a player must put on his GB to secure the first 5 places following a rate (arc bonus).",p2:'A second tool is available, "$t(routes.secure_position.hero.title)". This tool calculates the number of FP that a player must put on a GB to block his place. It is integrated in "$t(routes.gb_investment_gb_chooser.hero.title)" and also has a standalone version.'}},about:{title:"About FOE Tools",general_info:{title:"General information",p1_html:"Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> FOE Tools is an unofficial third party site and is not affiliated with InnoGames.",p2_html:'FOE Tools was created by the French player <strong class="has-text-weight-semibold">Yoratheon</strong>.',p3_html:"The site is OpenSource, the code is freely available on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."},cookie:{title:"Cookies",p1:"To improve your comfort of use, the site uses cookies.",p2_html:'We store the display language.<br />In "$t(components.gb_investment.gb_investment.title)" Tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a page "$t(components.gb_investment.gb_investment.permalink)", no information on the level of GB and the various percentages of investors is stored.'},dev_info:{title:"Development information",p1:"The site is a simple static site hosted on GitHub.",p2_html:'The development is done in Node.js using <a href="https://markojs.com/">Marko</a>, a template engine for reactive component developed by eBay. The style is made using <a href="https://bulma.io/">Bulma</a>.',p3_html:'An idea of functionality? A problem ? Feel free to create an issue on GitHub or send me an email (in English or in French) at <a href="mailto:foe-tools@protonmail.com?subject=FOE-Tools">foe-tools@protonmail.com</a>.',message_info_github_issue:"<b>Note:</b> Regarding issues on GitHub, please make sure to write them in English to facilitate understanding for the greatest number."}},gb_investment:{title:"FOE Tools | GB Investment - $t({{gb_key}})",hero:{title:"GB Investment - $t({{gb_key}})"}},gb_investment_gb_chooser:{title:"FOE Tools | GB Investment",hero:{title:"GB Investment",subtitle:"This tool makes it possible to calculate the number of points that a player must put on his GB to secure the first 5 places following a rate (arc bonus)."},choose_gb:{title:"Choose a Great Building"}},secure_position:{title:"FOE Tools | Secure place",hero:{title:"Secure place",subtitle:"This tool calculates the number of FP that a player must put on a GB to block his place."}}},foe_data:{age:{NoAge:"No Age",BronzeAge:"Bronze Age",IronAge:"Iron Age",EarlyMiddleAges:"Early Middle Ages",HighMiddleAges:"High Middle Ages",LateMiddleAges:"Late Middle Ages",ColonialAge:"Colonial Age",IndustrialAge:"Industrial Age",ProgressiveEra:"Progressive Era",ModernEra:"Modern Era",PostmodernEra:"Postmodern Era",ContemporaryEra:"Contemporary Era",Tomorrow:"Tomorrow",TheFuture:"The Future",ArcticFuture:"Arctic Future",OceanicFuture:"Oceanic Future"},gb:{Observatory:"Observatory",Temple_of_Relics:"Temple of Relics",Oracle_of_Delphi:"Oracle of Delphi",Tower_of_Babel:"Tower of Babel",Statue_of_Zeus:"Statue of Zeus",Colosseum:"Colosseum",Lighthouse_of_Alexandria:"Lighthouse of Alexandria",Hagia_Sophia:"Hagia Sophia",Cathedral_of_Aachen:"Cathedral of Aachen",St_Mark_s_Basilica:"St. Mark's Basilica",Notre_Dame:"Notre Dame",Saint_Basil_s_Cathedral:"St. Basil's Cathedral",Castel_del_Monte:"Castel del Monte",Deal_Castle:"Deal Castle",Frauenkirche_of_Dresden:"Frauenkirche of Dresden",Capitol:"Capitol",Royal_Albert_Hall:"Royal Albert Hall",Chateau_Frontenac:"Château Frontenac",Alcatraz:"Alcatraz",Space_Needle:"Space Needle",Atomium:"Atomium",Cape_Canaveral:"Cape Canaveral",The_Habitat:"The Habitat",Lotus_Temple:"Lotus Temple",Innovation_Tower:"Innovation Tower",Dynamic_Tower:"Dynamic Tower",Voyager_V1:"Voyager V1",The_Arc:"The Arc",Rain_Forest_Project:"Rain Forest Project",Gaea_Statue:"Gaea Statue",Arctic_Orangery:"Arctic Orangery",Seed_Vault:"Seed Vault",Atlantis_Museum:"Atlantis Museum",The_Kraken:"The Kraken"}},lang:{en:"English",fr:"Français"}}});
-$_mod_foe_tools.def("/foe-tools$1.3.2/i18n/fr",{translation:{main_menu:{home:"Accueil",gb_investment:"Investissement GM",secure_position:"Sécurisation de place"},footer_menu:{about:"À propos"},components:{gb_investment:{gb_list_select:{label:"Changer de Grand Monument"},gb_investment:{title:"Investissement GM",permalink:"Lien permanent",description:{p1:"Saisissez les valeurs pour le niveau et le pourcentage de bonus. Les valeurs du tableau se mettent à jour automatiquement.",p2_html:"<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, dans un premier temps, définissez le niveau du GM et la valeur d'investissement globale et cliquez sur « $t(components.gb_investment.gb_investment.form.submit_global) ». Si vous souhaitez ajuster les valeurs de chaque place, ajuster à votre convenance et cliquez sur « $t(components.gb_investment.gb_investment.form.submit_custom) »."},form:{level:"Niveau du GM (entre 1 et {{max}})",investor_percentage:"% de bonus (grosses arches) global des investisseurs",submit_global:"Calcul global",submit_custom:"Calcul personnalisé"},table:{title:"$t({{gb_key}}) niveau {{level}}",thead:{th1:"Places",th2:"Récompenses de base",th3:"PF à mettre par le propriétaire pour sécuriser la place",th4:"Récompenses avec taux",th5:"% de bonus (grosses arches) des investisseurs"},tfoot:{total_preparation:"Investissement total du propriétaire",level_cost:"Coût du niveau"}}},promotion:{title:"Message de promotion",promo:["P1({{investment}})","P2({{investment}})","P3({{investment}})","P4({{investment}})","P5({{investment}})"]}},secure_position:{block_place:{title:"Bloquer sa place",description:{p1:"Saisissez les différentes valeurs. Le résultat se met à jour automatiquement.",p2_html:"<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, cliquez sur « $t(components.secure_position.block_place.submit) »."},level_cost:"Coût du niveau",current_deposits:"Somme des dépôts actuels",your_participation:"Votre participation actuelle",other_participation:"Participation du joueur à dépasser",submit:"Calculer",fp_to_complete_level:"Nombre de PF restant pour compléter le niveau : {{count}}",fp_to_complete_level_plural:"Nombre de PFs restant pour compléter le niveau : {{count}}",result:{error:"Une ou plusieurs valeurs ne sont pas valide.",already_blocked:"Votre place est bloquée.",default:"Vous devez avoir mis au total {{count}} PF pour bloquer la place.",default_plural:"Vous devez avoir mis au total {{count}} PFs pour bloquer la place.",fp_to_secure_html:"Vous devez encore mettre {{count}} PF.",fp_to_secure_html_plural:"Vous devez encore mettre {{count}} PFs.",cant_block:"Vous ne pouvez pas bloquer la place."},unknown:"inconnu"}},site_layout:{hero:{title:"FOE Tools",slogan_html:'Un ensemble d\'outils pour se simplifier la vie sur <a href="https://forgeofempires.com">Forge Of Empire</a>'},footer:{license_html:'Code source sous licence <a href="http://opensource.org/licenses/mit-license.php">MIT</a>',version:"Version {{version}}"}}},routes:{home:{title:"FOE Tools",info:{title:"Informations",p1:"Le site dispose pour l'instant d'un outil permettant de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches).",p2:"Un second outil est disponible, « $t(routes.secure_position.hero.title) ». Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place. Il est intégré dans « $t(routes.gb_investment_gb_chooser.hero.title) » et dispose également d'une version standalone."}},about:{title:"À propos de FOE Tools",general_info:{title:"Informations générales",p1_html:"Forge of Empires, FOE, et toutes les marques et contenus associés appartiennent à InnoGames GmbH.<br />FOE Tools est un site tierce non officiel et n'est pas affilié à InnoGames.",p2_html:'FOE Tools a été créé par le joueur français <strong class="has-text-weight-semibold">Yoratheon</strong>.',p3_html:"Le site est OpenSource, le code est disponible librement et gratuitement sur GitHub.<br />Ainsi, tout le monde ayant les compétences nécessaires peut participer à l'amélioration de ce site."},cookie:{title:"Cookies",p1:"Pour améliorer votre confort d'utilisation, le site utilise des cookies.",p2_html:"Nous stockons la langue d'affichage.<br />Dans l'outil d'investissement de GM, nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « $t(components.gb_investment.gb_investment.permalink) », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée."},dev_info:{title:"Informations développement",p1:"Le site est un simple site static hébergé sur GitHub.",p2_html:'Le développement se fait en Node.js à l\'aide de <a href="https://markojs.com/">Marko</a>, un moteur de template à composant réactif développé par eBay. Le style est réalisé à l\'aide de <a href="https://bulma.io/">Bulma</a>.',p3_html:"Une idée de fonctionnalité ? Un problème ? N'hésitez pas à créer une issue sur GitHub ou à m'envoyer un mail à <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",message_info_github_issue:"<b>Note :</b> Concernant les issues sur GitHub, veuillez veiller à les rédiger en anglais pour faciliter la compréhension pour le plus grand nombre."}},gb_investment:{title:"FOE Tools | Investissement GM - $t({{gb_key}})",hero:{title:"Investissement GM - $t({{gb_key}})"}},gb_investment_gb_chooser:{title:"FOE Tools | Investissement GM",hero:{title:"Investissement GM",subtitle:"Cet outil permet de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches)."},choose_gb:{title:"Choisir un Grand Monument"}},secure_position:{title:"FOE Tools | Sécurisation de place",hero:{title:"Sécurisation de place",subtitle:"Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place."}}},foe_data:{age:{NoAge:"Aucun âge",BronzeAge:"Âge du Bronze",IronAge:"Âge du Fer",EarlyMiddleAges:"Haut Moyen Âge",HighMiddleAges:"Moyen Âge Classique",LateMiddleAges:"Renaissance",ColonialAge:"Âge Colonial",IndustrialAge:"Âge Industriel",ProgressiveEra:"Ère Progressiste",ModernEra:"Ère Moderne",PostmodernEra:"Ère Postmoderne",ContemporaryEra:"Ère Contemporaine",Tomorrow:"Ère de Demain",TheFuture:"Ère du Futur",ArcticFuture:"Futur Arctique",OceanicFuture:"Futur Océanique"},gb:{Observatory:"Observatoire",Temple_of_Relics:"Temple des reliques",Oracle_of_Delphi:"Oracle de Delphes",Tower_of_Babel:"Tour de Babel",Statue_of_Zeus:"Statue de Zeus",Colosseum:"Colisée",Lighthouse_of_Alexandria:"Phare d'Alexandrie",Hagia_Sophia:"Hagia Sophia",Cathedral_of_Aachen:"Cathédrale d'Aix la Chapelle",St_Mark_s_Basilica:"Basilique Saint-Marc",Notre_Dame:"Notre-Dame",Saint_Basil_s_Cathedral:"Cathédrale Saint-Basile",Castel_del_Monte:"Castel del Monte",Deal_Castle:"Château de Deal",Frauenkirche_of_Dresden:"Frauenkirche de Dresde",Capitol:"Capitole",Royal_Albert_Hall:"Royal Albert Hall",Chateau_Frontenac:"Château Frontenac",Alcatraz:"Alcatraz",Space_Needle:"Space Needle",Atomium:"Atomium",Cape_Canaveral:"Cap Canaveral",The_Habitat:"L'Habitat",Lotus_Temple:"Temple du lotus",Innovation_Tower:"Tour de l'innovation",Dynamic_Tower:"Dynamic Tower",Voyager_V1:"Voyager V1",The_Arc:"L'Arche",Rain_Forest_Project:"Forêt tropicale",Gaea_Statue:"Statue de Gaïa",Arctic_Orangery:"Orangerie arctique",Seed_Vault:"Chambre forte des graines",Atlantis_Museum:"Musée de l'Atlantide",The_Kraken:"Le Kraken"}},lang:{en:"English",fr:"Français"}}});
+$_mod_foe_tools.def("/foe-tools$1.3.2/i18n/en",{translation:{main_menu:{home:"Home",gb_investment:"GB Investment",secure_position:"Secure place"},footer_menu:{about:"About"},components:{gb_investment:{gb_list_select:{label:"Switch Great Building"},gb_investment:{title:"GB Investment",permalink:"permalink",description:{p1:"Enter the values for level and bonus percentage. The values in the table update automatically.",p2_html:'<strong>Note</strong>: If the update is not done automatically, first set the GB level and the overall investment value and click on "$t(components.gb_investment.gb_investment.form.submit_global)". If you want to adjust the values of each place, adjust to your convenience and click on "$t(components.gb_investment.gb_investment.form.submit_custom)".'},form:{level:"GB Level (between 1 and {{max}})",investor_percentage:"% of global investors bonus (arc bonus)",submit_global:"Global calculation",submit_custom:"Custom calculation"},table:{title:"$t({{gb_key}}) level {{level}}",thead:{th1:"Places",th2:"Default rewards",th3:"FP to put by the owner to secure the place",th4:"Rewards with rate",th5:"% of investors bonus (arc bonus)"},tfoot:{total_preparation:"Total investment of the owner",level_cost:"Level cost"}}},promotion:{title:"Promotion message",promo:["P1({{investment}})","P2({{investment}})","P3({{investment}})","P4({{investment}})","P5({{investment}})"]}},secure_position:{block_place:{title:"Block his place",description:{p1:"Enter the different values. The result is updated automatically.",p2_html:'<strong>Note</strong>: If the update is not done automatically, click on "$t(components.secure_position.block_place.submit)".'},level_cost:"Level cost",current_deposits:"Sum of current deposits",your_participation:"Your current participation",other_participation:"Participation of the player to overtake",submit:"Calculate",fp_to_complete_level:"Number of FP remaining to complete the level: {{count}}",fp_to_complete_level_plural:"Number of FPs remaining to complete the level: {{count}}",result:{error:"One or more values are not valid.",already_blocked:"Your place is blocked.",default:"You must have totaled {{count}} FP to block the place.",default_plural:"You must have totaled {{count}} FPs to block the place.",fp_to_secure_html:"You still have to put {{count}} FP.",fp_to_secure_html_plural:"You still have to put {{count}} FPs.",cant_block:"You can not block the place."},unknown:"unknown"}},site_layout:{hero:{title:"FOE Tools",slogan_html:'A set of tools to simplify life on <a href="https://forgeofempires.com">Forge Of Empire</a>'},footer:{license_html:'Source code under <a href="http://opensource.org/licenses/mit-license.php">MIT</a> license',version:"Version {{version}}"}}},routes:{home:{title:"FOE Tools",info:{title:"Information",p1:"The site currently has a tool to calculate the number of points a player must put on his GB to secure the first 5 places following a rate (arc bonus).",p2:'A second tool is available, "$t(routes.secure_position.hero.title)". This tool calculates the number of FP that a player must put on a GB to block his place. It is integrated in "$t(routes.gb_investment_gb_chooser.hero.title)" and also has a standalone version.'}},about:{title:"About FOE Tools",general_info:{title:"General information",p1_html:"Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> FOE Tools is an unofficial third party site and is not affiliated with InnoGames.",p2_html:'FOE Tools was created by the French player <strong class="has-text-weight-semibold">Yoratheon</strong>.',p3_html:"The site is OpenSource, the code is freely available on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."},cookie:{title:"Cookies",p1:"To improve your comfort of use, the site uses cookies.",p2_html:'We store the display language.<br />In "$t(components.gb_investment.gb_investment.title)" Tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a "$t(components.gb_investment.gb_investment.permalink)" page, no information on the level of GB and the various percentages of investors is stored.'},dev_info:{title:"Development information",p1:"The site is a simple static site hosted on GitHub.",p2_html:'The development is done in Node.js using <a href="https://markojs.com/">Marko</a>, a template engine for reactive component developed by eBay. The style is made using <a href="https://bulma.io/">Bulma</a>.',p3_html:'An idea of functionality? A problem ? Feel free to create an issue on GitHub or send me an email (in English or in French) at <a href="mailto:foe-tools@protonmail.com?subject=FOE-Tools">foe-tools@protonmail.com</a>.',message_info_github_issue:"<b>Note:</b> Regarding issues on GitHub, please make sure to write them in English to facilitate understanding for the greatest number."}},gb_investment:{title:"FOE Tools | GB Investment - $t({{gb_key}})",hero:{title:"GB Investment - $t({{gb_key}})"}},gb_investment_gb_chooser:{title:"FOE Tools | GB Investment",hero:{title:"GB Investment",subtitle:"This tool makes it possible to calculate the number of points that a player must put on his GB to secure the first 5 places following a rate (arc bonus)."},choose_gb:{title:"Choose a Great Building"}},secure_position:{title:"FOE Tools | Secure place",hero:{title:"Secure place",subtitle:"This tool calculates the number of FP that a player must put on a GB to block his place."}}},foe_data:{age:{NoAge:"No Age",BronzeAge:"Bronze Age",IronAge:"Iron Age",EarlyMiddleAges:"Early Middle Ages",HighMiddleAges:"High Middle Ages",LateMiddleAges:"Late Middle Ages",ColonialAge:"Colonial Age",IndustrialAge:"Industrial Age",ProgressiveEra:"Progressive Era",ModernEra:"Modern Era",PostmodernEra:"Postmodern Era",ContemporaryEra:"Contemporary Era",Tomorrow:"Tomorrow",TheFuture:"The Future",ArcticFuture:"Arctic Future",OceanicFuture:"Oceanic Future"},gb:{Observatory:"Observatory",Temple_of_Relics:"Temple of Relics",Oracle_of_Delphi:"Oracle of Delphi",Tower_of_Babel:"Tower of Babel",Statue_of_Zeus:"Statue of Zeus",Colosseum:"Colosseum",Lighthouse_of_Alexandria:"Lighthouse of Alexandria",Hagia_Sophia:"Hagia Sophia",Cathedral_of_Aachen:"Cathedral of Aachen",St_Mark_s_Basilica:"St. Mark's Basilica",Notre_Dame:"Notre Dame",Saint_Basil_s_Cathedral:"St. Basil's Cathedral",Castel_del_Monte:"Castel del Monte",Deal_Castle:"Deal Castle",Frauenkirche_of_Dresden:"Frauenkirche of Dresden",Capitol:"Capitol",Royal_Albert_Hall:"Royal Albert Hall",Chateau_Frontenac:"Château Frontenac",Alcatraz:"Alcatraz",Space_Needle:"Space Needle",Atomium:"Atomium",Cape_Canaveral:"Cape Canaveral",The_Habitat:"The Habitat",Lotus_Temple:"Lotus Temple",Innovation_Tower:"Innovation Tower",Dynamic_Tower:"Dynamic Tower",Voyager_V1:"Voyager V1",The_Arc:"The Arc",Rain_Forest_Project:"Rain Forest Project",Gaea_Statue:"Gaea Statue",Arctic_Orangery:"Arctic Orangery",Seed_Vault:"Seed Vault",Atlantis_Museum:"Atlantis Museum",The_Kraken:"The Kraken"}},lang:{en:"English",fr:"Français"}}});
+$_mod_foe_tools.def("/foe-tools$1.3.2/i18n/fr",{translation:{main_menu:{home:"Accueil",gb_investment:"Investissement GM",secure_position:"Sécurisation de place"},footer_menu:{about:"À propos"},components:{gb_investment:{gb_list_select:{label:"Changer de Grand Monument"},gb_investment:{title:"Investissement GM",permalink:"Lien permanent",description:{p1:"Saisissez les valeurs pour le niveau et le pourcentage de bonus. Les valeurs du tableau se mettent à jour automatiquement.",p2_html:"<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, dans un premier temps, définissez le niveau du GM et la valeur d'investissement globale et cliquez sur « $t(components.gb_investment.gb_investment.form.submit_global) ». Si vous souhaitez ajuster les valeurs de chaque place, ajuster à votre convenance et cliquez sur « $t(components.gb_investment.gb_investment.form.submit_custom) »."},form:{level:"Niveau du GM (entre 1 et {{max}})",investor_percentage:"% de bonus (grosses arches) global des investisseurs",submit_global:"Calcul global",submit_custom:"Calcul personnalisé"},table:{title:"$t({{gb_key}}) niveau {{level}}",thead:{th1:"Places",th2:"Récompenses de base",th3:"PF à mettre par le propriétaire pour sécuriser la place",th4:"Récompenses avec taux",th5:"% de bonus (grosses arches) des investisseurs"},tfoot:{total_preparation:"Investissement total du propriétaire",level_cost:"Coût du niveau"}}},promotion:{title:"Message de promotion",promo:["P1({{investment}})","P2({{investment}})","P3({{investment}})","P4({{investment}})","P5({{investment}})"]}},secure_position:{block_place:{title:"Bloquer sa place",description:{p1:"Saisissez les différentes valeurs. Le résultat se met à jour automatiquement.",p2_html:"<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, cliquez sur « $t(components.secure_position.block_place.submit) »."},level_cost:"Coût du niveau",current_deposits:"Somme des dépôts actuels",your_participation:"Votre participation actuelle",other_participation:"Participation du joueur à dépasser",submit:"Calculer",fp_to_complete_level:"Nombre de PF restant pour compléter le niveau : {{count}}",fp_to_complete_level_plural:"Nombre de PFs restant pour compléter le niveau : {{count}}",result:{error:"Une ou plusieurs valeurs ne sont pas valide.",already_blocked:"Votre place est bloquée.",default:"Vous devez avoir mis au total {{count}} PF pour bloquer la place.",default_plural:"Vous devez avoir mis au total {{count}} PFs pour bloquer la place.",fp_to_secure_html:"Vous devez encore mettre {{count}} PF.",fp_to_secure_html_plural:"Vous devez encore mettre {{count}} PFs.",cant_block:"Vous ne pouvez pas bloquer la place."},unknown:"inconnu"}},site_layout:{hero:{title:"FOE Tools",slogan_html:'Un ensemble d\'outils pour se simplifier la vie sur <a href="https://forgeofempires.com">Forge Of Empire</a>'},footer:{license_html:'Code source sous licence <a href="http://opensource.org/licenses/mit-license.php">MIT</a>',version:"Version {{version}}"}}},routes:{home:{title:"FOE Tools",info:{title:"Informations",p1:"Le site dispose pour l'instant d'un outil permettant de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches).",p2:"Un second outil est disponible, « $t(routes.secure_position.hero.title) ». Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place. Il est intégré dans « $t(routes.gb_investment_gb_chooser.hero.title) » et dispose également d'une version standalone."}},about:{title:"À propos de FOE Tools",general_info:{title:"Informations générales",p1_html:"Forge of Empires, FOE, et toutes les marques et contenus associés appartiennent à InnoGames GmbH.<br />FOE Tools est un site tierce non officiel et n'est pas affilié à InnoGames.",p2_html:'FOE Tools a été créé par le joueur français <strong class="has-text-weight-semibold">Yoratheon</strong>.',p3_html:"Le site est OpenSource, le code est disponible librement et gratuitement sur GitHub.<br />Ainsi, tout le monde ayant les compétences nécessaires peut participer à l'amélioration de ce site."},cookie:{title:"Cookies",p1:"Pour améliorer votre confort d'utilisation, le site utilise des cookies.",p2_html:"Nous stockons la langue d'affichage.<br />Dans l'outil « $t(components.gb_investment.gb_investment.title) », nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « $t(components.gb_investment.gb_investment.permalink) », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée."},dev_info:{title:"Informations développement",p1:"Le site est un simple site static hébergé sur GitHub.",p2_html:'Le développement se fait en Node.js à l\'aide de <a href="https://markojs.com/">Marko</a>, un moteur de template à composant réactif développé par eBay. Le style est réalisé à l\'aide de <a href="https://bulma.io/">Bulma</a>.',p3_html:"Une idée de fonctionnalité ? Un problème ? N'hésitez pas à créer une issue sur GitHub ou à m'envoyer un mail à <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",message_info_github_issue:"<b>Note :</b> Concernant les issues sur GitHub, veuillez veiller à les rédiger en anglais pour faciliter la compréhension pour le plus grand nombre."}},gb_investment:{title:"FOE Tools | Investissement GM - $t({{gb_key}})",hero:{title:"Investissement GM - $t({{gb_key}})"}},gb_investment_gb_chooser:{title:"FOE Tools | Investissement GM",hero:{title:"Investissement GM",subtitle:"Cet outil permet de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches)."},choose_gb:{title:"Choisir un Grand Monument"}},secure_position:{title:"FOE Tools | Sécurisation de place",hero:{title:"Sécurisation de place",subtitle:"Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place."}}},foe_data:{age:{NoAge:"Aucun âge",BronzeAge:"Âge du Bronze",IronAge:"Âge du Fer",EarlyMiddleAges:"Haut Moyen Âge",HighMiddleAges:"Moyen Âge Classique",LateMiddleAges:"Renaissance",ColonialAge:"Âge Colonial",IndustrialAge:"Âge Industriel",ProgressiveEra:"Ère Progressiste",ModernEra:"Ère Moderne",PostmodernEra:"Ère Postmoderne",ContemporaryEra:"Ère Contemporaine",Tomorrow:"Ère de Demain",TheFuture:"Ère du Futur",ArcticFuture:"Futur Arctique",OceanicFuture:"Futur Océanique"},gb:{Observatory:"Observatoire",Temple_of_Relics:"Temple des reliques",Oracle_of_Delphi:"Oracle de Delphes",Tower_of_Babel:"Tour de Babel",Statue_of_Zeus:"Statue de Zeus",Colosseum:"Colisée",Lighthouse_of_Alexandria:"Phare d'Alexandrie",Hagia_Sophia:"Hagia Sophia",Cathedral_of_Aachen:"Cathédrale d'Aix la Chapelle",St_Mark_s_Basilica:"Basilique Saint-Marc",Notre_Dame:"Notre-Dame",Saint_Basil_s_Cathedral:"Cathédrale Saint-Basile",Castel_del_Monte:"Castel del Monte",Deal_Castle:"Château de Deal",Frauenkirche_of_Dresden:"Frauenkirche de Dresde",Capitol:"Capitole",Royal_Albert_Hall:"Royal Albert Hall",Chateau_Frontenac:"Château Frontenac",Alcatraz:"Alcatraz",Space_Needle:"Space Needle",Atomium:"Atomium",Cape_Canaveral:"Cap Canaveral",The_Habitat:"L'Habitat",Lotus_Temple:"Temple du lotus",Innovation_Tower:"Tour de l'innovation",Dynamic_Tower:"Dynamic Tower",Voyager_V1:"Voyager V1",The_Arc:"L'Arche",Rain_Forest_Project:"Forêt tropicale",Gaea_Statue:"Statue de Gaïa",Arctic_Orangery:"Orangerie arctique",Seed_Vault:"Chambre forte des graines",Atlantis_Museum:"Musée de l'Atlantide",The_Kraken:"Le Kraken"}},lang:{en:"English",fr:"Français"}}});
 $_mod_foe_tools.def("/foe-tools$1.3.2/src/services/i18next",function(e,t,n,o,f){"use strict";function l(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.i18next=void 0;var i=e("/i18next$10.2.1/index"),s=l(i),u=e("/js-cookie$2.2.0/src/js.cookie"),d=l(u),a=e("/foe-tools$1.3.2/i18n/en"),r=l(a),c=e("/foe-tools$1.3.2/i18n/fr"),g=l(c);void 0===d.default.get("lang")&&d.default.set("lang","en");var _=["en","fr"],v={en:r.default,fr:g.default};s.default.init({lng:d.default.get("lang"),debug:!0,whitelist:_,fallbackLng:["en","fr"],resources:v},function(){}),t.i18next=s.default});
-$_mod_foe_tools.def("/marko$4.7.4/dist/runtime/helpers",function(r,n,e,t,o){"use strict";function f(r){return"function"==typeof r}function i(r,n){var e;if(r)if("string"==typeof r)r&&n.push(r);else if("number"==typeof(e=r.length))for(var t=0;t<e;t++)i(r[t],n);else if("object"==typeof r)for(var o in r)if(r.hasOwnProperty(o)){var f=r[o];f&&n.push(o)}}function u(r){function n(r,e){n.renderer(r,e)}return n.renderer=function(e,t){var o=r.renderer||r._||r.render;if(!f(o))throw Error("Invalid renderer");n.renderer=o,o(e,t)},n}function c(r){var n=r.renderer||r._;return n||(f(r)?r:u(r))}var s=Array.isArray,a={s:function(r){return null==r?"":r.toString()},f:function(r,n){if(s(r))for(var e=0;e<r.length;e++)n(r[e]);else f(r)&&r(n)},t:function(r,n,e){return r&&(r=c(r)),function(n,e,t,o,f){e.c(t,o,f),r(n,e),e._Y_=null}},cl:function(){var r=[];return i(arguments,r),r.join(" ")}};e.exports=a});
-$_mod_foe_tools.def("/marko$4.7.4/dist/runtime/vdom/helpers",function(t,n,r,e,o){"use strict";var u=t("/marko$4.7.4/dist/runtime/vdom/vdom"),i=u.ak_,s=u.aH_,c=t("/marko$4.7.4/dist/runtime/helpers"),m=t("/raptor-util$3.2.0/extend"),a=c.cl,d=m({e:function(t,n,r,e,o,u,s){return new i(t,n,r,e,o,u,s)},t:function(t){return new s(t)},const:function(t){var n=0;return function(){return t+n++}},ca:function(t){return t?"string"==typeof t?t:a(t):null}},c);r.exports=d});
 $_mod_foe_tools.def("/marko$4.7.4/dist/taglibs/core/include-tag",function(r,e,t,n,f){function i(r,e,t){var n=r._target,f=r._arg||r;if(n){if("function"==typeof n)return n(e,f),!0;if("string"==typeof n)return n&&e.text(n),!0;if("object"==typeof n){if(n.renderBody)return n.renderBody(e,f),!0;if(n.renderer)return n.renderer(f,e),!0;if(n.render)return n.render(f,e),!0;if(n.safeHTML)return e.write(n.safeHTML),!0;t&&e.error("Invalid include target")}}}function o(r,e){i(r,e,!0)}o.bB_=i,t.exports=o});
 $_mod_foe_tools.installed("foe-tools$1.3.2","lasso","2.11.23");
 $_mod_foe_tools.remap("/lasso$2.11.23/taglib/head-tag","/lasso$2.11.23/taglib/noop-render");
@@ -564,45 +821,55 @@ marko_template._ = marko_renderer(render, {
 marko_template.Component = marko_defineComponent(marko_component, marko_template._);
 
 });
-$_mod_foe_tools.def("/foe-tools$1.3.2/src/index.marko", function(require, exports, module, __filename, __dirname) { // Compiled using marko@4.7.4 - DO NOT EDIT
+$_mod_foe_tools.def("/foe-tools$1.3.2/src/routes/secure-position/index.marko", function(require, exports, module, __filename, __dirname) { // Compiled using marko@4.7.4 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require('/marko$4.7.4/dist/vdom'/*"marko/dist/vdom"*/).t(),
     components_helpers = require('/marko$4.7.4/dist/components/helpers-browser'/*"marko/dist/components/helpers"*/),
     marko_registerComponent = components_helpers.rc,
-    marko_componentType = marko_registerComponent("/foe-tools$1.3.2/src/index.marko", function() {
+    marko_componentType = marko_registerComponent("/foe-tools$1.3.2/src/routes/secure-position/index.marko", function() {
       return module.exports;
     }),
-    marko_component = require('/foe-tools$1.3.2/src/component'/*"./component"*/),
+    marko_component = require('/foe-tools$1.3.2/src/routes/secure-position/component'/*"./component"*/),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
-    site_layout_template = require('/foe-tools$1.3.2/src/components/site-layout/index.marko'/*"./components/site-layout"*/),
+    secure_position_template = require('/foe-tools$1.3.2/src/components/secure-position/index.marko'/*"../../components/secure-position"*/),
     marko_helpers = require('/marko$4.7.4/dist/runtime/vdom/helpers'/*"marko/dist/runtime/vdom/helpers"*/),
     marko_loadTag = marko_helpers.t,
-    site_layout_tag = marko_loadTag(site_layout_template);
+    secure_position_tag = marko_loadTag(secure_position_template),
+    site_layout_template = require('/foe-tools$1.3.2/src/components/site-layout/index.marko'/*"../../components/site-layout"*/),
+    site_layout_tag = marko_loadTag(site_layout_template),
+    marko_attrs0 = {
+        "class": "title is-2 is-spaced"
+      },
+    marko_attrs1 = {
+        "class": "subtitle is-4"
+      };
 
 function render(input, out, __component, component, state) {
   var data = input;
 
-  let i18nPrefix = 'routes.home.';
+  let i18nPrefix = 'routes.secure_position.';
 
   site_layout_tag({
-      currentLocation: "home",
+      currentLocation: "secure_position",
       title: {
           renderBody: function renderBody(out) {
             out.t(global.i18n(i18nPrefix + "title"));
           }
         },
+      hero: {
+          renderBody: function renderBody(out) {
+            out.e("H1", marko_attrs0, "3", component, 1)
+              .t(global.i18n(i18nPrefix + "hero.title"));
+
+            out.e("H2", marko_attrs1, "4", component, 1)
+              .t(global.i18n(i18nPrefix + "hero.subtitle"));
+          }
+        },
       content: {
           renderBody: function renderBody(out) {
-            out.e("H3", null, "3", component, 1)
-              .t(global.i18n(i18nPrefix + "info.title"));
-
-            out.e("P", null, "4", component, 1)
-              .t(global.i18n(i18nPrefix + "info.p1"));
-
-            out.e("P", null, "5", component, 1)
-              .t(global.i18n(i18nPrefix + "info.p2"));
+            secure_position_tag({}, out, __component, "6");
           }
         }
     }, out, __component, "0");

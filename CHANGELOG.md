@@ -7,6 +7,7 @@
 ### 1.3.2
 
 - Fix English translation
+- Update Frenche translation
 
 ### 1.3.1
 

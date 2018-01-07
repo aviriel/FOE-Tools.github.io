@@ -18,7 +18,7 @@
                "permalink": "permalink",
                "description": {
                   "p1": "Enter the values for level and bonus percentage. The values in the table update automatically.",
-                  "p2_html": "<strong>Note</strong>: If the update is not done automatically, first set the GM level and the overall investment value and click on \"$t(components.gb_investment.gb_investment.form.submit_global)\". If you want to adjust the values of each place, adjust to your convenience and click on \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+                  "p2_html": "<strong>Note</strong>: If the update is not done automatically, first set the GB level and the overall investment value and click on \"$t(components.gb_investment.gb_investment.form.submit_global)\". If you want to adjust the values of each place, adjust to your convenience and click on \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
                },
                "form": {
                   "level": "GB Level (between 1 and {{max}})",
@@ -94,8 +94,8 @@
             "title": "FOE Tools",
             "info": {
                "title": "Information",
-               "p1": "The site currently has a tool to calculate the number of points a player must put on his GM to secure the first 5 places following a rate (arc bonus).",
-               "p2": "A second tool is available, \"$t(routes.secure_position.hero.title)\". This tool calculates the number of FP that a player must put on a GM to block his place. It is integrated in \"$t(routes.gb_investment_gb_chooser.hero.title)\" and also has a standalone version."
+               "p1": "The site currently has a tool to calculate the number of points a player must put on his GB to secure the first 5 places following a rate (arc bonus).",
+               "p2": "A second tool is available, \"$t(routes.secure_position.hero.title)\". This tool calculates the number of FP that a player must put on a GB to block his place. It is integrated in \"$t(routes.gb_investment_gb_chooser.hero.title)\" and also has a standalone version."
             }
          },
          "about": {
@@ -104,12 +104,12 @@
                "title": "General information",
                "p1_html": "Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> FOE Tools is an unofficial third party site and is not affiliated with InnoGames.",
                "p2_html": "FOE Tools was created by the French player <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
-               "p3_html": "The site is OpenSource, the code is freely available and free on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."
+               "p3_html": "The site is OpenSource, the code is freely available on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."
             },
             "cookie": {
                "title": "Cookies",
                "p1": "To improve your comfort of use, the site uses cookies.",
-               "p2_html": "We store the display language.<br />In GM's Investment Tool, we store for each GM the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a page \"$t(components.gb_investment.gb_investment.permalink)\", no information on the level of GM and the various percentages of investors is stored."
+               "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" Tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a page \"$t(components.gb_investment.gb_investment.permalink)\", no information on the level of GB and the various percentages of investors is stored."
             },
             "dev_info": {
                "title": "Development information",
@@ -129,7 +129,7 @@
             "title": "FOE Tools | GB Investment",
             "hero": {
                "title": "GB Investment",
-               "subtitle": "This tool makes it possible to calculate the number of points that a player must put on his GM to secure the first 5 places following a rate (arc bonus)."
+               "subtitle": "This tool makes it possible to calculate the number of points that a player must put on his GB to secure the first 5 places following a rate (arc bonus)."
             },
             "choose_gb": {
                "title": "Choose a Great Building"
@@ -139,7 +139,7 @@
             "title": "FOE Tools | Secure place",
             "hero": {
                "title": "Secure place",
-               "subtitle": "This tool calculates the number of FP that a player must put on a GM to block his place."
+               "subtitle": "This tool calculates the number of FP that a player must put on a GB to block his place."
             }
          }
       },

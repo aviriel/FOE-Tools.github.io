@@ -755,7 +755,7 @@ const ages = {
     { cost: 972, reward: generateReward(145) },
     { cost: 996, reward: generateReward(155) },
     { cost: 1021, reward: generateReward(170) },
-    { cost: 1047, reward: generateReward(195) },
+    { cost: 1047, reward: generateReward(185) },
     { cost: 1073, reward: generateReward(195) },
     { cost: 1099, reward: generateReward(210) },
     { cost: 1127, reward: generateReward(225) },

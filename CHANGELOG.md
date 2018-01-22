@@ -4,6 +4,10 @@
 
 ## 1.3.x
 
+### 1.3.3
+
+- Fix reward
+
 ### 1.3.2
 
 - Fix English translation

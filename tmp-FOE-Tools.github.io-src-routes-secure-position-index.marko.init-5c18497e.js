@@ -1,0 +1,2 @@
+$_mod_foe_tools.def("/foe-tools$1.3.3/src/routes/secure-position/index.marko.init",function(o,i,n,t,e){"use strict";window.$initComponents&&window.$initComponents()});
+$_mod_foe_tools.run("/foe-tools$1.3.3/src/routes/secure-position/index.marko.init");

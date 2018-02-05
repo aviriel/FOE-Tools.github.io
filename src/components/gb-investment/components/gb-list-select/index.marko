@@ -7,4 +7,4 @@ div.control
          for(i, age in state.data.GBs_BY_AGE)
             optgroup label="${global.i18n('foe_data.age.' + age.key)}"
                for(gb in age.gbs)
-                     option selected=(input.gb == gb.key) value="/gb-investment/${gb.key}" -- ${global.i18n('foe_data.gb.' + gb.key)}
+                     option selected=((input.gb == gb.key) ? true & (state.current = gb.key) : false) id="option_${gb.key}" value="/gb-investment/${gb.key}" autocomplete="off" -- ${global.i18n('foe_data.gb.' + gb.key)}

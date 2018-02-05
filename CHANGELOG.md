@@ -2,6 +2,13 @@
 
 # 1.x
 
+## 1.4.X
+
+### 1.4.0
+
+-   Added support of German (by [Nlossae](https://github.com/Nlossae)) [#6](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/6)
+-   Fix selected option in GB select list [#7](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/6)
+
 ## 1.3.x
 
 ### 1.3.3

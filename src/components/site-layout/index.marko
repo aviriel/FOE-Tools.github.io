@@ -7,6 +7,11 @@ $ global.i18n = function (key, param) {
    return i18next.t(key, param || {});
 }
 
+$ global.i18nCommon = function (key, param) {
+   const common = i18next.getFixedT(null, 'common');
+   return common(key, param || {});
+}
+
 $ global.changeLanguage = function (lng, callback) {
    i18next.changeLanguage(lng, callback);
 }
@@ -16,7 +21,15 @@ $ global.language = function () {
 }
 
 $ global.languages = function () {
-   return i18next.languages;
+   let languages = i18next.languages;
+   if (languages !== undefined) {
+      languages = languages.slice();
+      let index = languages.indexOf('common');
+      if (index > -1) {
+         languages.splice(index, 1);
+      }
+   }
+   return languages;
 }
 
 $ let i18nPrefix = 'components.site_layout.';

@@ -55,10 +55,7 @@ The generated static site will be placed in `dist/`.
 
 ## TODO
 
-- [ ] Tests
-
-
-And (obviously) make other tools.
+See [issues](https://github.com/FOE-Tools/FOE-Tools.github.io/issues).
 
 
 

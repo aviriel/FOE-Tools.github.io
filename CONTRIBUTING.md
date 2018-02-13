@@ -16,7 +16,9 @@ For commit message, follow [this recommendation](https://chris.beams.io/posts/gi
 
 For adding language, create a json file in `i18n/` where the name is a code of language.
 
-Next, in `src/services/i18next.js` add your langue in whitelist.
+In `i18n/common.json` add the language name.
+
+Next, in `src/services/i18next.js` import the language and add it in **languageList** and **resources**.
 
 *Note: the code of language respect [ISO 639-1](https://www.loc.gov/standards/iso639-2/php/code_list.php) standard.*
 

@@ -21,12 +21,17 @@ $ global.language = function () {
 }
 
 $ global.languages = function () {
+   const excludedLanguages = ['cimode', 'common'];
    let languages = i18next.languages;
+   
    if (languages !== undefined) {
       languages = languages.slice();
-      let index = languages.indexOf('common');
-      if (index > -1) {
-         languages.splice(index, 1);
+
+      for (let lng of excludedLanguages) {
+         let index = languages.indexOf(lng);
+         if (index > -1) {
+            languages.splice(index, 1);
+         }
       }
    }
    return languages;

@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 function calculate() {
    if (this::formValid()) {
       let result = Math.ceil((this.state['level-cost'] -
@@ -9,6 +11,11 @@ function calculate() {
          this.state.fp = -1;
       } else {
          this.state.fp = result;
+         if ((this.state['your-arc-bonus'] >= 0) && (this.state['fp-target-reward'] > 0)) {
+           this.state.roi = Math.round(((1 + (this.state['your-arc-bonus'] / 100)) *
+             this.state['fp-target-reward']) - result);
+           Cookies.set('your_arc_bonus', this.state['your-arc-bonus'], { path: '' });
+         }
       }
    }
 }
@@ -115,6 +122,31 @@ function checkOtherParticipation() {
    }
 }
 
+function checkYourArcBonus() {
+  let elt = this.getEl('your-arc-bonus');
+  if ((elt.value.length >= 0) && !isNaN(elt.value)) {
+    elt.classList.remove('is-danger');
+    this.state['your-arc-bonus'] = parseInt(elt.value);
+    return true;
+  } else {
+    elt.classList.add('is-danger');
+    return false;
+  }
+}
+
+function checkFPTargetReward() {
+  let elt = this.getEl('fp-target-reward');
+  if ((elt.value.length > 0) && !isNaN(elt.value)) {
+    elt.classList.remove('is-danger');
+    this.state['fp-target-reward'] = parseInt(elt.value);
+    return true;
+  } else {
+    elt.classList.add('is-danger');
+    return false;
+  }
+}
+
+
 export default class {
    onCreate(input) {
       this.state = {
@@ -123,6 +155,9 @@ export default class {
          'other-participation' : 0,
          'level-cost' : checkInputLevelCost(input) ? input.levelCost : 0,
          'current-deposits' : 0,
+         'your-arc-bonus': Cookies.get('your_arc_bonus') === undefined ? 0 : Cookies.get('your_arc_bonus'),
+         'fp-target-reward': 0,
+         roi: 0,
          formValid: false,
          DOMReady: false
       };
@@ -159,6 +194,18 @@ export default class {
             this::calculate();
          }
       });
+
+     this.subscribeTo(this.getEl('your-arc-bonus')).on('keyup', () => {
+       if (this::checkYourArcBonus()) {
+         this::calculate();
+       }
+     });
+
+     this.subscribeTo(this.getEl('fp-target-reward')).on('keyup', () => {
+       if (this::checkFPTargetReward()) {
+         this::calculate();
+       }
+     });
 
       this.subscribeTo(this.getEl('submit-secure-position')).on('click', () => {
          if (this::checkLevelCost() && this::checkCurrentDeposits() &&

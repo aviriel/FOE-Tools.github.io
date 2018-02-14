@@ -66,6 +66,8 @@
                "submit": "Calculate",
                "fp_to_complete_level": "Number of FP remaining to complete the level: {{count}}",
                "fp_to_complete_level_plural": "Number of FPs remaining to complete the level: {{count}}",
+               "your_arc_bonus": "Your Arc bonus",
+               "fp_target_reward": "FP of the targeted place",
                "result": {
                   "error": "One or more values are not valid.",
                   "already_blocked": "Your place is blocked.",
@@ -73,7 +75,14 @@
                   "default_plural": "You must have totaled {{count}} FPs to block the place.",
                   "fp_to_secure_html": "You still have to put {{count}} FP.",
                   "fp_to_secure_html_plural": "You still have to put {{count}} FPs.",
-                  "cant_block": "You can not block the place."
+                  "cant_block": "You can not block the place.",
+                 "roi": {
+                   "profit": "You will gain {{count}} FP",
+                   "profit_plural": "You will gain {{count}} FPs",
+                   "loss": "You will loss {{count}} FP",
+                   "loss_plural": "You will loss {{count}} FPs",
+                   "neutral": "You will not have a return on investment"
+                 }
                },
                "unknown": "unknown"
             }

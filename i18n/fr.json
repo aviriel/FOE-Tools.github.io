@@ -66,6 +66,8 @@
                "submit": "Calculer",
                "fp_to_complete_level": "Nombre de PF restant pour compléter le niveau : {{count}}",
                "fp_to_complete_level_plural": "Nombre de PFs restant pour compléter le niveau : {{count}}",
+               "your_arc_bonus": "Bonus de votre Arche",
+               "fp_target_reward": "Récompense (PF) de la place visée",
                "result": {
                   "error": "Une ou plusieurs valeurs ne sont pas valide.",
                   "already_blocked": "Votre place est bloquée.",
@@ -73,7 +75,14 @@
                   "default_plural": "Vous devez avoir mis au total {{count}} PFs pour bloquer la place.",
                   "fp_to_secure_html": "Vous devez encore mettre {{count}} PF.",
                   "fp_to_secure_html_plural": "Vous devez encore mettre {{count}} PFs.",
-                  "cant_block": "Vous ne pouvez pas bloquer la place."
+                  "cant_block": "Vous ne pouvez pas bloquer la place.",
+                  "roi": {
+                    "profit": "Vous allez gagner {{count}} PF",
+                    "profit_plural": "Vous allez gagner {{count}} PFs",
+                    "loss": "Vous allez perdre {{count}} PF",
+                    "loss_plural": "Vous allez perdre {{count}} PFs",
+                    "neutral": "Vous n'allez pas avoir de retour sur investissement"
+                  }
                },
                "unknown": "inconnu"
             }

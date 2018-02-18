@@ -2,8 +2,9 @@
    "translation": {
       "main_menu": {
          "home": "Accueil",
-         "gb_investment": "Investissement GM",
-         "secure_position": "Sécurisation de place"
+         "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+         "secure_position": "$t(routes.secure_position.hero.title)",
+         "cf_calculator": "$t(routes.cf_calculator.hero.title)"
       },
       "footer_menu": {
          "about": "À propos"

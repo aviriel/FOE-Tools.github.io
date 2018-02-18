@@ -2,8 +2,9 @@
    "translation": {
       "main_menu": {
          "home": "Startseite",
-         "gb_investment": "LB Investition",
-         "secure_position": "Platzsicherung"
+         "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+         "secure_position": "$t(routes.secure_position.hero.title)",
+         "cf_calculator": "$t(routes.cf_calculator.hero.title)"
       },
       "footer_menu": {
          "about": "Über"

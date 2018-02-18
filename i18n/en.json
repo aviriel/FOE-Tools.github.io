@@ -2,9 +2,9 @@
    "translation": {
       "main_menu": {
          "home": "Home",
-         "gb_investment": "GB Investment",
-         "secure_position": "Secure place",
-         "cf_calculator": "Château Frontenac Calculator"
+         "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+         "secure_position": "$t(routes.secure_position.hero.title)",
+         "cf_calculator": "$t(routes.cf_calculator.hero.title)"
       },
       "footer_menu": {
          "about": "About"

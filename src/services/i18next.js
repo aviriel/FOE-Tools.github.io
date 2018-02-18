@@ -20,6 +20,7 @@ i18next.init(
     whitelist: languageList,
     ns: ["common", "translation"],
     fallbackLng: languageList,
+    fallbackNS: ["common"],
     resources: resources
   },
   function() {}

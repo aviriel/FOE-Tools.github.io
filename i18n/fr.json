@@ -126,7 +126,7 @@
          },
          "site_layout": {
             "hero": {
-               "title": "FOE Tools",
+               "title": "$t(common:site_title)",
                "slogan_html": "Un ensemble d'outils pour se simplifier la vie sur <a href=\"https://forgeofempires.com\">Forge Of Empire</a>"
             },
             "footer": {
@@ -137,7 +137,7 @@
       },
       "routes": {
          "home": {
-            "title": "FOE Tools",
+            "title": "$t(common:site_title)",
             "info": {
                "title": "Informations",
                "p1": "Le site dispose pour l'instant d'un outil permettant de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches).",
@@ -145,17 +145,18 @@
             }
          },
          "about": {
-            "title": "À propos de FOE Tools",
+            "title": "À propos de $t(common:site_title)",
             "general_info": {
                "title": "Informations générales",
-               "p1_html": "Forge of Empires, FOE, et toutes les marques et contenus associés appartiennent à InnoGames GmbH.<br />FOE Tools est un site tierce non officiel et n'est pas affilié à InnoGames.",
-               "p2_html": "FOE Tools a été créé par le joueur français <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+               "p1_html": "Forge of Empires, FOE, et toutes les marques et contenus associés appartiennent à InnoGames GmbH.<br />$t(common:site_title) est un site tierce non officiel et n'est pas affilié à InnoGames.",
+               "p2_html": "$t(common:site_title) a été créé par le joueur français <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
                "p3_html": "Le site est OpenSource, le code est disponible librement et gratuitement sur GitHub.<br />Ainsi, tout le monde ayant les compétences nécessaires peut participer à l'amélioration de ce site."
             },
             "cookie": {
                "title": "Cookies",
                "p1": "Pour améliorer votre confort d'utilisation, le site utilise des cookies.",
-               "p2_html": "Nous stockons la langue d'affichage.<br />Dans l'outil « $t(components.gb_investment.gb_investment.title) », nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « $t(components.gb_investment.gb_investment.permalink) », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée."
+               "p2_html": "Nous stockons la langue d'affichage.<br />Dans l'outil « $t(components.gb_investment.gb_investment.title) », nous stockons pour chaque GM le niveau et les divers pourcentages des investisseurs afin de ne pas avoir à les ressaisir à chaque fois.<br />Veuillez noter que lorsque vous consulter une page « $t(components.gb_investment.gb_investment.permalink) », aucune information sur le niveau du GM et les divers pourcentages des investisseurs n'est stockée.",
+               "p3": "Dans l'outil « $t(routes.cf_calculator.hero.title) », nous stockons les valeurs des champs du formulaire."
             },
             "dev_info": {
                "title": "Informations développement",
@@ -166,20 +167,20 @@
             }
          },
         "cf_calculator": {
-          "title": "FOE Tools | Calculette Château Frontenac",
+          "title": "$t(common:site_title) | Calculette Château Frontenac",
           "hero": {
             "title": "Calculette Château Frontenac",
             "subtitle": "Un outil qui aide à prévoir les productions de ressources et de PF en faisant des quêtes récurrentes et des quêtes de « fête de non anniversaire » (Rinbin)."
           }
         },
          "gb_investment": {
-            "title": "FOE Tools | Investissement GM - $t({{gb_key}})",
+            "title": "$t(common:site_title) | Investissement GM - $t({{gb_key}})",
             "hero": {
                "title": "Investissement GM - $t({{gb_key}})"
             }
          },
          "gb_investment_gb_chooser": {
-            "title": "FOE Tools | Investissement GM",
+            "title": "$t(common:site_title) | Investissement GM",
             "hero": {
                "title": "Investissement GM",
                "subtitle": "Cet outil permet de calculer le nombre de points qu'un joueur doit mettre sur son GM pour sécuriser les 5 premières places suivant un taux (grosses arches)."
@@ -189,7 +190,7 @@
             }
          },
          "secure_position": {
-            "title": "FOE Tools | Sécurisation de place",
+            "title": "$t(common:site_title) | Sécurisation de place",
             "hero": {
                "title": "Sécurisation de place",
                "subtitle": "Cet outil permet de calculer le nombre de PF qu'un joueur doit mettre sur un GM pour bloquer sa place."

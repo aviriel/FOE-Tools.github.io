@@ -123,7 +123,7 @@
          },
          "site_layout": {
             "hero": {
-               "title": "FOE Tools",
+               "title": "$t(common:site_title)",
                "slogan_html": "A set of tools to simplify life on <a href=\"https://forgeofempires.com\">Forge Of Empire</a>"
             },
             "footer": {
@@ -134,7 +134,7 @@
       },
       "routes": {
          "home": {
-            "title": "FOE Tools",
+            "title": "$t(common:site_title)",
             "info": {
                "title": "Information",
                "p1": "The site currently has a tool to calculate the number of points a player must put on his GB to secure the first 5 places following a rate (arc bonus).",
@@ -142,17 +142,18 @@
             }
          },
          "about": {
-            "title": "About FOE Tools",
+            "title": "About $t(common:site_title)",
             "general_info": {
                "title": "General information",
-               "p1_html": "Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> FOE Tools is an unofficial third party site and is not affiliated with InnoGames.",
-               "p2_html": "FOE Tools was created by the French player <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+               "p1_html": "Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> $t(common:site_title) is an unofficial third party site and is not affiliated with InnoGames.",
+               "p2_html": "$t(common:site_title) was created by the French player <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
                "p3_html": "The site is OpenSource, the code is freely available on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."
             },
             "cookie": {
                "title": "Cookies",
                "p1": "To improve your comfort of use, the site uses cookies.",
-               "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" Tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a \"$t(components.gb_investment.gb_investment.permalink)\" page, no information on the level of GB and the various percentages of investors is stored."
+               "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a \"$t(components.gb_investment.gb_investment.permalink)\" page, no information on the level of GB and the various percentages of investors is stored.",
+               "p3": "In \"$t(routes.cf_calculator.hero.title)\" tool, we store all form input."
             },
             "dev_info": {
                "title": "Development information",
@@ -163,20 +164,20 @@
             }
          },
          "cf_calculator": {
-            "title": "FOE Tools | Château Frontenac Calculator",
+            "title": "$t(common:site_title) | Château Frontenac Calculator",
             "hero": {
                "title": "Château Frontenac Calculator",
                "subtitle": "A tool that help forecast goods and fp productions from doing recurring quests and unbirthday party quest (Rinbin)."
             }
          },
          "gb_investment": {
-            "title": "FOE Tools | GB Investment - $t({{gb_key}})",
+            "title": "$t(common:site_title) | GB Investment - $t({{gb_key}})",
             "hero": {
                "title": "GB Investment - $t({{gb_key}})"
             }
          },
          "gb_investment_gb_chooser": {
-            "title": "FOE Tools | GB Investment",
+            "title": "$t(common:site_title) | GB Investment",
             "hero": {
                "title": "GB Investment",
                "subtitle": "This tool makes it possible to calculate the number of points that a player must put on his GB to secure the first 5 places following a rate (arc bonus)."
@@ -186,7 +187,7 @@
             }
          },
          "secure_position": {
-            "title": "FOE Tools | Secure place",
+            "title": "$t(common:site_title) | Secure place",
             "hero": {
                "title": "Secure place",
                "subtitle": "This tool calculates the number of FP that a player must put on a GB to block his place."

@@ -9,6 +9,47 @@
          "about": "À propos"
       },
       "components": {
+        "cf_calculator": {
+          "block_cfc": {
+            "title": "$t(routes.cf_calculator.hero.title)",
+            "your_age": "Votre age",
+            "your_cf_boost": "Le bonus de votre $t(foe_data.gb.Chateau_Frontenac)",
+            "coins_to_use": "PO à utiliser dans la quête de Rinbin",
+            "supplies_to_use": "Marchandises à utiliser dans la quête de Rinbin",
+            "gb_plunder_goods": "Ressources obtenues par les GMs et le pillage",
+            "fp_by_24h": "Production de PF par 24h ",
+            "other_rq": "Autre quête récurrente accomplie",
+            "second_rq": "Seconde quête récurrente ?",
+            "supplies_gathered": "Marchandises produites",
+            "table_reward": {
+              "title": "Récompenses",
+              "thead": {
+                "th1": "Plan",
+                "th2": "Médaille",
+                "th3": "Ressource",
+                "th4": "PF"
+              }
+            },
+            "reward_message": {
+              "daily_ubq": "Nombre de quête de Rinbin : {{count}}",
+              "bonus_ubq": "Bonus de la quête de Rinbin : {{count}}",
+              "second_rq_completed": "Seconde quête accomplie : {{count}}",
+              "total_goods": "Total de ressource : {{count}}",
+              "total_goods_plural": "Total de ressources : {{count}}",
+              "total_fp": "Total de PF : {{count}}",
+              "total_fp_plural": "Total de PFs : {{count}}",
+              "total_rq_completed": "Total de quête récurrente accompli: {{count}}",
+              "total_rq_completed_plural": "Total de quêtes récurrentes accompli: {{count}}"
+            },
+            "table_return": {
+              "thead": {
+                "th_level": "Quête cumulée",
+                "th_coin": "PO en retour",
+                "th_supply": "Marchandises en retour"
+              }
+            }
+          }
+        },
          "gb_investment": {
             "gb_list_select": {
                "label": "Changer de Grand Monument"
@@ -55,10 +96,6 @@
          "secure_position": {
             "block_place": {
                "title": "Bloquer sa place",
-               "description": {
-                  "p1": "Saisissez les différentes valeurs. Le résultat se met à jour automatiquement.",
-                  "p2_html": "<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, cliquez sur « $t(components.secure_position.block_place.submit) »."
-               },
                "level_cost": "Coût du niveau",
                "current_deposits": "Somme des dépôts actuels",
                "your_participation": "Votre participation actuelle",
@@ -128,6 +165,13 @@
                "message_info_github_issue": "<b>Note :</b> Concernant les issues sur GitHub, veuillez veiller à les rédiger en anglais pour faciliter la compréhension pour le plus grand nombre."
             }
          },
+        "cf_calculator": {
+          "title": "FOE Tools | Calculette Château Frontenac",
+          "hero": {
+            "title": "Calculette Château Frontenac",
+            "subtitle": "Un outil qui aide à prévoir les productions de ressources et de PF en faisant des quêtes récurrentes et des quêtes de « fête de non anniversaire » (Rinbin)."
+          }
+        },
          "gb_investment": {
             "title": "FOE Tools | Investissement GM - $t({{gb_key}})",
             "hero": {
@@ -207,6 +251,15 @@
             "Atlantis_Museum": "Musée de l'Atlantide",
             "The_Kraken": "Le Kraken"
          }
-      }
+      },
+     "utils": {
+       "btn_calculate": "Calculer",
+       "description": {
+         "p1": "Saisissez les différentes valeurs. Le résultat se met à jour automatiquement.",
+         "p2_html": "<strong>Note</strong> : Si la mise à jour ne se fait pas automatiquement, cliquez sur « $t(components.secure_position.block_place.submit) »."
+       },
+       "Yes": "Oui",
+       "No": "Non"
+     }
    }
 }

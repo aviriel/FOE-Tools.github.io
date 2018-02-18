@@ -7,7 +7,8 @@ export default class {
          navbar_link: [
             {key: "home", link: "/"},
             {key: "gb_investment", link: "/gb-investment"},
-            {key: "secure_position", link: "/secure-position"}
+            {key: "secure_position", link: "/secure-position"},
+            {key: "cf_calculator", link: "/cf-calculator"},
          ]
       };
    }

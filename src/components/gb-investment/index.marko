@@ -50,38 +50,40 @@ div.columns
          div.control.level-item
             button.button.is-link key="submit-global" -- ${global.i18n(i18nPrefix + 'gb_investment.form.submit_global')}
 
-table.table.is-bordered.is-striped.is-narrow.is-fullwidth
-   thead
-      tr
-         th colspan=5
-            p.level-item -- ${global.i18n(i18nPrefix + 'gb_investment.table.title', {gb_key: 'foe_data.gb.' + input.gb, level: state.gb.level})}
-      tr
-         th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th1')}
-         th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th2')}
-         th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th3')}
-         th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th4')}
-         th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th5')}
-   tbody
-      tr for(i, place in state.gb.investment)
-         td
-            p.level-right -- ${i + 1}
-         td
-            p.level-right -- ${place.reward}
-         td
-            p.level-right -- ${place.preparation}
-         td
-            p.level-right -- ${place.participation}
-         td
-            input.input type="number" min="0" value="${state['percentage-value'][i]}" name="investor-percentage-${i}" id="investor-percentage-${i}" key="percentage-value-${i}" autocomplete="off"
-   tfoot
-      tr
-         th colspan=4 -- ${global.i18n(i18nPrefix + 'gb_investment.table.tfoot.total_preparation')}
-         td
-            p.level-right -- ${state.gb.totalPreparations}
-      tr
-         th colspan=4 -- ${global.i18n(i18nPrefix + 'gb_investment.table.tfoot.level_cost')}
-         td
-            p.level-right -- ${state.gb.cost}
+div.columns
+   div.column
+      table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+         thead
+            tr
+               th.has-text-centered colspan=5
+                  p -- ${global.i18n(i18nPrefix + 'gb_investment.table.title', {gb_key: 'foe_data.gb.' + input.gb, level: state.gb.level})}
+            tr
+               th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th1')}
+               th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th2')}
+               th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th3')}
+               th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th4')}
+               th -- ${global.i18n(i18nPrefix + 'gb_investment.table.thead.th5')}
+         tbody
+            tr for(i, place in state.gb.investment)
+               td.has-text-right
+                  p -- ${i + 1}
+               td.has-text-right
+                  p -- ${place.reward}
+               td.has-text-right
+                  p -- ${place.preparation}
+               td.has-text-right
+                  p -- ${place.participation}
+               td
+                  input.input type="number" min="0" value="${state['percentage-value'][i]}" name="investor-percentage-${i}" id="investor-percentage-${i}" key="percentage-value-${i}" autocomplete="off"
+         tfoot
+            tr
+               th colspan=4 -- ${global.i18n(i18nPrefix + 'gb_investment.table.tfoot.total_preparation')}
+               td
+                  p.level-right -- ${state.gb.totalPreparations}
+            tr
+               th colspan=4 -- ${global.i18n(i18nPrefix + 'gb_investment.table.tfoot.level_cost')}
+               td
+                  p.level-right -- ${state.gb.cost}
 
 div.columns
    div.column

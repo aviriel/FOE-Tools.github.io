@@ -3,12 +3,51 @@
       "main_menu": {
          "home": "Home",
          "gb_investment": "GB Investment",
-         "secure_position": "Secure place"
+         "secure_position": "Secure place",
+         "cf_calculator": "Château Frontenac Calculator"
       },
       "footer_menu": {
          "about": "About"
       },
       "components": {
+         "cf_calculator": {
+            "block_cfc": {
+               "title": "$t(routes.cf_calculator.hero.title)",
+               "your_age": "Your Age",
+               "your_cf_boost": "Your $t(foe_data.gb.Chateau_Frontenac) Boost",
+               "coins_to_use": "Coins to use on UBQ",
+               "supplies_to_use": "Supplies to use on UBQ",
+               "gb_plunder_goods": "GB & Plunder Goods",
+               "fp_by_24h": "24 Hour FP Production",
+               "other_rq": "Other Daily RQ's",
+               "second_rq": "2nd RQ Giver ?",
+               "supplies_gathered": "Supplies Gathered",
+               "table_reward": {
+                  "title": "Rewards",
+                  "thead": {
+                     "th1": "BP's",
+                     "th2": "Medals",
+                     "th3": "Goods",
+                     "th4": "FP's"
+                  }
+               },
+               "reward_message": {
+                  "daily_ubq": "Daily UBQ's: {{count}}",
+                  "bonus_ubq": "Bonus UBQ's: {{count}}",
+                  "second_rq_completed": "2nd RQ's Completed: {{count}}",
+                  "total_goods": "Total Goods: {{count}}",
+                  "total_fp": "Total FP's: {{count}}",
+                  "total_rq_completed": "Total RQ's Completed: {{count}}"
+               },
+               "table_return": {
+                  "thead": {
+                     "th_level": "Level",
+                     "th_coin": "Coin returned",
+                     "th_supply": "Supply returned"
+                  }
+               }
+            }
+         },
          "gb_investment": {
             "gb_list_select": {
                "label": "Switch Great Building"
@@ -55,15 +94,10 @@
          "secure_position": {
             "block_place": {
                "title": "Block his place",
-               "description": {
-                  "p1": "Enter the different values. The result is updated automatically.",
-                  "p2_html": "<strong>Note</strong>: If the update is not done automatically, click on \"$t(components.secure_position.block_place.submit)\"."
-               },
                "level_cost": "Level cost",
                "current_deposits": "Sum of current deposits",
                "your_participation": "Your current participation",
                "other_participation": "Participation of the player to overtake",
-               "submit": "Calculate",
                "fp_to_complete_level": "Number of FP remaining to complete the level: {{count}}",
                "fp_to_complete_level_plural": "Number of FPs remaining to complete the level: {{count}}",
                "your_arc_bonus": "Your Arc bonus",
@@ -126,6 +160,13 @@
                "p2_html": "The development is done in Node.js using <a href=\"https://markojs.com/\">Marko</a>, a template engine for reactive component developed by eBay. The style is made using <a href=\"https://bulma.io/\">Bulma</a>.",
                "p3_html": "An idea of functionality? A problem ? Feel free to create an issue on GitHub or send me an email (in English or in French) at <a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>.",
                "message_info_github_issue": "<b>Note:</b> Regarding issues on GitHub, please make sure to write them in English to facilitate understanding for the greatest number."
+            }
+         },
+         "cf_calculator": {
+            "title": "FOE Tools | Château Frontenac Calculator",
+            "hero": {
+               "title": "Château Frontenac Calculator",
+               "subtitle": "A tool that help forecast goods and fp productions from doing recurring quests and unbirthday party quest (Rinbin)."
             }
          },
          "gb_investment": {
@@ -207,6 +248,15 @@
             "Atlantis_Museum": "Atlantis Museum",
             "The_Kraken": "The Kraken"
          }
+      },
+      "utils": {
+         "btn_calculate": "Calculate",
+         "description": {
+            "p1": "Enter the different values. The result is updated automatically.",
+            "p2_html": "<strong>Note</strong>: If the update is not done automatically, click on \"$t(utils.btn_calculate)\"."
+         },
+         "Yes": "Yes",
+         "No": "No"
       }
    }
 }

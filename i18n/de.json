@@ -55,10 +55,6 @@
          "secure_position": {
             "block_place": {
                "title": "Blockiere seinen Platz",
-               "description": {
-                  "p1": "Gib die verschiedenen Werte ein. Das Ergebnis wird automatisch aktualisiert.",
-                  "p2_html": "<strong>Hinweis</strong>: Falls die Aktualisierung nicht automatisch erfolgen sollte, klicke auf \"$t(components.secure_position.block_place.submit)\"."
-               },
                "level_cost": "Stufenkosten",
                "current_deposits": "Aktuelle Investitionssumme",
                "your_participation": "Deine aktuelle Beteiligung",
@@ -198,6 +194,12 @@
             "Atlantis_Museum": "Atlantis-Museum",
             "The_Kraken": "Der Kraken"
          }
-      }
+      },
+     "utils": {
+       "description": {
+         "p1": "Gib die verschiedenen Werte ein. Das Ergebnis wird automatisch aktualisiert.",
+         "p2_html": "<strong>Hinweis</strong>: Falls die Aktualisierung nicht automatisch erfolgen sollte, klicke auf \"$t(components.secure_position.block_place.submit)\"."
+       }
+     }
    }
 }

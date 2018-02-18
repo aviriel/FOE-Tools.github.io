@@ -21,10 +21,9 @@
                "fp_by_24h": "24 Hour FP Production",
                "other_rq": "Other Daily RQ's",
                "second_rq": "2nd RQ Giver ?",
-               "gather_supplies_cost": "Gather Supplies Cost",
                "supplies_gathered": "Supplies Gathered",
                "table_reward": {
-                  "title": "Reward",
+                  "title": "Rewards",
                   "thead": {
                      "th1": "BP's",
                      "th2": "Medals",

@@ -94,6 +94,19 @@ function calculate() {
    this.state['result_total_fp'] = this.state['result_fp'] + this.state['fp-by-24h'];
 }
 
+function handlerForm(key, cookieKey) {
+  let elt = this.getEl(key);
+  const result = utils.checkFormNumeric(elt.value, ['>=', 0], this.state[key]);
+  elt.classList.remove('is-danger');
+  if (result.state === utils.FormCheck.VALID) {
+    this.state[key] = result.value;
+    Cookies.set(cookieKey, result.value, { path: '' });
+  } else if (result.state === utils.FormCheck.INVALID) {
+    elt.classList.add('is-danger');
+  }
+  return result.state;
+}
+
 export default class {
    onCreate(input) {
       let data = {
@@ -181,16 +194,7 @@ export default class {
 
      for (let key in data) {
        this.subscribeTo(this.getEl(key)).on('keyup', () => {
-         let elt = this.getEl(key);
-         let result = utils.checkFormNumeric(elt.value, ['>=', 0], this.state[key]);
-         elt.classList.remove('is-danger');
-         if (result.state === utils.FormCheck.VALID) {
-           this.state[key] = result.value;
-           Cookies.set(data[key], result.value, { path: '' });
-           this::calculate();
-         } else if (result.state === utils.FormCheck.INVALID) {
-           elt.classList.add('is-danger');
-         }
+         if (this::handlerForm(key, data[key]) === utils.FormCheck.VALID) { this::calculate(); }
        });
      }
       this.subscribeTo(this.getEl('second-rq-yes')).on('click', () => {
@@ -206,7 +210,19 @@ export default class {
       });
 
       this.subscribeTo(this.getEl('submit-cf-calculator')).on('click', () => {
-         this::calculate();
+        let change = utils.FormCheck.NO_CHANGE;
+        let listCheck = true;
+        for (let key in data) {
+          let result = this::handlerForm(key, data[key]);
+          if (result.state === utils.FormCheck.VALID) {
+            change = listCheck ? utils.FormCheck.VALID : change;
+          } else if (result.state === utils.FormCheck.INVALID) {
+            listCheck = false;
+            change = utils.FormCheck.INVALID;
+          }
+        }
+
+        if (change !== utils.FormCheck.INVALID) { this::calculate(); }
       });
 
       this.subscribeTo(window).on('DOMContentLoaded', () => {

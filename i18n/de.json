@@ -76,7 +76,7 @@
          },
          "site_layout": {
             "hero": {
-               "title": "FOE Tools",
+               "title": "$t(common:site_title)",
                "slogan_html": "Eine Sammlung an Tools, welche das Leben in <a href=\"https://forgeofempires.com\">Forge Of Empire</a> vereinfacht"
             },
             "footer": {
@@ -87,7 +87,7 @@
       },
       "routes": {
          "home": {
-            "title": "FOE Tools",
+            "title": "$t(common:site_title)",
             "info": {
                "title": "Information",
                "p1": "Die Seite bietet im Moment ein Tool, welches die notwendigen Anzahl an FP berechnet, die ein Spieler in sein LB investieren muss, damit die ersten 5 Plätze gesichert sind. Dabei wird ein eventueller Belohnungsfaktor (Archebonus) berücksichtigt.",
@@ -95,11 +95,11 @@
             }
          },
          "about": {
-            "title": "Über FOE Tools",
+            "title": "Über $t(common:site_title)",
             "general_info": {
                "title": "Allgemeine Informationen",
-               "p1_html": "Forge of Empires, FOE, und alle damit verbundenen Marken und Inhalte gehören InnoGames GmbH. <br /> FOE Tools ist eine inoffizielle Drittanbieter-Website und ist in keiner Art mit InnoGames affiliiert.",
-               "p2_html": "FOE Tools wurde erstellt durch den französischen Spieler <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+               "p1_html": "Forge of Empires, FOE, und alle damit verbundenen Marken und Inhalte gehören InnoGames GmbH. <br /> $t(common:site_title) ist eine inoffizielle Drittanbieter-Website und ist in keiner Art mit InnoGames affiliiert.",
+               "p2_html": "$t(common:site_title) wurde erstellt durch den französischen Spieler <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
                "p3_html": "Die Seite ist Open Source und der Programmcode ist frei verfügbar auf GitHub. <br /> Damit kann jeder mit entsprechenden Fähigkeiten an der Verbesserung dieser Seite teilnehmen."
             },
             "cookie": {
@@ -116,13 +116,13 @@
             }
          },
          "gb_investment": {
-            "title": "FOE Tools | LB Investition - $t({{gb_key}})",
+            "title": "$t(common:site_title) | LB Investition - $t({{gb_key}})",
             "hero": {
                "title": "LB Investition - $t({{gb_key}})"
             }
          },
          "gb_investment_gb_chooser": {
-            "title": "FOE Tools | LB Investition",
+            "title": "$t(common:site_title) | LB Investition",
             "hero": {
                "title": "LB Investition",
                "subtitle": "Dieses Tool ermöglicht es, die notwendigen Anzahl an an Punkten zu berechnen, welche ein Spieler in sein LB investieren muss, damit die ersten fünf Plätze gesichert werden. Dabei werden mögliche Belohnungsfaktoren (Archebonus) berücksichtigt."
@@ -132,7 +132,7 @@
             }
          },
          "secure_position": {
-            "title": "FOE Tools | Platzsicherung",
+            "title": "$t(common:site_title) | Platzsicherung",
             "hero": {
                "title": "Platzsicherung",
                "subtitle": "Dieses Tool berechnet die notwendige Anzahl an FP, welche ein Spieler in ein LB investierem mus, um seinen Platz zu sichern."

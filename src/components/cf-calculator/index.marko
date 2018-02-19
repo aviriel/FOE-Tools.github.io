@@ -1,0 +1,160 @@
+static function checkSecondQuest(oneQuestAgeArray, age) {
+   return oneQuestAgeArray.indexOf(age) === -1;
+}
+
+$ let i18nPrefix = 'components.cf_calculator.';
+
+div.columns
+   div.column.is-half
+      div.field
+         h4 -- ${global.i18n(i18nPrefix + 'block_cfc.title')}
+
+div.columns
+   div.column
+      div.field
+         p -- ${global.i18n('utils.description.p1')}
+         p -- $!{global.i18n('utils.description.p2_html')}
+
+<!-- Row 1 -->
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="your-age" -- ${global.i18n(i18nPrefix + 'block_cfc.your_age')}
+         div.control
+            div.select id="your-age-container" key="your-age-container" style="display: grid;"
+               select name="your-age" id="your-age" key="your-age" no-update
+                  for(i, age in state.questData.ages)
+                     option selected=((input['your-age'] == age.key) ? true : false) id="option_${age.key}" value="${age.key}" autocomplete="off" -- ${global.i18n('foe_data.age.' + age.key)}
+   div.column.is-half
+      div.field
+         label.label for="your-cf-boost" -- ${global.i18n(i18nPrefix + 'block_cfc.your_cf_boost')}
+         div.control
+            input.input type="number" min="0" value="${state['your-cf-boost']}" name="your-cf-boost" id="your-cf-boost" key="your-cf-boost" autocomplete="off"
+
+<!-- Row 2 -->
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="coins" -- ${global.i18n(i18nPrefix + 'block_cfc.coins_to_use')}
+         div.control
+            input.input type="number" min="0" value="${state['coins']}" name="coins" id="coins" key="coins" autocomplete="off"
+   div.column.is-half
+      div.field
+         label.label for="supplies" -- ${global.i18n(i18nPrefix + 'block_cfc.supplies_to_use')}
+         div.control
+            input.input type="number" min="0" value="${state['supplies']}" name="supplies" id="supplies" key="supplies" autocomplete="off"
+
+<!-- Row 3 -->
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="goods" -- ${global.i18n(i18nPrefix + 'block_cfc.gb_plunder_goods')}
+         div.control
+            input.input type="number" min="0" value="${state['goods']}" name="goods" id="goods" key="goods" autocomplete="off"
+   div.column.is-half
+      div.field
+         label.label for="fp-by-24h" -- ${global.i18n(i18nPrefix + 'block_cfc.fp_by_24h')}
+         div.control
+            input.input type="number" min="0" value="${state['fp-by-24h']}" name="fp-by-24h" id="fp-by-24h" key="fp-by-24h" autocomplete="off"
+
+<!-- Row 4 -->
+
+div.columns class=(checkSecondQuest(state.oneQuest, state['your-age']) ? '' : 'is-hidden')
+   div.column.is-half
+      div.field
+         label.label for="second-rq" -- ${global.i18n(i18nPrefix + 'block_cfc.second_rq')}
+         div.control
+            div.buttons.has-addons
+               span.button class=(state['second-rq'] ? 'is-success is-selected' : '') id="second-rq-yes" key="second-rq-yes" -- ${global.i18n('utils.Yes')}
+               span.button class=(!state['second-rq'] ? 'is-danger is-selected' : '') id="second-rq-no" key="second-rq-no" -- ${global.i18n('utils.No')}
+
+   div.column.is-half class=(state['second-rq'] ? '' : 'is-hidden')
+      div.field
+      label.label for="supplies-gathered" -- ${global.i18n(i18nPrefix + 'block_cfc.supplies_gathered')}
+         div.control
+            input.input type="number" min="0" value="${state['supplies-gathered']}" name="supplies-gathered" id="supplies-gathered" key="supplies-gathered" autocomplete="off"
+
+
+<!-- Row 5 -->
+
+div.columns
+   div.column.is-half
+      div.field
+         label.label for="other-rq" -- ${global.i18n(i18nPrefix + 'block_cfc.other_rq')}
+         div.control
+            input.input type="number" min="0" value="${state['other-rq']}" name="other-rq" id="other-rq" key="other-rq" autocomplete="off"
+
+div.columns
+   div.column
+      div.field
+         div.control.level-item
+            button.button.is-link key="submit-cf-calculator" -- ${global.i18n('utils.btn_calculate')}
+
+div.columns
+   div.column
+      table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+         thead
+            tr
+               th.has-text-centered colspan=4
+                  p -- ${global.i18n(i18nPrefix + 'block_cfc.table_reward.title')}
+            tr
+               th.has-text-centered -- ${global.i18n(i18nPrefix + 'block_cfc.table_reward.thead.th1')}
+               th.has-text-centered -- ${global.i18n(i18nPrefix + 'block_cfc.table_reward.thead.th2')}
+               th.has-text-centered -- ${global.i18n(i18nPrefix + 'block_cfc.table_reward.thead.th3')}
+               th.has-text-centered -- ${global.i18n(i18nPrefix + 'block_cfc.table_reward.thead.th4')}
+         tbody
+            tr
+               td.has-text-right
+                  p -- ${state.result_bp}
+               td.has-text-right
+                  p -- ${state.result_medals}
+               td.has-text-right
+                  p -- ${state.result_goods}
+               td.has-text-right
+                  p -- ${state.result_fp}
+
+div.columns
+   div.column.is-one-third
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.total_goods', {count: state.result_total_goods})}
+   div.column.is-one-third
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.total_fp', {count: state.result_total_fp})}
+   div.column.is-one-third
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.total_rq_completed', {count: state.result_total_rq_completed})}
+
+div.columns
+   div.column.is-one-third
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.daily_ubq', {count: state.result_daily_ubq})}
+   div.column.is-one-third
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.bonus_ubq', {count: state.result_bonus_ubq})}
+   div.column.is-one-third class=(state['second-rq'] ? '' : 'is-hidden')
+      div.field
+         p -- ${global.i18n(i18nPrefix + 'block_cfc.reward_message.second_rq_completed', {count: state.result_second_rq_completed})}
+
+div.columns class=(state.result_coin_supply_return.length > 0 ? '' : 'is-hidden')
+   div.column
+      table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+         thead
+            tr
+               th.has-text-centered
+                  p -- ${global.i18n(i18nPrefix + 'block_cfc.table_return.thead.th_level')}
+               th.has-text-centered
+                  p -- ${global.i18n(i18nPrefix + 'block_cfc.table_return.thead.th_coin')}
+               th.has-text-centered
+                  p -- ${global.i18n(i18nPrefix + 'block_cfc.table_return.thead.th_supply')}
+         tbody
+            for(i,data in state.result_coin_supply_return)
+               tr
+                  td.has-text-right
+                     p -- ${i + 1}
+                  td.has-text-right
+                     p -- ${data.coin}
+                  td.has-text-right
+                     p -- ${data.supply}

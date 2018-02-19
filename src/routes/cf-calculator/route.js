@@ -1,0 +1,1 @@
+exports.path = "/cf-calculator";

@@ -1,10 +1,7 @@
-import {Enum} from "~/src/services/enumify";
+import Cookies from "js-cookie";
 import data from "~/src/services/foe-gb-data";
 import gbProcess from "~/src/services/foe-gb-investment";
-import Cookies from "js-cookie";
-
-class FormCheck extends Enum {}
-FormCheck.initEnum(['VALID', 'INVALID', 'NO_CHANGE']);
+import utils from "~/src/services/utils";
 
 /**
  * Get URL parameter
@@ -29,21 +26,9 @@ function getGetParameter (window, param) {
 }
 
 /**
- * Check if a value it's in range. Bound are include.
- *
- * @param value Value to check
- * @param lowerBound Lower bound
- * @param upperBound Upper bound
- * @returns {boolean} Return true if the value it's in range, false otherwise
- */
-function inRange(value, lowerBound, upperBound) {
-   return (value >= lowerBound) && (value <= upperBound);
-}
-
-/**
  * Call for calculate investments
  */
-function submitForm () {
+function calculate () {
    if (!this.state['is-permalink']) {
       Cookies.set('gb_level', this.state.level, { path: '' });
       Cookies.set('gb_global_investment', this.state['percentage-value-global'], { path: '' });
@@ -72,19 +57,17 @@ function removeErrorsFromPercentageArray() {
  * @return {FormCheck} Return the state
  */
 function handlerLevel() {
-   let elt = this.getEl('level');
-   if (!isNaN(elt.value) && inRange(elt.value, 1, this.state['max-level'])) {
-      elt.classList.remove('is-danger');
-      if (parseInt(elt.value) !== this.state.level) {
-         this.state.level = parseInt(elt.value);
-         return FormCheck.VALID;
-      }
-   } else {
-      elt.classList.add('is-danger');
-      return FormCheck.INVALID;
-   }
+  const key = 'level';
+  let elt = this.getEl(key);
+  let result = utils.checkFormNumeric(elt.value, [1, this.state['max-level']], this.state[key]);
+  elt.classList.remove('is-danger');
+  if (result.state === utils.FormCheck.VALID) {
+    this.state[key] = result.value;
+  } else if (result.state === utils.FormCheck.INVALID) {
+    elt.classList.add('is-danger');
+  }
 
-   return FormCheck.NO_CHANGE;
+  return result.state;
 }
 
 /**
@@ -93,22 +76,35 @@ function handlerLevel() {
  * @return {FormCheck} Return the state
  */
 function handlerGlobalPercentageInvestment() {
-   let elt = this.getEl('percentage-value-global');
+  const key = 'percentage-value-global';
+  let elt = this.getEl(key);
+  let result = utils.checkFormNumeric(elt.value, ['>=', 0], this.state[key], 'float');
+  elt.classList.remove('is-danger');
+  if (result.state === utils.FormCheck.VALID) {
+    let array = [];
+    this.state[key] = parseFloat(elt.value);
+    for (let i = 0; i < 5; i++) {
+      array[i] = this.state[key];
+    }
+    this.state['percentage-value'] = array;
+  } else if (result.state === utils.FormCheck.INVALID) {
+    elt.classList.add('is-danger');
+  }
 
-   if (!isNaN(elt.value) && (parseFloat(elt.value) >= 0)) {
-      elt.classList.remove('is-danger');
-      let array = [];
-      this.state['percentage-value-global'] = parseFloat(elt.value);
-      for (let i = 0; i < 5; i++) {
-         array[i] = this.state['percentage-value-global'];
-      }
-      this.state['percentage-value'] = array;
-      return FormCheck.VALID;
+  return result.state;
+}
 
-   } else {
-      elt.classList.add('is-danger');
-      return FormCheck.INVALID;
-   }
+function handlerCustomPercentageInvestment(index) {
+  let elt = this.getEl('percentage-value-' + index);
+  let result = utils.checkFormNumeric(elt.value, ['>=', 0], this.state['percentage-value'][index], 'float');
+  elt.classList.remove('is-danger');
+  if (result.state === utils.FormCheck.VALID) {
+    this.state['percentage-value'][index] = result.value;
+  } else if (result.state === utils.FormCheck.INVALID) {
+    elt.classList.add('is-danger');
+  }
+
+  return result.state;
 }
 
 export default class {
@@ -130,31 +126,21 @@ export default class {
          }
       }
 
-      this::submitForm();
+      this::calculate();
    }
 
    onMount() {
       this.subscribeTo(this.getEl('level')).on('keyup', () => {
-         if (this::handlerLevel() === FormCheck.VALID) { this::submitForm(); }
+        if (this::handlerLevel() === utils.FormCheck.VALID) { this::calculate(); }
       });
 
       this.subscribeTo(this.getEl('percentage-value-global')).on('keyup', () => {
-         if (this::handlerGlobalPercentageInvestment() === FormCheck.VALID) { this::submitForm(); }
+         if (this::handlerGlobalPercentageInvestment() === utils.FormCheck.VALID) { this::calculate(); }
       });
 
       for (let i = 0; i < 5; i++) {
          this.subscribeTo(this.getEl('percentage-value-' + i)).on('keyup', () => {
-            let elt = this.getEl('percentage-value-' + i);
-
-            if (!isNaN(elt.value) && (parseFloat(elt.value) >= 0)) {
-               elt.classList.remove('is-danger');
-               if (parseFloat(elt.value) !== this.state['percentage-value'][i]) {
-                  this.state['percentage-value'][i] = parseFloat(elt.value);
-                  this::submitForm();
-               }
-            } else {
-               elt.classList.add('is-danger');
-            }
+           if (this::handlerCustomPercentageInvestment(i) === utils.FormCheck.VALID) { this::calculate(); }
          });
       }
 
@@ -185,41 +171,36 @@ export default class {
          }
 
          this.state['is-permalink'] = change;
-         this::submitForm();
+         this::calculate();
       });
 
       this.subscribeTo(this.getEl('submit-global')).on('click', () => {
          // If level value changed
          let lChange = this::handlerLevel();
          let pChange = this::handlerGlobalPercentageInvestment();
-         if ((lChange !== FormCheck.INVALID) && (pChange !== FormCheck.INVALID) &&
-            !((lChange === pChange) && (lChange === FormCheck.NO_CHANGE))) {
+         if ((lChange !== utils.FormCheck.INVALID) && (pChange !== utils.FormCheck.INVALID) &&
+            !((lChange === pChange) && (lChange === utils.FormCheck.NO_CHANGE))) {
             this::removeErrorsFromPercentageArray();
-            this::submitForm();
+            this::calculate();
          }
       });
 
       this.subscribeTo(this.getEl('submit-custom')).on('click', () => {
-         let change = FormCheck.NO_CHANGE;
+         let change = utils.FormCheck.NO_CHANGE;
          let listCheck = true;
          for (let i = 0; i < 5; i++) {
-            let elt = this.getEl('percentage-value-' + i);
-            if (elt.value >= 0) {
-               if (parseFloat(elt.value) !== this.state['percentage-value'][i]) {
-                  elt.classList.remove('is-danger');
-                  this.state['percentage-value'][i] = parseFloat(elt.value);
-                  change = listCheck ? FormCheck.VALID : change;
-               }
-            } else {
-               elt.classList.add('is-danger');
-               listCheck = false;
-               change = FormCheck.INVALID;
-            }
+           let result = this::handlerCustomPercentageInvestment(i);
+           if (result.state === utils.FormCheck.VALID) {
+             change = listCheck ? utils.FormCheck.VALID : change;
+           } else if (result.state === utils.FormCheck.INVALID) {
+             listCheck = false;
+             change = utils.FormCheck.INVALID;
+           }
          }
 
-         if (change !== FormCheck.INVALID) {
+         if (change !== utils.FormCheck.INVALID) {
             this::removeErrorsFromPercentageArray();
-            this::submitForm();
+            this::calculate();
          }
       });
    }

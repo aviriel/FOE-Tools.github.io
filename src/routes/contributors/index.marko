@@ -1,0 +1,70 @@
+static function customIterator(arrayList, callback) {
+   const BY_LINE = 2;
+   let i         = 0;
+   let result    = [];
+
+   for (let gb in arrayList) {
+      result[i % BY_LINE] = arrayList[gb];
+      if ((i % BY_LINE) === (BY_LINE - 1)) {
+         callback(result);
+         for (let j = 0; j < result.length; j++) { result[j] = null; }
+      }
+      i++;
+   }
+
+   if ((result[0] !== null) && (result[result.length - 1] === null)) {
+      callback(result);
+   }
+}
+
+$ let i18nPrefix = 'routes.contributors.';
+
+site-layout currentLocation="contributors"
+   @title -- ${global.i18n(i18nPrefix + 'title')}
+   @hero
+      h1.title.is-2.is-spaced -- ${global.i18n(i18nPrefix + 'hero.title')}
+      h2.subtitle.is-4 -- ${global.i18n(i18nPrefix + 'hero.subtitle')}
+   @content
+      h3 -- ${global.i18n(i18nPrefix + 'hero.title')}
+      h4 -- ${global.i18n(i18nPrefix + 'credit.title')}
+
+      div.columns
+         div.column
+            table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+               thead
+                  tr
+                     th.has-text-centered -- ${global.i18n(i18nPrefix + 'credit.table_credit.thead.th1')}
+                     th.has-text-centered -- ${global.i18n(i18nPrefix + 'credit.table_credit.thead.th2')}
+               tbody
+                  tr
+                     td
+                        p -- Von Willem (FR)
+                     td
+                        p -- ${global.i18n(i18nPrefix + 'credit.table_credit.tbody.td1')}
+                  tr
+                     td
+                        p -- Ozyman Tremble Weaklings (US)
+                     td
+                        p -- ${global.i18n(i18nPrefix + 'credit.table_credit.tbody.td2')}
+
+      h4 -- ${global.i18n(i18nPrefix + 'programmer_and_translator.title')}
+
+      div.columns
+         div.column
+            div.content
+               for(users in state.contributors  | iterator=customIterator)
+                  div.tile.is-ancestor
+                     for(user in users)
+                           div.tile.is-parent
+                              article.tile.is-child
+                                 a href=(user.html_url) target="_blank"
+                                    div.card
+                                       div.card-content
+                                          div.media
+                                             div.media-left
+                                                figure.image.is-48x48 style="margin-left: 0em; margin-right: 0em;"
+                                                   img src=(user.avatar_url) alt="${user.login} avatar"
+                                             div.media-content
+                                                p.title.is-4 -- ${user.login}
+                                                if(global.i18nExists(i18nPrefix + 'programmer_and_translator.contributors.' + user.login))
+                                                   p.subtitle.is-6 -- ${global.i18n(i18nPrefix + 'programmer_and_translator.contributors.' + user.login)}

@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import utils from "~/src/services/utils";
 
 function calculate() {
    if (this::formValid()) {
@@ -74,76 +75,16 @@ function checkInputLevelCost(input) {
    return (input.levelCost !== undefined) && !isNaN(input.levelCost);
 }
 
-function checkLevelCost() {
-   let elt = this.getEl('level-cost');
-   if ((elt.value.length > 0) && !isNaN(elt.value)) {
-      elt.classList.remove('is-danger');
-      this.state['level-cost'] = parseInt(elt.value);
-      return true;
-   } else {
-      elt.classList.add('is-danger');
-      return false;
-   }
-}
-
-function checkCurrentDeposits() {
-   let elt = this.getEl('current-deposits');
-   if ((elt.value.length > 0) && !isNaN(elt.value)) {
-      elt.classList.remove('is-danger');
-      this.state['current-deposits'] = parseInt(elt.value);
-      return true;
-   } else {
-      elt.classList.add('is-danger');
-      return false;
-   }
-}
-
-function checkYourParticipation() {
-   let elt = this.getEl('your-participation');
-   if ((elt.value.length > 0) && !isNaN(elt.value)) {
-      elt.classList.remove('is-danger');
-      this.state['your-participation'] = parseInt(elt.value);
-      return true;
-   } else {
-      elt.classList.add('is-danger');
-      return false;
-   }
-}
-
-function checkOtherParticipation() {
-   let elt = this.getEl('other-participation');
-   if ((elt.value.length > 0) && !isNaN(elt.value)) {
-      elt.classList.remove('is-danger');
-      this.state['other-participation'] = parseInt(elt.value);
-      return true;
-   } else {
-      elt.classList.add('is-danger');
-      return false;
-   }
-}
-
-function checkYourArcBonus() {
-  let elt = this.getEl('your-arc-bonus');
-  if ((elt.value.length >= 0) && !isNaN(elt.value)) {
-    elt.classList.remove('is-danger');
-    this.state['your-arc-bonus'] = parseInt(elt.value);
-    return true;
-  } else {
+function handlerForm(key, comparator) {
+  let elt = this.getEl(key);
+  let result = utils.checkFormNumeric(elt.value, [comparator, 0], this.state[key]);
+  elt.classList.remove('is-danger');
+  if (result.state === utils.FormCheck.VALID) {
+    this.state[key] = result.value;
+  } else if (result.state === utils.FormCheck.INVALID) {
     elt.classList.add('is-danger');
-    return false;
   }
-}
-
-function checkFPTargetReward() {
-  let elt = this.getEl('fp-target-reward');
-  if ((elt.value.length > 0) && !isNaN(elt.value)) {
-    elt.classList.remove('is-danger');
-    this.state['fp-target-reward'] = parseInt(elt.value);
-    return true;
-  } else {
-    elt.classList.add('is-danger');
-    return false;
-  }
+  return result.state;
 }
 
 
@@ -171,47 +112,35 @@ export default class {
    }
 
    onMount() {
-      this.subscribeTo(this.getEl('level-cost')).on('keyup', () => {
-         if (this::checkLevelCost()) {
-            this::calculate();
-         }
-      });
+     let data = {
+       'level-cost': '>',
+       'current-deposits': '>=',
+       'your-participation': '>=',
+       'other-participation': '>=',
+       'your-arc-bonus': '>=',
+       'fp-target-reward': '>=',
+     };
 
-      this.subscribeTo(this.getEl('current-deposits')).on('keyup', () => {
-         if (this::checkCurrentDeposits()) {
-            this::calculate();
-         }
-      });
-
-      this.subscribeTo(this.getEl('your-participation')).on('keyup', () => {
-         if (this::checkYourParticipation()) {
-            this::calculate();
-         }
-      });
-
-      this.subscribeTo(this.getEl('other-participation')).on('keyup', () => {
-         if (this::checkOtherParticipation()) {
-            this::calculate();
-         }
-      });
-
-     this.subscribeTo(this.getEl('your-arc-bonus')).on('keyup', () => {
-       if (this::checkYourArcBonus()) {
-         this::calculate();
-       }
-     });
-
-     this.subscribeTo(this.getEl('fp-target-reward')).on('keyup', () => {
-       if (this::checkFPTargetReward()) {
-         this::calculate();
-       }
-     });
+     for (let key in data) {
+       this.subscribeTo(this.getEl(key)).on('keyup', () => {
+         if (this::handlerForm(key, data[key]) === utils.FormCheck.VALID) { this::calculate(); }
+       });
+     }
 
       this.subscribeTo(this.getEl('submit-secure-position')).on('click', () => {
-         if (this::checkLevelCost() && this::checkCurrentDeposits() &&
-            this::checkYourParticipation() && this::checkOtherParticipation()) {
-            this::calculate();
-         }
+        let change = utils.FormCheck.NO_CHANGE;
+        let listCheck = true;
+        for (let key in data) {
+          let result = this::handlerForm(key, data[key]);
+          if (result.state === utils.FormCheck.VALID) {
+            change = listCheck ? utils.FormCheck.VALID : change;
+          } else if (result.state === utils.FormCheck.INVALID) {
+            listCheck = false;
+            change = utils.FormCheck.INVALID;
+          }
+        }
+
+        if (change !== utils.FormCheck.INVALID) { this::calculate(); }
       });
 
       this.subscribeTo(window).on('DOMContentLoaded', () => {

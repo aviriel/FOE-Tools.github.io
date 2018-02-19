@@ -1,4 +1,4 @@
-static function reverseIterator(arrayList, callback) {
+static function customIterator(arrayList, callback) {
    const BY_LINE = 2;
    let i         = 0;
    let result    = [];
@@ -27,7 +27,7 @@ site-layout currentLocation="gb_investment"
    @content
       h3 -- ${global.i18n(i18nPrefix + 'choose_gb.title')}
 
-      for(item in state.data.GBs_BY_AGE | iterator=reverseIterator)
+      for(item in state.data.GBs_BY_AGE | iterator=customIterator)
          div.tile.is-ancestor
             for(age in item)
                if(age !== null)

@@ -20,8 +20,8 @@ div.columns
 div.columns
    div.column
       div.field
-         p -- ${global.i18n(i18nPrefix + 'block_place.description.p1')}
-         p -- $!{global.i18n(i18nPrefix + 'block_place.description.p2_html')}
+         p -- ${global.i18n('utils.description.p1')}
+         p -- $!{global.i18n('utils.description.p2_html')}
 
 div.columns
    div.column.is-half
@@ -64,7 +64,7 @@ div.columns
    div.column
       div.field
          div.control.level-item
-            button.button.is-link key="submit-secure-position" -- ${global.i18n(i18nPrefix + 'block_place.submit')}
+            button.button.is-link key="submit-secure-position" -- ${global.i18n('utils.btn_calculate')}
 
 p -- ${global.i18n(i18nPrefix + 'block_place.fp_to_complete_level', {count: getNumberOfRemainingPoints(state)})}
 

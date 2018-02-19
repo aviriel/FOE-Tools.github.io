@@ -19,8 +19,9 @@ i18next.init(
     lng: Cookies.get("lang"),
     debug: false,
     whitelist: languageList,
-    ns: ['common', 'translation'],
+    ns: ["common", "translation"],
     fallbackLng: languageList,
+    fallbackNS: ["common"],
     resources: resources
   },
   function() {}

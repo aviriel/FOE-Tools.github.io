@@ -7,7 +7,8 @@
          "cf_calculator": "$t(routes.cf_calculator.hero.title)"
       },
       "footer_menu": {
-         "about": "À propos"
+         "about": "À propos",
+        "contributors": "Contributeurs"
       },
       "components": {
         "cf_calculator": {
@@ -172,6 +173,32 @@
           "hero": {
             "title": "Calculette Château Frontenac",
             "subtitle": "Un outil qui aide à prévoir les productions de ressources et de PF en faisant des quêtes récurrentes et des quêtes de « fête de non anniversaire » (Rinbin)."
+          }
+        },
+        "contributors": {
+          "title": "$t(common:site_title) | Contributors",
+          "hero": {
+            "title": "Contributeurs",
+            "subtitle": "Cette page tente de répertorier tous les contributeurs"
+          },
+          "credit": {
+            "title": "Crédit",
+            "table_credit": {
+              "thead": {
+                "th1": "Pseudo",
+                "th2": "Note"
+              },
+              "tbody": {
+                "td1": "\"$t(routes.gb_investment_gb_chooser.hero.title)\" et \"$t(routes.secure_position.hero.title)\" sont basés sur l'énorme travail de ses spreadsheets",
+                "td2": "\"$t(routes.cf_calculator.hero.title)\" est basé sur le super travail de sa spreadsheet"
+              }
+            }
+          },
+          "programmer_and_translator": {
+            "title": "Programmeurs et Traducteurs",
+            "contributors": {
+              "Heziode": "(Yoratheon) créateur de ce projet"
+            }
           }
         },
          "gb_investment": {

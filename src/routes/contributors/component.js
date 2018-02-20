@@ -1,15 +1,15 @@
 export default class {
    onCreate(input) {
       this.state = {
+        url: 'https://api.github.com/repos/FOE-Tools/FOE-Tools.github.io/contributors',
         contributors: []
       }
    }
   onMount() {
     this.subscribeTo(window).on('DOMContentLoaded', () => {
-      const url = 'https://api.github.com/repos/FOE-Tools/FOE-Tools.github.io/contributors';
       let xhr = new XMLHttpRequest();
       let self = this;
-      xhr.open('GET', url, false);
+      xhr.open('GET', this.state.url, false);
       xhr.onload = function (e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {

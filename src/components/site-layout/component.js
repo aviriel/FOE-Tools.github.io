@@ -13,6 +13,7 @@ export default class {
          footer_link: [
             {key: "about", link: "/about"},
             {key: "contributors", link: "/contributors"},
+            {key: "changelog", link: "/changelog"},
          ]
       };
    }

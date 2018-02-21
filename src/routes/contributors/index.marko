@@ -1,22 +1,3 @@
-static function customIterator(arrayList, callback) {
-   const BY_LINE = 2;
-   let i         = 0;
-   let result    = [];
-
-   for (let gb in arrayList) {
-      result[i % BY_LINE] = arrayList[gb];
-      if ((i % BY_LINE) === (BY_LINE - 1)) {
-         callback(result);
-         for (let j = 0; j < result.length; j++) { result[j] = null; }
-      }
-      i++;
-   }
-
-   if ((result[0] !== null) && (result[result.length - 1] === null)) {
-      callback(result);
-   }
-}
-
 $ let i18nPrefix = 'routes.contributors.';
 
 site-layout currentLocation="contributors"
@@ -52,7 +33,7 @@ site-layout currentLocation="contributors"
       div.columns
          div.column
             div.content
-               for(users in state.contributors  | iterator=customIterator)
+               for(users in state.contributors | iterator=global.makeIterator(2))
                   div.tile.is-ancestor
                      for(user in users)
                            div.tile.is-parent

@@ -1,8 +1,8 @@
 export default class {
-   onCreate(input) {
+   onCreate() {
       this.state = {
-        url: 'https://api.github.com/repos/FOE-Tools/FOE-Tools.github.io/contributors',
-        contributors: []
+         url: 'https://api.github.com/repos/FOE-Tools/FOE-Tools.github.io/contributors',
+         contributors: []
       }
    }
   onMount() {

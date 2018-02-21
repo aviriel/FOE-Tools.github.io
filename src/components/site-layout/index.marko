@@ -1,7 +1,7 @@
 <!-- FIXME: Not implemented yet due to Marko bug -->
 <!-- import cookieMessage from './components/cookie-message/index.marko' -->
 import {i18next} from '~/src/services/i18next';
-
+import utils from "~/src/services/utils";
 
 $ global.i18n = function (key, param) {
    return i18next.t(key, param || {});
@@ -40,6 +40,8 @@ $ global.languages = function () {
    }
    return languages;
 }
+
+$ global.makeIterator = utils.makeIterator;
 
 $ let i18nPrefix = 'components.site_layout.';
 

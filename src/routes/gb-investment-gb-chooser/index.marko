@@ -1,22 +1,3 @@
-static function customIterator(arrayList, callback) {
-   const BY_LINE = 2;
-   let i         = 0;
-   let result    = [];
-
-   for (let gb in arrayList) {
-      result[i % BY_LINE] = arrayList[gb];
-      if ((i % BY_LINE) === (BY_LINE - 1)) {
-         callback(result);
-         for (let j = 0; j < result.length; j++) { result[j] = null; }
-      }
-      i++;
-   }
-
-   if ((result[0] !== null) && (result[result.length - 1] === null)) {
-      callback(result);
-   }
-}
-
 $ let i18nPrefix = 'routes.gb_investment_gb_chooser.';
 
 site-layout currentLocation="gb_investment"
@@ -27,7 +8,7 @@ site-layout currentLocation="gb_investment"
    @content
       h3 -- ${global.i18n(i18nPrefix + 'choose_gb.title')}
 
-      for(item in state.data.GBs_BY_AGE | iterator=customIterator)
+      for(item in state.data.GBs_BY_AGE | iterator=global.makeIterator(2))
          div.tile.is-ancestor
             for(age in item)
                if(age !== null)

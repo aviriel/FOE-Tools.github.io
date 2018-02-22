@@ -116,5 +116,27 @@ export default {
     }
 
     return { state: FormCheck.NO_CHANGE };
-  }
+   },
+
+   makeIterator(byLine) {
+      let fn = function(arrayList, callback) {
+         const BY_LINE = byLine;
+         let i         = 0;
+         let result    = [];
+
+         for (let gb in arrayList) {
+            result[i % BY_LINE] = arrayList[gb];
+            if ((i % BY_LINE) === (BY_LINE - 1)) {
+               callback(result);
+               for (let j = 0; j < result.length; j++) { result[j] = null; }
+            }
+            i++;
+         }
+
+         if ((result[0] !== null) && (result[result.length - 1] === null)) {
+            callback(result);
+         }
+      };
+      return fn;
+   }
 };

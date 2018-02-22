@@ -8,7 +8,8 @@
       },
       "footer_menu": {
          "about": "About",
-         "contributors": "Contributors"
+         "contributors": "Contributors",
+         "changelog": "Changelog"
       },
       "components": {
          "cf_calculator": {
@@ -170,6 +171,9 @@
                "title": "Château Frontenac Calculator",
                "subtitle": "A tool that help forecast goods and fp productions from doing recurring quests and unbirthday party quest (Rinbin)."
             }
+         },
+         "changelog": {
+           "title": "$t(common:site_title) | Changelog"
          },
          "contributors": {
            "title": "$t(common:site_title) | Contributors",

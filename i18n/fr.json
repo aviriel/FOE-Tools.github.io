@@ -8,7 +8,8 @@
       },
       "footer_menu": {
          "about": "À propos",
-        "contributors": "Contributeurs"
+        "contributors": "Contributeurs",
+        "changelog": "Changelog"
       },
       "components": {
         "cf_calculator": {
@@ -174,6 +175,9 @@
             "title": "Calculette Château Frontenac",
             "subtitle": "Un outil qui aide à prévoir les productions de ressources et de PF en faisant des quêtes récurrentes et des quêtes de « fête de non anniversaire » (Rinbin)."
           }
+        },
+        "changelog": {
+          "title": "$t(common:site_title) | Changelog"
         },
         "contributors": {
           "title": "$t(common:site_title) | Contributors",

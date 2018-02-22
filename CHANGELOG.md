@@ -1,13 +1,23 @@
 # Changelog
 
+This project uses [Semantic Versioning](https://semver.org/).
+
 # 1.x
+
+## 1.5.X
+
+- Add changelog page [#21](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/21)
+- Add contributor page [#20](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/20)
+- Add Chateau Frontenac Calculator [#15](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/15)
+- Add support of Russian (by [aviriel](https://github.com/aviriel)) [#14](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/14)
+- Add return on investment in secure-position tool [#12](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/12)
 
 ## 1.4.X
 
 ### 1.4.0
 
 -   Added support of German (by [Nlossae](https://github.com/Nlossae)) [#6](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/6)
--   Fix selected option in GB select list [#7](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/6)
+-   Fix selected option in GB select list [#7](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/7)
 
 ## 1.3.x
 

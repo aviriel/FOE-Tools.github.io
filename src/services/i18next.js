@@ -5,13 +5,14 @@ import common from "~/i18n/common.json";
 import en from "~/i18n/en.json";
 import fr from "~/i18n/fr.json";
 import de from "~/i18n/de.json";
+import ru from "~/i18n/ru.json";
 
 if (Cookies.get("lang") === undefined) {
   Cookies.set("lang", "en");
 }
 
-const languageList = ["common", "en", "fr", "de"];
-const resources = { common: common, en: en, fr: fr, de: de };
+const languageList = ["common", "en", "fr", "de", "ru"];
+const resources = { common: common, en: en, fr: fr, de: de, ru: ru };
 
 i18next.init(
   {

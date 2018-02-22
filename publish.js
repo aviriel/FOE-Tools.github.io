@@ -2,6 +2,7 @@
 require("babel-core/register");
 require("babel-polyfill");
 
+const packagejson = require('./package.json');
 const prompt = require("prompt");
 const exec = require("child_process").execSync;
 const gitUrl = "git@github.com:FOE-Tools/FOE-Tools.github.io.git";
@@ -23,7 +24,7 @@ const promptSchema = {
   properties: {
     commitMessage: {
       message: "Please enter a commit message: ",
-      default: "updated static site",
+      default: "Release version " + packagejson.version,
       required: true
     }
   }
@@ -61,7 +62,7 @@ git fetch`
       execLogged(`rm -rf ${publishDir}`);
 
       // commit and push up the changes
-      try {
+      /*try {
         execLogged(
           `cd ${buildDir} && git add . --all && git commit -m "${message}"`
         );
@@ -73,7 +74,7 @@ git fetch`
         if (e.cmd && e.cmd.indexOf("git commit")) {
           console.log("Static site successfully built. No changes to push.");
         }
-      }
+      }*/
     })
     .catch(err => {
       console.error("Error building project", err);

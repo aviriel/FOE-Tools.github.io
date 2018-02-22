@@ -36,6 +36,7 @@ site-layout currentLocation="contributors"
                for(users in state.contributors | iterator=global.makeIterator(2))
                   div.tile.is-ancestor
                      for(user in users)
+                        if(user !== null)
                            div.tile.is-parent
                               article.tile.is-child
                                  a href=(user.html_url) target="_blank"

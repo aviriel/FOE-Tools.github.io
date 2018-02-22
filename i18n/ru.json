@@ -96,10 +96,6 @@
          "secure_position": {
             "block_place": {
                "title": "Обеспечение гарантии",
-               "description": {
-                  "p1": "Введите другие значения. Результат будет обновлен автоматически.",
-                  "p2_html": "<strong>Замечание</strong>: Если результат не обновился, нажмите \"$t(components.secure_position.block_place.submit)\"."
-               },
                "level_cost": "Стоимость уровня",
                "current_deposits": "Сумма вложений на данный момент",
                "your_participation": "Ваше вложение",

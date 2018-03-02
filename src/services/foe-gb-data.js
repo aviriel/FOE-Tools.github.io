@@ -30,6 +30,18 @@ function generateReward(firstRankReward) {
  * All level cost by ages
  */
 const ages = {
+  Oracle: [
+    { cost: 20, reward: generateReward(5) },
+    { cost: 40, reward: generateReward(10) },
+    { cost: 60, reward: generateReward(15) },
+    { cost: 130, reward: generateReward(20) },
+    { cost: 210, reward: generateReward(30) },
+    { cost: 290, reward: generateReward(35) },
+    { cost: 370, reward: generateReward(45) },
+    { cost: 460, reward: generateReward(50) },
+    { cost: 550, reward: generateReward(60) },
+    { cost: 650, reward: generateReward(65) }
+  ],
   NoAge: [
     { cost: 50, reward: generateReward(5) },
     { cost: 70, reward: generateReward(10) },
@@ -1259,7 +1271,7 @@ const gbs = {
   },
   Oracle_of_Delphi: {
     key: "Oracle_of_Delphi",
-    levels: ages.NoAge
+    levels: ages.Oracle
   },
   Tower_of_Babel: {
     key: "Tower_of_Babel",

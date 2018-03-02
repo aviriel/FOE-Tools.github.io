@@ -6,6 +6,12 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 ## 1.5.X
 
+### 1.5.1
+
+-   Fix cost and rewards of Oracle of Delphi [#24](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/24)
+
+### 1.5.0
+
 - Add changelog page [#21](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/21)
 - Add contributor page [#20](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/20)
 - Add Chateau Frontenac Calculator [#15](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/15)

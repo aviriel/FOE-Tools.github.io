@@ -6,6 +6,10 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 ## 1.5.X
 
+### 1.5.2
+
+-   Update GB data [#25](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/25)
+
 ### 1.5.1
 
 -   Fix cost and rewards of Oracle of Delphi [#24](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/24)

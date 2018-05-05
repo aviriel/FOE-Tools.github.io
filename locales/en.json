@@ -1,0 +1,395 @@
+{
+  "translation": {
+    "main_menu": {
+      "home": "Home",
+      "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+      "secure_position": "$t(routes.secure_position.hero.title)",
+      "cf_calculator": "$t(routes.cf_calculator.hero.title)",
+      "gb_statistics": "$t(routes.gb_statistics.hero.title)",
+      "gb_forecast_cost": "$t(routes.gb_forecast_cost.hero.title)"
+    },
+    "footer_menu": {
+      "about": "About",
+      "contributors": "Contributors",
+      "changelog": "Changelog"
+    },
+    "components": {
+      "cf_calculator": {
+        "block_cfc": {
+          "title": "$t(routes.cf_calculator.hero.title)",
+          "your_age": "Your Age",
+          "your_cf_boost": "Your $t(foe_data.gb.Chateau_Frontenac) Boost",
+          "coins_to_use": "Coins to use on UBQ",
+          "supplies_to_use": "Supplies to use on UBQ",
+          "gb_plunder_goods": "GB & Plunder Goods",
+          "fp_by_24h": "24 Hour FP Production",
+          "other_rq": "Other Daily RQ's",
+          "second_rq": "2nd RQ Giver ?",
+          "supplies_gathered": "Supplies Gathered",
+          "table_reward": {
+            "title": "Rewards",
+            "thead": {
+              "th1": "BP's",
+              "th2": "Medals",
+              "th3": "Goods",
+              "th4": "FP's"
+            }
+          },
+          "reward_message": {
+            "daily_ubq": "Daily UBQ's: {{count, number}}",
+            "bonus_ubq": "Bonus UBQ's: {{count, number}}",
+            "second_rq_completed": "2nd RQ's Completed: {{count, number}}",
+            "total_goods": "Total Goods: {{count, number}}",
+            "total_fp": "Total FP's: {{count, number}}",
+            "total_rq_completed": "Total RQ's Completed: {{count, number}}"
+          },
+          "table_return": {
+            "thead": {
+              "th_level": "Level",
+              "th_coin": "Coin returned",
+              "th_supply": "Supply returned"
+            }
+          },
+          "infinity_generator": {
+            "message": "With the current bonus of $t(foe_data.gb.Chateau_Frontenac), you will earn more coins and more supplies than you will use to complete the quests. Please choose the number of \"$t(components.cf_calculator.block_cfc.infinity_generator.label)\" you want to do.",
+            "label": "Cumulative quest"
+          }
+        }
+      },
+      "gb_investment": {
+        "gb_list_select": {
+          "label": "Switch Great Building"
+        },
+        "gb_investment": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title)",
+          "description": {
+            "p1": "Enter the values for level and bonus percentage. The values in the table update automatically.",
+            "p2_html": "<strong>Note</strong>: If the update is not done automatically, first set the GB level and the overall investment value and click on \"$t(components.gb_investment.gb_investment.form.submit_global)\". If you want to adjust the values of each place, adjust to your convenience and click on \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+          },
+          "form": {
+            "level": "GB Level (between 1 and {{max}})",
+            "investor_percentage": "% of global investors bonus (arc bonus)",
+            "submit_global": "Global calculation",
+            "submit_custom": "Custom calculation"
+          },
+          "table": {
+            "title": "$t({{gb_key}}) level {{level}}",
+            "thead": {
+              "th1": "Places",
+              "th2": "Default rewards",
+              "th3": "FP to put by the owner to secure the place",
+              "th4": "Rewards with rate",
+              "th5": "% of investors bonus (arc bonus)",
+              "th6": "Place free"
+            },
+            "tfoot": {
+              "total_preparation": "Total investment of the owner",
+              "level_cost": "Level cost"
+            }
+          }
+        },
+        "promotion": {
+          "title": "Promotion message",
+          "prefix_placeholder": "text before the promotion message",
+          "suffix_placeholder": "text after the promotion message",
+          "promo": [
+            "P1({{investment}})",
+            "P2({{investment}})",
+            "P3({{investment}})",
+            "P4({{investment}})",
+            "P5({{investment}})"
+          ]
+        }
+      },
+      "gb_forecast_cost": {
+        "title": "Forecast",
+        "p1": "Determine the number of FPs to go from one level to another, with or without Ark's bonuses.",
+        "custom_percentage": "Custom Arc bonus (for each place)",
+        "estimated_time": "Estimate time to reach the level",
+        "message": {
+          "single": "To complete the level {{level}} of \"$t({{gb}})\", the owner has to invest {{preparation, number}} FPs. Total cost of level: {{cost, number}} FPs.",
+          "multi": "To complete the level {{level}} of \"$t({{gb}})\", the owner has to invest {{preparation, number}} FPs. Total cost of levels: {{cost, number}} FPs.",
+          "diff": "With bonus investments, you'll save {{count}} FP",
+          "diff_plural": "With bonus investments, you'll save {{count, number}} FPs",
+          "estimated_time": "Estimated time to reach the level: {{time}}"
+        },
+        "prop_already_invested": "FPs already invested by the owner on the current level",
+        "graph": {
+          "title": "Forecast of the owner's preparation amount for \"$t({{gb}})\"",
+          "x_axes_label": "$t(utils.graph.gb_level)",
+          "y_axes_label": "$t(utils.graph.gb_level_cost)",
+          "label": {
+            "default": "Gross cost of the level",
+            "default_preparation": "Amount of preparation without bonus",
+            "custom_preparation": "Amount of preparation with bonus"
+          }
+        }
+      },
+      "gb_statistics": {
+        "title": "$t(routes.gb_statistics.hero.title)",
+        "p1": "The graphs are made according to the Age because the cost / reward of the GBs is the same for each GB of an age, except in a particular case ($t(foe_data.gb.Oracle_of_Delphi)).",
+        "represent": "Represent:",
+        "graph": {
+          "title_1": "Evolution of the cost of the levels according to the levels",
+          "title_2": "Evolution of the reward of the first place according to the levels",
+          "title_3": "Evolution of the cost of the levels according to the reward of the first place",
+          "title_4": "Evolution of the reward of the first place according to the cost of the levels"
+        }
+      },
+      "secure_position": {
+        "block_place": {
+          "title": "Block his place",
+          "level_cost": "Level cost",
+          "current_deposits": "Sum of current deposits",
+          "your_participation": "Your current participation",
+          "other_participation": "Participation of the player to overtake",
+          "fp_to_complete_level": "Number of FP remaining to complete the level: {{count}}",
+          "fp_to_complete_level_plural": "Number of FPs remaining to complete the level: {{count, number}}",
+          "your_arc_bonus": "Your Arc bonus",
+          "fp_target_reward": "FP of the targeted place",
+          "result": {
+            "error": "One or more values are not valid.",
+            "already_blocked": "Your place is blocked.",
+            "default": "You must have totaled {{count}} FP to block the place.",
+            "default_plural": "You must have totaled {{count, number}} FPs to block the place.",
+            "fp_to_secure_html": "You still have to put {{count}} FP.",
+            "fp_to_secure_html_plural": "You still have to put {{count, number}} FPs.",
+            "cant_block": "You can not block the place.",
+            "roi": {
+              "profit": "You will gain {{count}} FP",
+              "profit_plural": "You will gain {{count, number}} FPs",
+              "loss": "You will loss {{count}} FP",
+              "loss_plural": "You will loss {{count, number}} FPs",
+              "neutral": "You will not have a return on investment"
+            }
+          },
+          "unknown": "unknown"
+        }
+      },
+      "site_layout": {
+        "hero": {
+          "title": "$t(common:site_title)",
+          "slogan_html": "A set of tools to simplify life on $t(common:links.foe)"
+        },
+        "cookie": {
+          "message": "By continuing to use $t(common:site_title), you agree to the use of cookies to improve your comfort of use.",
+          "link": "More information"
+        },
+        "permalink_info": "You visit a permalink. Consequently, any changes made will not be saved in cookies.",
+        "footer": {
+          "license_html": "Source code under $t(common:links.mit) license",
+          "version": "Version {{version}}"
+        }
+      }
+    },
+    "routes": {
+      "home": {
+        "title": "$t(common:site_title)"
+      },
+      "about": {
+        "title": "About $t(common:site_title)",
+        "general_info": {
+          "title": "General information",
+          "p1_html": "Forge of Empires, FOE, and all related trademarks and content belong to InnoGames GmbH. <br /> $t(common:site_title) is an unofficial third party site and is not affiliated with InnoGames.",
+          "p2_html": "$t(common:site_title) was created by the French player <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+          "p3_html": "The site is OpenSource, the code is freely available on GitHub. <br /> Thus, everyone with the necessary skills can participate in the improvement of this site."
+        },
+        "cookie": {
+          "title": "Cookies",
+          "p1": "To improve your comfort of use, the site uses cookies.",
+          "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a \"$t(components.gb_investment.gb_investment.permalink)\" page, no information on the level of GB and the various percentages of investors is stored.",
+          "p3": "In \"$t(routes.cf_calculator.hero.title)\" tool, we store all form input."
+        },
+        "dev_info": {
+          "title": "Development information",
+          "p1": "The site is a simple static site hosted on GitHub.",
+          "p2_html": "The development is done in Node.js using $t(common:links.framework). The style is made using $t(common:links.style).",
+          "p3_html": "An idea of functionality? A problem ? Feel free to create an issue on GitHub or send me an email (in English or in French) at $t(common:links.contact_foe_tools).",
+          "message_info_github_issue": "<b>Note:</b> Regarding issues on GitHub, please make sure to write them in English to facilitate understanding for the greatest number."
+        }
+      },
+      "cf_calculator": {
+        "title": "$t(routes.cf_calculator.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Château Frontenac Calculator",
+          "subtitle": "A tool that help forecast goods and fp productions from doing recurring quests and unbirthday party quest (Rinbin)."
+        }
+      },
+      "changelog": {
+        "title": "Changelog | $t(common:site_title)"
+      },
+      "contributors": {
+        "title": "$t(routes.contributors.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Contributors",
+          "subtitle": "This page attempt to list all contributors"
+        },
+        "credit": {
+          "title": "Credit",
+          "table_credit": {
+            "thead": {
+              "th1": "Pseudo",
+              "th2": "Note"
+            },
+            "tbody": {
+              "td1": "\"$t(routes.gb_investment_gb_chooser.hero.title)\" and \"$t(routes.secure_position.hero.title)\" are based on huge work of his spreadsheets",
+              "td2": "\"$t(routes.cf_calculator.hero.title)\" are based on splendid work of his spreadsheet"
+            }
+          }
+        },
+        "programmer_and_translator": {
+          "title": "Programmers and Translators",
+          "contributors": {
+            "Heziode": "(Yoratheon) creator of this project"
+          }
+        }
+      },
+      "gb_investment": {
+        "title": "$t(routes.gb_investment.hero.title, { 'gb_key': '{{gb_key}}' }) | $t(common:site_title)",
+        "hero": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title) - $t({{gb_key}})"
+        }
+      },
+      "gb_investment_gb_chooser": {
+        "title": "$t(routes.gb_investment_gb_chooser.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "GB Investment",
+          "subtitle": "This tool makes it possible to calculate the number of points that a player must put on his GB to secure the first 5 places following a rate (arc bonus)."
+        },
+        "choose_gb": {
+          "title": "Choose a Great Building"
+        }
+      },
+      "gb_forecast_cost": {
+        "title": "$t(routes.gb_forecast_cost.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Forecast cost GB",
+          "subtitle": "This tool determine the number of FPs to go from one level to another of a GB, with or without Ark's bonuses."
+        }
+      },
+      "gb_statistics": {
+        "title": "$t(routes.gb_statistics.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "GB Statistics",
+          "subtitle": "This tool allows to visualize graphs on the evolution of the costs of the GB following the Age."
+        }
+      },
+      "secure_position": {
+        "title": "$t(routes.secure_position.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Secure place",
+          "subtitle": "This tool calculates the number of FP that a player must put on a GB to block his place."
+        }
+      },
+      "error": {
+        "404": {
+          "title": "Page not found | $t(common:site_title)",
+          "message": "Sorry, the page you are looking for does not exist or no more"
+        }
+      }
+    },
+    "foe_data": {
+      "age": {
+        "Oracle": "$t(foe_data.age.NoAge) ($t(foe_data.gb.Oracle_of_Delphi))",
+        "NoAge": "No Age",
+        "BronzeAge": "Bronze Age",
+        "IronAge": "Iron Age",
+        "EarlyMiddleAges": "Early Middle Ages",
+        "HighMiddleAges": "High Middle Ages",
+        "LateMiddleAges": "Late Middle Ages",
+        "ColonialAge": "Colonial Age",
+        "IndustrialAge": "Industrial Age",
+        "ProgressiveEra": "Progressive Era",
+        "ModernEra": "Modern Era",
+        "PostmodernEra": "Postmodern Era",
+        "ContemporaryEra": "Contemporary Era",
+        "Tomorrow": "Tomorrow",
+        "TheFuture": "The Future",
+        "ArcticFuture": "Arctic Future",
+        "OceanicFuture": "Oceanic Future"
+      },
+      "gb": {
+        "Observatory": "Observatory",
+        "Temple_of_Relics": "Temple of Relics",
+        "Oracle_of_Delphi": "Oracle of Delphi",
+        "Tower_of_Babel": "Tower of Babel",
+        "Statue_of_Zeus": "Statue of Zeus",
+        "Colosseum": "Colosseum",
+        "Lighthouse_of_Alexandria": "Lighthouse of Alexandria",
+        "Hagia_Sophia": "Hagia Sophia",
+        "Cathedral_of_Aachen": "Cathedral of Aachen",
+        "St_Mark_s_Basilica": "St. Mark's Basilica",
+        "Notre_Dame": "Notre Dame",
+        "Saint_Basil_s_Cathedral": "St. Basil's Cathedral",
+        "Castel_del_Monte": "Castel del Monte",
+        "Deal_Castle": "Deal Castle",
+        "Frauenkirche_of_Dresden": "Frauenkirche of Dresden",
+        "Capitol": "Capitol",
+        "Royal_Albert_Hall": "Royal Albert Hall",
+        "Chateau_Frontenac": "Château Frontenac",
+        "Alcatraz": "Alcatraz",
+        "Space_Needle": "Space Needle",
+        "Atomium": "Atomium",
+        "Cape_Canaveral": "Cape Canaveral",
+        "The_Habitat": "The Habitat",
+        "Lotus_Temple": "Lotus Temple",
+        "Innovation_Tower": "Innovation Tower",
+        "Dynamic_Tower": "Dynamic Tower",
+        "Voyager_V1": "Voyager V1",
+        "The_Arc": "The Arc",
+        "Rain_Forest_Project": "Rain Forest Project",
+        "Gaea_Statue": "Gaea Statue",
+        "Arctic_Orangery": "Arctic Orangery",
+        "Seed_Vault": "Seed Vault",
+        "Atlantis_Museum": "Atlantis Museum",
+        "The_Kraken": "The Kraken",
+        "The_Blue_Galaxy": "The Blue Galaxy"
+      }
+    },
+    "utils": {
+      "content": {
+        "tools": "Tools",
+        "statistics": "Statistics"
+      },
+      "btn_calculate": "Calculate",
+      "description": {
+        "p1": "Enter the different values. The result is updated automatically.",
+        "p2_html": "<strong>Note</strong>: If the update is not done automatically, click on \"$t(utils.btn_calculate)\"."
+      },
+      "permalink": "Permalink",
+      "Yes": "Yes",
+      "No": "No",
+      "Ok": "Ok",
+      "Copy": "Copy",
+      "Copyed": "Copyed !",
+      "Information": "Information",
+      "From": "From",
+      "To": "To (max {{max}})",
+      "Prefix": "Prefix",
+      "Suffix": "Suffix",
+      "moment": {
+        "year": "{{count}} year",
+        "year_plural": "{{count, number}} years",
+        "month": "{{count}} month",
+        "month_plural": "{{count}} months",
+        "day": "{{count}} day",
+        "day_plural": "{{count}} days"
+      },
+      "graph": {
+        "gb_level": "Level",
+        "gb_level_cost": "Level cost",
+        "gb_reward_1st_place": "Level reward (1st place)"
+      }
+    },
+    "seo": {
+      "keywords": {
+        "gb": "gb",
+        "great_building": "great building",
+        "fp": "fp",
+        "forge_point": "forge point",
+        "medals": "medals",
+        "military_units": "military units"
+      }
+    }
+  }
+}

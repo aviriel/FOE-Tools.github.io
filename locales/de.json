@@ -1,0 +1,202 @@
+{
+  "translation": {
+    "main_menu": {
+      "home": "Startseite",
+      "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+      "secure_position": "$t(routes.secure_position.hero.title)",
+      "cf_calculator": "$t(routes.cf_calculator.hero.title)"
+    },
+    "footer_menu": {
+      "about": "Über"
+    },
+    "components": {
+      "gb_investment": {
+        "gb_list_select": {
+          "label": "Wähle ein Legendäres Bauwerk"
+        },
+        "gb_investment": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title)",
+          "description": {
+            "p1": "Trage hier die Werte für Stufe und Mäzenbelohnung ein. Die Tabellenwerte werden sich automatisch aktualisieren.",
+            "p2_html": "<strong>Hinweis</strong>: Falls die Aktualisierung nicht automatisch erfolgen sollte, gib zuerst die LB Stufe und den allgemeinen Investitionswert ein und klicke dann auf \"$t(components.gb_investment.gb_investment.form.submit_global)\". Wenn du die einzelnen Platzierungswerte ändern möchtest, passe sie an deine Bedürfnisse an und klicke auf \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+          },
+          "form": {
+            "level": "LB Stufe (zwischen 1 und {{max}})",
+            "investor_percentage": "% globaler Investitionsbonus (Archebonus)",
+            "submit_global": "Globale Berechnung",
+            "submit_custom": "Spezifische Berechnung"
+          },
+          "table": {
+            "title": "$t({{gb_key}}) Stufe {{level}}",
+            "thead": {
+              "th1": "Plätze",
+              "th2": "Grundbelohnung",
+              "th3": "Durch Eigentümer zu setzende FP, um Platz abzusichern",
+              "th4": "Mäzenbelohnung inklusive Bonus",
+              "th5": "% Investitionsbonus (Archebonus)"
+            },
+            "tfoot": {
+              "total_preparation": "Gesamtinvestition durch Eigentümer",
+              "level_cost": "Stufenpreis"
+            }
+          }
+        },
+        "promotion": {
+          "title": "Werbebotschaft",
+          "promo": [
+            "P1({{investment}})",
+            "P2({{investment}})",
+            "P3({{investment}})",
+            "P4({{investment}})",
+            "P5({{investment}})"
+          ]
+        }
+      },
+      "secure_position": {
+        "block_place": {
+          "title": "Blockiere seinen Platz",
+          "level_cost": "Stufenkosten",
+          "current_deposits": "Aktuelle Investitionssumme",
+          "your_participation": "Deine aktuelle Beteiligung",
+          "other_participation": "Beteiligung des Spielers, welcher überholt werden soll",
+          "fp_to_complete_level": "Verbleibende Anzahl an FP, um die Stufe abzuschließen: {{count}}",
+          "fp_to_complete_level_plural": "Verbleibende Anzahl an FPs, um die Stufe abzuschließen: {{count, number}}",
+          "result": {
+            "error": "Ein oder mehrere Werte sind ungültig.",
+            "already_blocked": "Dein Platz ist gesichert.",
+            "default": "Du brauchst insgesamt einen {{count}} FP um den Platz zu blocken.",
+            "default_plural": "Du brauchst insgesamt {{count, number}} FPs um den Platz zu blocken.",
+            "fp_to_secure_html": "Du musst noch einen {{count}} FP investieren.",
+            "fp_to_secure_html_plural": "Du musst noch {{count, number}} FPs investieren.",
+            "cant_block": "Du kannst diesen Platz nicht blockieren."
+          },
+          "unknown": "unbekannt"
+        }
+      },
+      "site_layout": {
+        "hero": {
+          "title": "$t(common:site_title)",
+          "slogan_html": "Eine Sammlung an Tools, welche das Leben in $t(common:links.foe) vereinfacht"
+        },
+        "footer": {
+          "license_html": "Quellcode unter $t(common:links.mit) Lizenz",
+          "version": "Version {{version}}"
+        }
+      }
+    },
+    "routes": {
+      "home": {
+        "title": "$t(common:site_title)"
+      },
+      "about": {
+        "title": "Über $t(common:site_title)",
+        "general_info": {
+          "title": "Allgemeine Informationen",
+          "p1_html": "Forge of Empires, FOE, und alle damit verbundenen Marken und Inhalte gehören InnoGames GmbH. <br /> $t(common:site_title) ist eine inoffizielle Drittanbieter-Website und ist in keiner Art mit InnoGames affiliiert.",
+          "p2_html": "$t(common:site_title) wurde erstellt durch den französischen Spieler <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+          "p3_html": "Die Seite ist Open Source und der Programmcode ist frei verfügbar auf GitHub. <br /> Damit kann jeder mit entsprechenden Fähigkeiten an der Verbesserung dieser Seite teilnehmen."
+        },
+        "cookie": {
+          "title": "Cookies",
+          "p1": "Um die Bedienungsfreundlichkeit zu erhöhen, verwendet diese Seite Cookies.",
+          "p2_html": "Wir speichern die Darstellungssprache.<br />Im \"$t(components.gb_investment.gb_investment.title)\" Tool speichern wir für jedes LB die Stufe und die verschiedenen Prozentwerte der Investoren, sodass sie nicht jedes Mal neu eingegeben werden müssen. <br />Bitte nimm zur Kenntnis, dass ein Besuch der \"$t(components.gb_investment.gb_investment.permalink)\" Seite keine Informationen über Stufe der LB oder die verschiedenen Prozentwerte der Investoren gespeichert werden."
+        },
+        "dev_info": {
+          "title": "Entwicklungsinformation",
+          "p1": "Diese Seite ist eine einfache statische Seite gehostet auf GitHub.",
+          "p2_html": "Die Entwicklung basiert auf Node.js und verwendet $t(common:links.framework). Der Stil wurde mittels $t(common:links.style) erstellt.",
+          "p3_html": "Hast du Ideen zur Verbesserung der Funktionalität? Ein Problem? Erstelle einfach ein Issue auf Github oder sende mir eine E-Mail (in Englisch oder Französisch) an $t(common:links.contact_foe_tools).",
+          "message_info_github_issue": "<b>Hinweis:</b> Bezüglich Issues auf GitHub: Bitte schreibe diese auf Englisch, um ein weitestmögliches Verständnis zu erreichen."
+        }
+      },
+      "gb_investment": {
+        "title": "$t(routes.gb_investment.hero.title, { 'gb_key': '{{gb_key}}' }) | $t(common:site_title)",
+        "hero": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title) - $t({{gb_key}})"
+        }
+      },
+      "gb_investment_gb_chooser": {
+        "title": "$t(routes.gb_investment_gb_chooser.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "LB Investition",
+          "subtitle": "Dieses Tool ermöglicht es, die notwendigen Anzahl an an Punkten zu berechnen, welche ein Spieler in sein LB investieren muss, damit die ersten fünf Plätze gesichert werden. Dabei werden mögliche Belohnungsfaktoren (Archebonus) berücksichtigt."
+        },
+        "choose_gb": {
+          "title": "Wähle ein Legendäres Bauwerk"
+        }
+      },
+      "secure_position": {
+        "title": "$t(routes.secure_position.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Platzsicherung",
+          "subtitle": "Dieses Tool berechnet die notwendige Anzahl an FP, welche ein Spieler in ein LB investierem mus, um seinen Platz zu sichern."
+        }
+      }
+    },
+    "foe_data": {
+      "age": {
+        "NoAge": "Ohne Zeitalter",
+        "BronzeAge": "Bronzezeit",
+        "IronAge": "Eisenzeit",
+        "EarlyMiddleAges": "Frühes Mittelalter",
+        "HighMiddleAges": "Hochmittelalter",
+        "LateMiddleAges": "Spätes Mittelalter",
+        "ColonialAge": "Kolonialzeit",
+        "IndustrialAge": "Industriezeitalter",
+        "ProgressiveEra": "Jahrhundertwende",
+        "ModernEra": "Moderne",
+        "PostmodernEra": "Postmoderne",
+        "ContemporaryEra": "Gegenwart",
+        "Tomorrow": "Morgen",
+        "TheFuture": "Zukunft",
+        "ArcticFuture": "Arktische Zukunft",
+        "OceanicFuture": "Ozeanische Zukunft"
+      },
+      "gb": {
+        "Observatory": "Observatorium",
+        "Temple_of_Relics": "Relikttempel",
+        "Oracle_of_Delphi": "Orakel von Delphi",
+        "Tower_of_Babel": "Turm zu Babel",
+        "Statue_of_Zeus": "Zeusstatue",
+        "Colosseum": "Kolosseum",
+        "Lighthouse_of_Alexandria": "Leuchtturm von Alexandria",
+        "Hagia_Sophia": "Hagia Sophia",
+        "Cathedral_of_Aachen": "Aachener Dom",
+        "St_Mark_s_Basilica": "Markusdom",
+        "Notre_Dame": "Notre Dame",
+        "Saint_Basil_s_Cathedral": "Basilius-Kathedrale",
+        "Castel_del_Monte": "Castel del Monte",
+        "Deal_Castle": "Deal Castle",
+        "Frauenkirche_of_Dresden": "Dresdner Frauenkirche",
+        "Capitol": "Kapitol",
+        "Royal_Albert_Hall": "Royal Albert Hall",
+        "Chateau_Frontenac": "Château Frontenac",
+        "Alcatraz": "Alcatraz",
+        "Space_Needle": "Space Needle",
+        "Atomium": "Atomium",
+        "Cape_Canaveral": "Cape Canaveral",
+        "The_Habitat": "Das Habitat",
+        "Lotus_Temple": "Lotustempel",
+        "Innovation_Tower": "Innovation Tower",
+        "Dynamic_Tower": "Dynamischer Turm",
+        "Voyager_V1": "Voyager V1",
+        "The_Arc": "Die Arche",
+        "Rain_Forest_Project": "Regenwald-Projekt",
+        "Gaea_Statue": "Gaea-Statue",
+        "Arctic_Orangery": "Arktische Orangerie",
+        "Seed_Vault": "Saatgut-Tresor",
+        "Atlantis_Museum": "Atlantis-Museum",
+        "The_Kraken": "Der Kraken"
+      }
+    },
+    "utils": {
+      "btn_calculate": "Berechne",
+      "description": {
+        "p1": "Gib die verschiedenen Werte ein. Das Ergebnis wird automatisch aktualisiert.",
+        "p2_html": "<strong>Hinweis</strong>: Falls die Aktualisierung nicht automatisch erfolgen sollte, klicke auf \"$t(utils.btn_calculate)\"."
+      },
+      "permalink": "Permalink",
+      "Information": "Information"
+    }
+  }
+}

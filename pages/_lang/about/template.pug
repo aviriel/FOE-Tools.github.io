@@ -1,0 +1,23 @@
+div.content
+  h3.title.is-3 {{$t($data.i18nPrefix + 'title')}}
+  h4.title.is-4 {{$t($data.i18nPrefix + 'general_info.title')}}
+
+  p(v-html="$t($data.i18nPrefix + 'general_info.p1_html')")
+  p(v-html="$t($data.i18nPrefix + 'general_info.p2_html')")
+  p(v-html="$t($data.i18nPrefix + 'general_info.p3_html')")
+
+  h4.title.is-4#cookies {{$t($data.i18nPrefix + 'cookie.title')}}
+
+  p {{$t($data.i18nPrefix + 'cookie.p1')}}
+  p(v-html="$t($data.i18nPrefix + 'cookie.p2_html')")
+  p {{$t($data.i18nPrefix + 'cookie.p3')}}
+
+  h4.title.is-4 {{$t($data.i18nPrefix + 'dev_info.title')}}
+
+  p {{$t($data.i18nPrefix + 'dev_info.p1')}}
+  p(v-html="$t($data.i18nPrefix + 'dev_info.p2_html')")
+  p(v-html="$t($data.i18nPrefix + 'dev_info.p3_html')")
+
+  article.message
+    div.message-body
+      i(v-html="$t($data.i18nPrefix + 'dev_info.message_info_github_issue')")

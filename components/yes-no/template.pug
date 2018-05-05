@@ -1,0 +1,12 @@
+div.field
+  label.label {{label}}
+  div.control
+    div.buttons.has-addons
+      span.button(v-bind:class="{ 'is-success is-selected' : newValue }" v-on:click="newValue = true")
+        span.icon
+          i.fas.fa-check
+        span {{$t('utils.Yes')}}
+      span.button(v-bind:class="{ 'is-danger is-selected' : !newValue}" v-on:click="newValue = false")
+        span.icon
+          i.fas.fa-times
+        span {{$t('utils.No')}}

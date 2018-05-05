@@ -1,0 +1,60 @@
+@import "~bulma";
+
+// overrides
+
+.media-content {
+  overflow: hidden;
+}
+
+.b-radio.radio input[type=radio]:checked + .check {
+  border-color: $info;
+}
+
+.b-radio.radio:hover input[type=radio] + .check {
+  border-color: $info;
+}
+
+.b-radio.radio input[type=radio] + .check:before {
+  background-color: $info;
+}
+
+// custom
+body {
+  background-color: #F0F2F4 !important;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  z-index: 10000;
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link.is-active {
+  color: $link;
+}
+
+.navbar-dropdown-custom-shadow {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1) !important;
+}
+
+.is-dark-blue {
+  background-color: #16222e;
+  color: #ecf0f1;
+}
+
+.is-dark-blue .title {
+  color: #ecf0f1;
+}
+
+.is-dark-blue .subtitle {
+  color: #bdc3c7;
+}
+
+.margin-top-one-em {
+  margin-top: 1em;
+}
+
+section.hero.is-dark-blue .subtitle a:hover {
+  color: $info;
+}

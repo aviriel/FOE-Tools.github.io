@@ -1,0 +1,95 @@
+div.content
+  div.columns
+    div.column.is-half
+      div.field
+        h3.title.is-3 {{$t('foe_data.gb.' + gb.key)}}
+      div.field
+        gb-list-select(v-bind:current="gb.key" v-on:change="goTo($event)")
+    div.column.is-half(v-show="canPermalink")
+      div.field
+        nuxt-link#permalink.level-right(v-bind:to="permaLink" exact)
+          span.icon
+            i.fas.fa-link
+          | &nbsp;{{$t('utils.permalink')}}
+
+  h4.title.is-4 {{$t($data.i18nPrefix + 'gb_investment.title')}}
+
+  p {{$t($data.i18nPrefix + 'gb_investment.description.p1')}}
+  //p(v-html="$t($data.i18nPrefix + 'gb_investment.description.p2_html')")
+
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'gb_investment.form.level', { max: maxLevel })" label-for="giLevel" v-bind:type="haveError('level')")
+        b-input#giLevel(type="number" min="1" v-bind:max="maxLevel" v-model.number="level" name="level" autocomplete="off" v-bind:autofocus="canPermalink")
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'gb_investment.form.investor_percentage')" label-for="giInvestorPercentageGlobal" v-bind:type="haveError('investorPercentageGlobal')")
+        b-input#giInvestorPercentageGlobal(type="number" min="0" step="0.1" v-model.number="investorPercentageGlobal" name="investorPercentageGlobal" autocomplete="off")
+
+  //div.columns
+  //  div.column
+  //    div.field
+  //      div.control.level-item
+  //        button.button.is-link(v-on:click="submitGlobal") {{$t($data.i18nPrefix + 'gb_investment.form.submit_global')}}
+
+  div.table-is-responsive
+    table.table.is-bordered.is-striped.is-narrow.is-fullwidth(v-if="result !== null")
+      thead
+        tr
+          th.has-text-centered(colspan=6)
+            p {{$t($data.i18nPrefix + 'gb_investment.table.title', {gb_key: 'foe_data.gb.' + gb.key, level: result.level})}}
+        tr
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th1')}}
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th2')}}
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th3')}}
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th4')}}
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th5')}}
+          th {{$t($data.i18nPrefix + 'gb_investment.table.thead.th6')}}
+      tbody
+        tr(v-for="(place, i) in result.investment")
+          td.has-text-right {{$formatNumber(i + 1)}}
+          td.has-text-right {{$formatNumber(place.reward)}}
+          td.has-text-right {{$formatNumber(place.preparation)}}
+          td.has-text-right {{$formatNumber(place.participation)}}
+          td
+            b-field(v-bind:type="haveError('investorPercentageCustom_' + i)")
+              b-input(type="number" min="0" step="0.1" v-model.number="investorPercentageCustom[i]" v-bind:name="'investorPercentageCustom_' + i" autocomplete="off")
+          td
+            b-switch(v-bind:value="placeFree[i].state" type="is-info" v-on:input="changePlaceFree(i, $event)") {{placeFree[i].state ? $t('utils.Yes') : $t('utils.No')}}
+
+      tfoot
+        tr
+          th(colspan=5) {{$t($data.i18nPrefix + 'gb_investment.table.tfoot.total_preparation')}}
+          td
+            p.level-right {{$formatNumber(result.totalPreparations)}}
+        tr
+          th(colspan=5) {{$t($data.i18nPrefix + 'gb_investment.table.tfoot.level_cost')}}
+          td
+            p.level-right {{$formatNumber(result.cost)}}
+
+  //div.columns
+  //  div.column
+  //    div.field
+  //      div.control.level-item
+  //        button.button.is-link(v-on:click="submitCustom") {{$t($data.i18nPrefix + 'gb_investment.form.submit_custom')}}
+
+  h4.title.is-4.margin-top-one-em(v-if="result !== null") {{$t($data.i18nPrefix + 'promotion.title')}}
+
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.Prefix')" label-for="giPrefix")
+        b-input#giPrefix(type="text" v-model.trim="prefix" name="prefix" autocomplete="off" :placeholder="$t($data.i18nPrefix + 'promotion.prefix_placeholder')")
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.Suffix')" label-for="giSuffix")
+        b-input#giSuffix(type="text" v-model.trim="suffix" name="suffix" autocomplete="off" :placeholder="$t($data.i18nPrefix + 'promotion.suffix_placeholder')")
+
+  div(v-if="result !== null")
+    b-field(v-for="(value, i) in promotion" :key="i")
+      b-input(type="text" :value="value.message" readonly expanded)
+      p.control
+        b-tooltip(type="is-dark" v-bind:label="$t('utils.Copyed')" :active="value.active" always)
+          button.button(@click="copy(i)" v-bind:title="$t('utils.Copy')" style="color: #24292e; background-color: #eff3f6; background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);")
+            span.icon
+              i.far.fa-copy
+            | &nbsp;&nbsp;{{$t('utils.Copy')}}
+
+  //secure-position(v-if="result !== null" v-bind:propLevelCost="result.cost")

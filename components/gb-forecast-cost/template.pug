@@ -1,0 +1,76 @@
+div.content
+  div.columns
+    div.column
+      div.field.is-half
+        h3.title.is-3 {{$t(i18nPrefix + 'title')}}
+    div.column.is-half(v-show="canPermalink")
+      div.field
+        nuxt-link#permalink.level-right(v-bind:to="permaLink" exact)
+          span.icon
+            i.fas.fa-link
+          | &nbsp;{{$t('utils.permalink')}}
+
+  div.columns
+    div.column
+      div.field
+        p {{$t(i18nPrefix + 'p1')}}
+
+  // GB Selector
+  div.columns
+    div.column.is-half
+      div.field
+        gb-list-select(v-bind:current="gb.key" v-on:change="changeGb($event)")
+
+  // Row 1
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.From')" label-for="previsionFrom" v-bind:type="haveError('from')")
+        b-input#previsionFrom(type="number" min="1" v-bind:max="to" v-model.number="from" name="previsionFrom" autocomplete="off")
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.To', { max: maxLevel })" label-for="previsionTo" v-bind:type="haveError('to')")
+        b-input#previsionTo(type="number" v-bind:min="from" v-bind:max="maxLevel" v-model.number="to" name="previsionTo" autocomplete="off")
+
+  // Row 2
+  div.columns
+    div.column.is-half
+      yes-no(v-model="customPercentage" :label="$t(i18nPrefix + 'custom_percentage')")
+
+    div.column.is-half(v-show="!customPercentage")
+      b-field(v-bind:label="$t('components.gb_investment.gb_investment.form.investor_percentage')" label-for="previsionInvestorPercentageGlobal" v-bind:type="haveError('investorPercentageGlobal')")
+        b-input#previsionInvestorPercentageGlobal(type="number" min="0" step="0.1" v-model.number="investorPercentageGlobal" name="investorPercentageGlobal" autocomplete="off")
+
+  // Row 3
+  div.columns(v-show="customPercentage")
+    div.column
+      table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+        thead
+          tr
+            th {{$t('components.gb_investment.gb_investment.table.thead.th1')}}
+            th {{$t('components.gb_investment.gb_investment.table.thead.th5')}}
+        tbody
+          tr(v-for="i in 5")
+            td.has-text-right {{i}}
+            td
+              b-field(v-bind:type="haveError('investorPercentageCustom_' + i)")
+                b-input(type="number" min="0" step="0.1" v-model.number="investorPercentageCustom[i - 1]" v-bind:name="'investorPercentageCustom_' + i" autocomplete="off")
+
+  // Result
+  div(v-if="previsionResult !== null")
+    p(v-if="from === to") {{$t(i18nPrefix + 'message.single', { level: from, preparation: previsionResult.global.totalPreparations, gb: 'foe_data.gb.' + gb.key, cost: previsionResult.global.cost})}}
+    p(v-else) {{$t(i18nPrefix + 'message.multi', { from: from, to: to, preparation: previsionResult.global.totalPreparations, gb: 'foe_data.gb.' + gb.key, cost: previsionResult.global.cost })}}
+    p(v-if="previsionDefault.global.totalPreparations !== previsionResult.global.totalPreparations") {{$t(i18nPrefix + 'message.diff', { count: previsionDefault.global.totalPreparations - previsionResult.global.totalPreparations})}}
+
+  h4.margin-top-one-em {{$t(i18nPrefix + 'estimated_time')}}
+
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t('components.cf_calculator.block_cfc.fp_by_24h')" label-for="previsionFpBy24h" v-bind:type="haveError('fpBy24h')")
+        b-input#previsionFpBy24h(type="number" min="0" v-model.number="fpBy24h" name="previsionFpBy24h" autocomplete="off")
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'prop_already_invested')" label-for="previsionAlreadyInvested" v-bind:type="haveError('alreadyInvested')")
+        b-input#previsionAlreadyInvested(type="number" min="0" v-bind:max="maxCurrentLevel" v-model.number="alreadyInvested" name="previsionAlreadyInvested" autocomplete="off")
+
+  div(v-show="(previsionResult !== null) && (fpBy24h > 0)")
+    p {{$t(i18nPrefix + 'message.estimated_time', { time: estimatedTime })}}
+
+  graph-canvas.margin-top-one-em(v-show="from < to" gtype="line" id="graph" v-bind:goptions="options" v-bind:labels="labels" v-bind:datasets="datasets")

@@ -1,1 +1,0 @@
-exports.path = "/secure-position";

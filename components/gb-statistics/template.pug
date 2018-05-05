@@ -1,0 +1,22 @@
+div.content
+  div.columns
+    div.column.is-half
+      div.field
+        h3.title.is-3 {{$t(i18nPrefix + 'title')}}
+
+  p {{$t(i18nPrefix + 'p1')}}
+
+  p {{$t(i18nPrefix + 'represent')}}
+  ul
+    li(v-for="(value, key, index) in graphType" :key="key" style="list-style-type: none;")
+      b-radio(v-model="statSelector" :id="key" :native-value="key" type="is-info") {{value.title}}
+
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.From')" label-for="gbStatisticsFrom" v-bind:type="haveError('from')")
+        b-input#gbStatisticsFrom(type="number" min="1" v-bind:max="to" v-model.number="from" name="from" autocomplete="off")
+    div.column.is-half
+      b-field(v-bind:label="$t('utils.To', { max: maxLevelGraph })" label-for="gbStatisticsTo" v-bind:type="haveError('to')")
+        b-input#gbStatisticsTo(type="number" v-bind:min="from" v-bind:max="maxLevelGraph" v-model.number="to" name="to" autocomplete="off")
+
+  graph-canvas(gtype="line" id="graph" v-bind:goptions="options" v-bind:labels="labels" v-bind:datasets="datasets")

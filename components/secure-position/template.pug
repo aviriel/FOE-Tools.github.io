@@ -1,0 +1,63 @@
+div.content
+  div.columns
+    div.column.is-half
+      div.field
+        h3.title.is-3 {{$t(i18nPrefix + 'block_place.title')}}
+    div.column.is-half(v-show="canPermalink")
+      div.field
+        nuxt-link#permalink.level-right(v-bind:to="permaLink" exact)
+          span.icon
+            i.fas.fa-link
+          | &nbsp;{{$t('utils.permalink')}}
+
+  div.columns
+    div.column
+      div.field
+        p {{$t('utils.description.p1')}}
+        //p(v-html="$t('utils.description.p2_html')")
+
+  div.columns
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.level_cost')" label-for="splevelCost" v-bind:type="haveError('levelCost')")
+        b-input(type="number" min="0" v-model.number="levelCost" name="level-cost" id="splevelCost" autocomplete="off" v-bind:disabled="haveInputLevelCost()" v-bind:autofocus="canPermalink")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.your_participation')" label-for="spYourParticipation" v-bind:type="haveError('yourParticipation')")
+        b-input(type="number" min="0" v-model.number="yourParticipation" name="your-participation" id="spYourParticipation" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.your_arc_bonus')" label-for="spYourArcBonus" v-bind:type="haveError('yourArcBonus')")
+        b-input(type="number" min="0" v-model.number="yourArcBonus" step="0.1" name="your-arc-bonus" id="spYourArcBonus" autocomplete="off")
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.current_deposits')" label-for="spCurrentDeposits" v-bind:type="haveError('currentDeposits')")
+        b-input(type="number" min="0" v-model.number="currentDeposits" name="current-deposits" id="spCurrentDeposits" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.other_participation')" label-for="spOtherParticipation" v-bind:type="haveError('otherParticipation')")
+        b-input(type="number" min="0" v-model.number="otherParticipation" name="other-participation" id="spOtherParticipation" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_place.fp_target_reward')" label-for="spFpTargetReward" v-bind:type="haveError('fpTargetReward')")
+        b-input(type="number" min="0" v-model.number="fpTargetReward" step="5" name="fp-target-reward" id="spFpTargetReward" autocomplete="off")
+
+  //div.columns
+  //  div.column
+  //    div.field
+  //      div.control.level-item
+  //        button.button.is-link(id="submit-secure-position" v-on:click="submitSecurePosition") {{$t('utils.btn_calculate')}}
+
+  p {{$t(i18nPrefix + 'block_place.fp_to_complete_level', {count: getNumberOfRemainingPoints()})}}
+  p(v-if="!formValid") {{$t(i18nPrefix + 'block_place.result.error')}}
+  div(v-else-if="fp > 0")
+    p(v-if="fp <= yourParticipation") {{$t(i18nPrefix + 'block_place.result.already_blocked')}}
+    p(v-else) {{$t(i18nPrefix + 'block_place.result.default', {count: fp})}}
+    p(v-if="((fp >= yourParticipation) && (fp - yourParticipation) > 0) && (yourParticipation > 0)") {{$t(i18nPrefix + 'block_place.result.fp_to_secure_html', {count: fp - yourParticipation})}}
+  p(v-else="$t(i18nPrefix + 'block_place.result.cant_block')")
+
+  div.margin-top-one-em(v-show="(fp > 0) && (yourArcBonus >= 0) && (fpTargetReward > 0)")
+    article.message(v-bind:class="{'is-success': roi > 0, 'is-danger': roi < 0}")
+      div.message-body.has-text-dark
+        p(v-if="roi > 0")
+          span.icon.is-medium.has-text-success(style="vertical-align: middle;")
+            i.fas.fa-arrow-up
+          | {{$t(i18nPrefix + 'block_place.result.roi.profit', {count: Math.abs(roi)})}}
+        p(v-else-if="roi < 0")
+          span.icon.is-medium.has-text-danger(style="vertical-align: middle;")
+            i.fas.fa-arrow-down
+          | {{$t(i18nPrefix + 'block_place.result.roi.loss', {count: Math.abs(roi)})}}
+        p(v-else)
+          span.icon.is-medium(style="vertical-align: middle;")
+            i.fas.fa-exchange-alt
+          | {{$t(i18nPrefix + 'block_place.result.roi.neutral')}}

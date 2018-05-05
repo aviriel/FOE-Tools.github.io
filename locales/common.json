@@ -1,0 +1,48 @@
+{
+  "common": {
+    "site_title": "FOE Tools",
+    "lang": {
+      "en": { "original": "English" },
+      "fr": { "en": "French", "original": "Français" },
+      "de": { "en": "German", "original": "Deutsch" },
+      "ru": { "en": "Russian", "original": "Русский" }
+    },
+    "language_selector": {
+      "en": "$t(common:lang.en.original)",
+      "fr": "$t(common:lang.fr.en) ($t(common:lang.fr.original))",
+      "de": "$t(common:lang.de.en) ($t(common:lang.de.original))",
+      "ru": "$t(common:lang.ru.en) ($t(common:lang.ru.original))"
+    },
+    "links": {
+      "foe": "<a href=\"https://forgeofempires.com\">Forge Of Empire</a>",
+      "mit": "<a href=\"http://opensource.org/licenses/mit-license.php\">MIT</a>",
+      "framework": "<a href=\"https://nuxtjs.org/\">Nuxt</a>",
+      "style": "<a href=\"https://bulma.io/\">Bulma</a>",
+      "contact_foe_tools": "<a href=\"mailto:foe-tools@protonmail.com?subject=FOE-Tools\">foe-tools@protonmail.com</a>"
+    },
+    "tools": {
+      "gb_investment": {
+        "title": "$t(routes.gb_investment_gb_chooser.hero.title)",
+        "subtitle": "$t(routes.gb_investment_gb_chooser.hero.subtitle)"
+      },
+      "secure_position": {
+        "title": "$t(routes.secure_position.hero.title)",
+        "subtitle": "$t(routes.secure_position.hero.subtitle)"
+      },
+      "cf_calculator": {
+        "title": "$t(routes.cf_calculator.hero.title)",
+        "subtitle": "$t(routes.cf_calculator.hero.subtitle)"
+      }
+    },
+    "statistics": {
+      "gb_statistics": {
+        "title": "$t(routes.gb_statistics.hero.title)",
+        "subtitle": "$t(routes.gb_statistics.hero.subtitle)"
+      },
+      "gb_forecast_cost": {
+        "title": "$t(routes.gb_forecast_cost.hero.title)",
+        "subtitle": "$t(routes.gb_forecast_cost.hero.subtitle)"
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+div
+  gb-investment(v-bind:gb="gb" :canPermalink="true" v-on:updateLevelCost="levelCost = $event")
+  secure-position(v-show="levelCost > 0" v-bind:propLevelCost="levelCost")

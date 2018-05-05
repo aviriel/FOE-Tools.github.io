@@ -1,0 +1,7 @@
+b-dropdown
+  button.button(slot="trigger")
+    span {{$t('lang.' + this.$i18n.i18next.language + '.original')}}
+    span.icon
+      i.fas.fa-chevron-down
+
+  b-dropdown-item(v-for="lang in $store.supportedLocales" :key="lang" data-lang="lang" v-on:click="currentLang = lang" v-bind:class="[lang === currentLang ? 'is-active' : '']") {{$t("language_selector." + lang)}}

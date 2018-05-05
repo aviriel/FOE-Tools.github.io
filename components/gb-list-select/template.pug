@@ -1,0 +1,4 @@
+b-field(v-bind:label="$t(i18nPrefix + 'label')" label-for="gbList")
+  b-select#gbList(v-model="gbList" name="gbList" expanded)
+    optgroup(v-for="(age, i) in foeGBData.GBs_BY_AGE" :label="$t('foe_data.age.' + age.key)")
+      option(v-for="gb in age.gbs" :value="gb.key") {{$t('foe_data.gb.' + gb.key)}}

@@ -1,0 +1,13 @@
+div
+  h3.title.is-3 {{$t(i18nPrefix + 'choose_gb.title')}}
+
+  div.tile.is-ancestor(v-for="items of GBsByAge")
+    div.tile.is-parent(v-for="item of items" v-if="item !== null")
+      article.tile.is-child.box
+        p.title.is-4(:class="item.key + '-header'") {{$t('foe_data.age.' + item.key)}}
+        div.content
+          ul
+            li(v-for="gb in item.gbs")
+              a(v-bind:href="$i18n.path('gb-investment/' + gb.key + '/')") {{$t('foe_data.gb.' + gb.key)}}
+              // FIXME: with nuxt-link, no URL query in gb-investment
+              //nuxt-link(v-bind:to="$i18n.path('gb-investment/' + gb.key + '/')" exact) {{$t('foe_data.gb.' + gb.key)}}

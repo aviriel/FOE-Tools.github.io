@@ -1,0 +1,92 @@
+div
+  div.columns
+    div.column.is-half
+      div.field
+        h3.title.is-3 {{$t($data.i18nPrefix + 'block_cfc.title')}}
+    div.column.is-half(v-show="canPermalink")
+      div.field
+        nuxt-link#permalink.level-right(v-bind:to="permaLink" exact)
+          span.icon
+            i.fas.fa-link
+          | &nbsp;{{$t('utils.permalink')}}
+
+  p {{$t('utils.description.p1')}}
+  //p(v-html="$t('utils.description.p2_html')")
+
+  // Row 1
+  div.columns
+    div.column.is-half
+      b-field#your-age-container(v-bind:label="$t(i18nPrefix + 'block_cfc.your_age')" label-for="your-age" v-bind:type="haveError('yourAge')")
+        b-select#your-age(v-model="yourAge" name="your-age" expanded)
+          option(v-for="age in questData.ages" :value="age.key" :key="age.key" v-bind:selected="yourAge == age.key" v-bind:id="'option_' + age.key" autocomplete="off") {{$t('foe_data.age.' + age.key)}}
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.coins_to_use')" label-for="coins" v-bind:type="haveError('coins')")
+        b-input#coins(type="number" min="0" v-model.number="coins" name="coins" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.gb_plunder_goods')" label-for="goods" v-bind:type="haveError('goods')")
+        b-input#goods(type="number" min="0" v-model.number="goods" name="goods" autocomplete="off")
+      yes-no(v-show="checkSecondQuest" v-model="secondRq" :label="$t(i18nPrefix + 'block_cfc.second_rq')")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.other_rq')" label-for="other-rq" v-bind:type="haveError('otherRq')")
+        b-input#other-rq(type="number" min="0" v-model.number="otherRq" name="other-rq" autocomplete="off")
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.your_cf_boost')" label-for="your-cf-boost" v-bind:type="haveError('yourCfBoost')")
+        b-input#your-cf-boost(type="number" min="0" v-model.number="yourCfBoost" name="your-cf-boost" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.supplies_to_use')" label-for="supplies" v-bind:type="haveError('supplies')")
+        b-input#supplies(type="number" min="0" v-model.number="supplies" name="supplies" autocomplete="off")
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.fp_by_24h')" label-for="fp-by-24h" v-bind:type="haveError('fpBy24h')")
+        b-input#fp-by-24h(type="number" min="0" v-model.number="fpBy24h" name="fp-by-24h" autocomplete="off")
+      b-field(v-show="checkSecondQuest && secondRq" v-bind:label="$t(i18nPrefix + 'block_cfc.supplies_gathered')" label-for="supplies-gathered" v-bind:type="haveError('suppliesGathered')")
+        b-input#supplies-gathered(type="number" min="0" v-model.number="suppliesGathered" name="supplies-gathered" autocomplete="off")
+
+  b-message(v-show="infinityGenerator" v-bind:title="$t('utils.Information')" type="is-info" has-icon :closable="false") {{$t(i18nPrefix + 'block_cfc.infinity_generator.message')}}
+
+  div.columns(v-show="infinityGenerator")
+    div.column.is-half
+      b-field(v-bind:label="$t(i18nPrefix + 'block_cfc.infinity_generator.label')" label-for="cumulativeQuest" v-bind:type="haveError('cumulativeQuest')")
+        b-input#cumulativeQuest(type="number" min="1" v-model.number="cumulativeQuest" name="cumulativeQuest" autocomplete="off")
+
+  //div.columns
+  //  div.column
+  //    div.field
+  //      div.control.level-item
+  //        button#submit-cf-calculator.button.is-link(v-on:click="submitCfCalculator") {{$t('utils.btn_calculate')}}
+
+  table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+    thead
+      tr
+        th.has-text-centered(colspan=4) {{$t(i18nPrefix + 'block_cfc.table_reward.title')}}
+      tr
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th1')}}
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th2')}}
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th3')}}
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th4')}}
+    tbody
+      tr
+        td.has-text-right {{$formatNumber(result.bp)}}
+        td.has-text-right {{$formatNumber(result.medals)}}
+        td.has-text-right {{$formatNumber(result.goods)}}
+        td.has-text-right {{$formatNumber(result.fp)}}
+
+  div.columns
+    div.column.is-one-third
+      div.field
+        p {{$t(i18nPrefix + 'block_cfc.reward_message.total_goods', {count: result.totalGoods})}}
+        p {{$t(i18nPrefix + 'block_cfc.reward_message.daily_ubq', {count: result.dailyUbq})}}
+    div.column.is-one-third
+      div.field
+        p {{$t(i18nPrefix + 'block_cfc.reward_message.total_fp', {count: result.totalFp})}}
+        p {{$t(i18nPrefix + 'block_cfc.reward_message.bonus_ubq', {count: result.bonusUbq})}}
+    div.column.is-one-third
+      div.field
+        p {{$t(i18nPrefix + 'block_cfc.reward_message.total_rq_completed', {count: result.totalRqCompleted})}}
+        p(v-show="secondRq") {{$t(i18nPrefix + 'block_cfc.reward_message.second_rq_completed', {count: result.secondRqCompleted})}}
+
+  table(v-show="!result.coinSupplyReturn.length <= 0").table.is-bordered.is-striped.is-narrow.is-fullwidth
+    thead
+      tr
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_level')}}
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_coin')}}
+        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_supply')}}
+    tbody
+      tr(v-for="(data, index) in result.coinSupplyReturn")
+        td.has-text-right {{$formatNumber(index + 1)}}
+        td.has-text-right {{$formatNumber(data.coin)}}
+        td.has-text-right {{$formatNumber(data.supply)}}

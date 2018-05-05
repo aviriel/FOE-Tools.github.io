@@ -1,0 +1,91 @@
+#app
+  header
+    nav.navbar.has-shadow
+      div.navbar-brand
+        a.navbar-item(:href="$i18n.path('/')")
+          img(src="/img/icons/logo.png" alt="FOE-Tools logo" width="28" height="28")
+        div.navbar-burger.burger(v-bind:class="{'is-active': burgerMenuVisible}" data-target="mainNavbar")
+          span
+          span
+          span
+
+      div#mainNavbar.navbar-menu(v-bind:class="{'is-active': burgerMenuVisible}")
+        div.navbar-start
+          nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.home.key}"
+                                v-bind:to="$i18n.path(navbarLinks.home.link)" exact) {{$t('main_menu.' + navbarLinks.home.key)}}
+
+          div.navbar-item.has-dropdown.is-hoverable
+            nuxt-link.navbar-link(v-bind:to="$i18n.path('#tools')" exact) {{$t('utils.content.tools')}}
+
+            div.navbar-dropdown.is-boxed.navbar-dropdown-custom-shadow
+              nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.gb_investment.key}"
+              v-bind:to="$i18n.path(navbarLinks.gb_investment.link)" exact) {{$t('main_menu.' + navbarLinks.gb_investment.key)}}
+
+              nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.secure_position.key}"
+              v-bind:to="$i18n.path(navbarLinks.secure_position.link)" exact) {{$t('main_menu.' + navbarLinks.secure_position.key)}}
+
+              nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.cf_calculator.key}"
+              v-bind:to="$i18n.path(navbarLinks.cf_calculator.link)" exact) {{$t('main_menu.' + navbarLinks.cf_calculator.key)}}
+
+          div.navbar-item.has-dropdown.is-hoverable
+            nuxt-link.navbar-link(v-bind:to="$i18n.path('#statistics')" exact) {{$t('utils.content.statistics')}}
+
+            div.navbar-dropdown.is-boxed.navbar-dropdown-custom-shadow
+              nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.gb_statistics.key}"
+              v-bind:to="$i18n.path(navbarLinks.gb_statistics.link)" exact) {{$t('main_menu.' + navbarLinks.gb_statistics.key)}}
+
+              nuxt-link.navbar-item(v-bind:class="{'is-active': $store.state.currentLocation === navbarLinks.gb_forecast_cost.key}"
+              v-bind:to="$i18n.path(navbarLinks.gb_forecast_cost.link)" exact) {{$t('main_menu.' + navbarLinks.gb_forecast_cost.key)}}
+
+        div.navbar-end
+          div.navbar-item
+            language-selector
+          div.navbar-item
+            div.field.is-grouped
+              a.button(href="https://github.com/FOE-Tools/FOE-Tools.github.io" target="_blank")
+                span.icon
+                  i.fab.fa-github
+                span GitHub
+
+  section.fixed(v-show="cookieDisclaimerUndisplayed")
+    b-notification.is-radiusless.is-marginless.has-text-centered(type="is-dark" closable v-on:close="confirmInfoCookie" v-bind:active="cookieDisclaimerUndisplayed")
+      div.has-text-centered  {{$t(i18nPrefix + 'cookie.message')}}
+        |
+        |
+        nuxt-link(:to="$i18n.path('about#cookies')" exact) {{$t(i18nPrefix + 'cookie.link')}}
+        | .
+
+  section.hero.is-dark-blue
+    div.hero-body
+      div.container
+        div.columns
+          div.column.is-8-desktop.is-offset-2-desktop
+            h1.title.is-2.is-spaced {{$t($store.state.hero.title)}}
+            h2.subtitle.is-4(v-html="$t($store.state.hero.subtitle)")
+
+  main.container.is-fullheight
+    section.section
+      div.container
+        div.columns.is-centered
+          div.column.is-three-quarters
+            div(v-if="(['home', 'gb_investment'].indexOf($store.state.currentLocation) >= 0) && !$route.params.gb")
+              nuxt
+            div.card.article(v-else)
+              div.card-content
+                div.content.article-body
+                  div.columns(v-show="isPermalink")
+                    div.column
+                      b-message(v-bind:title="$t('utils.Information')" type="is-warning" has-icon) {{$t(i18nPrefix + 'permalink_info')}}
+                  nuxt
+
+  footer.footer.has-text-centered
+    div.container
+      div.columns
+        div.column.is-8-desktop.is-offset-2-desktop
+          nav.breadcrumb.has-dot-separator.is-centered.is-marginless(aria-label="breadcrumbs")
+            ul
+              li(v-for="footerLink in footerLinks" v-bind:class="{ 'is-active': $store.state.currentLocation === footerLink.key }")
+                nuxt-link(v-bind:to="$i18n.path(footerLink.link)" exact) {{$t('footer_menu.' + footerLink.key)}}
+          p
+            small(v-html="$t('components.site_layout.footer.license_html')")
+          p {{$t('components.site_layout.footer.version', {version: siteVersion})}}

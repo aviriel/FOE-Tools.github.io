@@ -1,0 +1,11 @@
+$error-icon-container-size: 8rem;
+$error-icon-size: 8em;
+
+.error-icon-container {
+  height: $error-icon-container-size;
+  width: $error-icon-container-size;
+}
+
+.error-icon {
+  font-size: $error-icon-size;
+}

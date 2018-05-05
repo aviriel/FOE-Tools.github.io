@@ -1,0 +1,33 @@
+div.content
+  h3.title.is-3 {{$t($data.i18nPrefix + 'hero.title')}}
+  h4.title.is-4 {{$t($data.i18nPrefix + 'credit.title')}}
+
+  table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+    thead
+      tr
+        th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th1')}}
+        th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th2')}}
+    tbody
+      tr
+        td Von Willem (FR)
+        td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td1')}}
+      tr
+        td Ozyman Tremble Weaklings (US)
+        td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td2')}}
+
+  h4.title.is-4 {{$t($data.i18nPrefix + 'programmer_and_translator.title')}}
+
+  b-loading(:is-full-page="false" :active.sync="contributors.length === 0")
+  div.tile.is-ancestor(v-for="users in contributors")
+    div.tile.is-parent(v-for="user in users")
+      article.tile.is-child(v-if="user !== null")
+        a(v-bind:href="user.html_url" target="_blank")
+          div.card
+            div.card-content
+              div.media
+                div.media-left
+                  figure.image.is-48x48(style="margin-left: 0em; margin-right: 0em;")
+                    img(v-bind:src="user.avatar_url" v-bind:alt="user.login + ' avatar'")
+                div.media-content
+                  p.title.is-4 {{user.login}}
+                  p.subtitle.is-6(v-if="i18nExists(i18nPrefix + 'programmer_and_translator.contributors.' + user.login)") {{$t($data.i18nPrefix + 'programmer_and_translator.contributors.' + user.login)}}

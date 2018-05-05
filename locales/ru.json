@@ -1,0 +1,290 @@
+{
+  "translation": {
+    "main_menu": {
+      "home": "Главная",
+      "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
+      "secure_position": "$t(routes.secure_position.hero.title)",
+      "cf_calculator": "$t(routes.cf_calculator.hero.title)"
+    },
+    "footer_menu": {
+      "about": "О сервисе",
+      "contributors": "Авторы",
+      "changelog": "Изменения"
+    },
+    "components": {
+      "cf_calculator": {
+        "block_cfc": {
+          "title": "$t(routes.cf_calculator.hero.title)",
+          "your_age": "Ваша эпоха",
+          "your_cf_boost": "Ваш бонус $t(foe_data.gb.Chateau_Frontenac)",
+          "coins_to_use": "Монет, используемых в Праздничной вечеринке Ринбина (ПВР)",
+          "supplies_to_use": "Ресурсов, используемых в ПВР",
+          "gb_plunder_goods": "ВС и производственные здания (товары)",
+          "fp_by_24h": "Производство СО в сутки",
+          "other_rq": "Другие суточные повторяемые квесты",
+          "second_rq": "Еще повторяющиеся квесты?",
+          "supplies_gathered": "Ресурсов получено",
+          "table_reward": {
+            "title": "Награды",
+            "thead": {
+              "th1": "Чертежи",
+              "th2": "Медали",
+              "th3": "Товары",
+              "th4": "СО"
+            }
+          },
+          "reward_message": {
+            "daily_ubq": "Ежедневные ПВР: {{count}}",
+            "bonus_ubq": "Бонус ПВР: {{count}}",
+            "second_rq_completed": "Вторых круговых заданий выполнено: {{count}}",
+            "total_goods": "Всего товаров: {{count}}",
+            "total_fp": "Всего СО: {{count}}",
+            "total_rq_completed": "Всего круговых заданий выполнено: {{count}}"
+          },
+          "table_return": {
+            "thead": {
+              "th_level": "Уровень",
+              "th_coin": "Возврат монет",
+              "th_supply": "Возврат ресурсов"
+            }
+          }
+        }
+      },
+      "gb_investment": {
+        "gb_list_select": {
+          "label": "Выберите Великое Строение"
+        },
+        "gb_investment": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title)",
+          "description": {
+            "p1": "Укажите уровень ВС и бонус Арки (%) того, кто вкладывается. Значения в таблице обновятся автоматически.",
+            "p2_html": "<strong>Замечание</strong>: Если таблица не обновилась автоматически, сначала укажите уровень ВС, потом значение бонуса Арки и нажмите \"$t(components.gb_investment.gb_investment.form.submit_global)\". Если вы хотите указать значения вкладов для всех мест, заполните правую колонку таблицы и нажмите \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+          },
+          "form": {
+            "level": "Уровень ВС (от 1 до {{max}})",
+            "investor_percentage": "Бонус Арки, % (единый для всех мест)",
+            "submit_global": "Рассчитать",
+            "submit_custom": "Рассчитать индивидуально"
+          },
+          "table": {
+            "title": "$t({{gb_key}}) уровень {{level}}",
+            "thead": {
+              "th1": "Места",
+              "th2": "Стандартная награда",
+              "th3": "СО, которые должен вложить владелец для гарантии места",
+              "th4": "Награда с учетом бонуса",
+              "th5": "Бонус Арки, %"
+            },
+            "tfoot": {
+              "total_preparation": "Общий вклад владельца",
+              "level_cost": "Стоимость уровня"
+            }
+          }
+        },
+        "promotion": {
+          "title": "Шаблон сообщения с предложением вложиться арочникам",
+          "promo": [
+            "P1({{investment}})",
+            "P2({{investment}})",
+            "P3({{investment}})",
+            "P4({{investment}})",
+            "P5({{investment}})"
+          ]
+        }
+      },
+      "secure_position": {
+        "block_place": {
+          "title": "Обеспечение гарантии",
+          "level_cost": "Стоимость уровня",
+          "current_deposits": "Сумма вложений на данный момент",
+          "your_participation": "Ваше вложение",
+          "other_participation": "Вложение игрока, которого нужно обойти",
+          "submit": "Рассчитать",
+          "fp_to_complete_level": "Количество СО, которые осталось вложить до закрытия уровня: {{count}}",
+          "fp_to_complete_level_plural": "Количество СО, которые осталось вложить до закрытия уровня: {{count}}",
+          "your_arc_bonus": "Бонус вашей Арки",
+          "fp_target_reward": "СО планируемого места",
+          "result": {
+            "error": "Одно или несколько значений не верны.",
+            "already_blocked": "Это место уже занято.",
+            "default": "Вы должны вложить всего {{count}} СО, чтобы занять место.",
+            "default_plural": "Вы должны вложить всего {{count, number}} СО, чтобы занять место.",
+            "fp_to_secure_html": "Вам нужно добавить еще {{count}} СО.",
+            "fp_to_secure_html_plural": "Вам нужно вложить еще {{count, number}} СО.",
+            "cant_block": "Вы не можете занять это место.",
+            "roi": {
+              "profit": "Вы получите {{count}} СО",
+              "profit_plural": "Вы получите {{count, number}} СО",
+              "loss": "Вы потеряете {{count}} СО",
+              "loss_plural": "Вы потеряете {{count, number}} СО",
+              "neutral": "Вы не получите возврат с этого вложения"
+            }
+          },
+          "unknown": "неизвестно"
+        }
+      },
+      "site_layout": {
+        "hero": {
+          "title": "$t(common:site_title)",
+          "slogan_html": "Набор инструментов для упрощения игры в $t(common:links.foe)"
+        },
+        "footer": {
+          "license_html": "Исходный код доступен под лицезией $t(common:links.mit)",
+          "version": "Версия {{version}}"
+        }
+      }
+    },
+    "routes": {
+      "home": {
+        "title": "$t(common:site_title)"
+      },
+      "about": {
+        "title": "О $t(common:site_title)",
+        "general_info": {
+          "title": "Основная информация",
+          "p1_html": "Forge of Empires, FOE и все связанные торговые марки принадлежат InnoGames GmbH. <br /> $t(common:site_title) не связан с Innogames и является сторонним неофициальным сайтом.",
+          "p2_html": "$t(common:site_title) создан французским игроком <strong class=\"has-text-weight-semibold\">Yoratheon</strong>.",
+          "p3_html": "Сайт является открытым, исходный код доступен на GitHub. <br /> Все желающие могут принять участие в улучшении этого сайта."
+        },
+        "cookie": {
+          "title": "Куки",
+          "p1": "Для вашего удобства этот сайт использует куки вашего браузера.",
+          "p2_html": "Мы храним в куки выбранный вами язык сайта.<br />В \"$t(components.gb_investment.gb_investment.title)\" мы также храним для каждого ВС уровни и проценты бонуса Арки, чтобы их не нужно было вводить каждый раз заново. <br />Пожалуйста, учитывайте, что, когда вы переходите по ссылке \"$t(components.gb_investment.gb_investment.permalink)\", информация об уровне ВС и бонусах Арки не хранится."
+        },
+        "dev_info": {
+          "title": "Информация для разработчиков",
+          "p1": "Этот сайт является простым статичным сайтом, который хостится на GitHub.",
+          "p2_html": "Сайт разработан на Node.js. Движок шаблонов - $t(common:links.framework). Оформление сделано с использованием $t(common:links.style).",
+          "p3_html": "Есть идея, как улучшить сайт? Нашли ошибку? Создавайте Issue на GitHub или пишите письма (на английском или французском) разработчику сайта на $t(common:links.contact_foe_tools).",
+          "message_info_github_issue": "<b>Замечение:</b> Отосительно запросов на Github, пожалуйста, пишите их по-английски, чтобы все вас понимали. Переводчик на русский в процессе разработки не участвует."
+        }
+      },
+      "cf_calculator": {
+        "title": "$t(routes.cf_calculator.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Калькулятор Шато-Фронтенак",
+          "subtitle": "Инструмент для подсчета возврата товаров и СО при решении повторяющихся квестов и неосновного квеста Ринбин (Непраздничная вечеринка)."
+        }
+      },
+      "changelog": {
+        "title": "Изменения | $t(common:site_title)"
+      },
+      "contributors": {
+        "title": "$t(routes.contributors.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Авторы",
+          "subtitle": "На этой странице перечислены все (надеемся, что так) участники разработки этого проекта"
+        },
+        "credit": {
+          "title": "Благодарности",
+          "table_credit": {
+            "thead": {
+              "th1": "Ник",
+              "th2": "Примечание"
+            },
+            "tbody": {
+              "td1": "\"$t(routes.gb_investment_gb_chooser.hero.title)\" и \"$t(routes.secure_position.hero.title)\" основаны на таблицах, сделанных этим игроком",
+              "td2": "\"$t(routes.cf_calculator.hero.title)\" основан на таблицах, сделанных этим игроком"
+            }
+          }
+        },
+        "programmer_and_translator": {
+          "title": "Разработчики и переводчики",
+          "contributors": {
+            "Heziode": "(Yoratheon) создатель проекта"
+          }
+        }
+      },
+      "gb_investment": {
+        "title": "$t(routes.gb_investment.hero.title, { 'gb_key': '{{gb_key}}' }) | $t(common:site_title)",
+        "hero": {
+          "title": "$t(routes.gb_investment_gb_chooser.hero.title) - $t({{gb_key}})"
+        }
+      },
+      "gb_investment_gb_chooser": {
+        "title": "$t(routes.gb_investment_gb_chooser.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Вложения ВС",
+          "subtitle": "Инструмент для подсчета количества стратегических очков (СО), которые игрок должен вложить в его великое строение (ВС) для обеспечения гарантии по 5 местам другим вкладчикам с Аркой (с учетом бонуса Арки)."
+        },
+        "choose_gb": {
+          "title": "Выберите Великое Строение"
+        }
+      },
+      "secure_position": {
+        "title": "$t(routes.secure_position.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Резервирование места",
+          "subtitle": "Этот инструмент позволяет подсчитать количество СО, которые игрок должен вложить в ВС для того, чтобы гарантированно занять в нем место."
+        }
+      }
+    },
+    "foe_data": {
+      "age": {
+        "NoAge": "Без эпохи",
+        "BronzeAge": "Бронзовый век",
+        "IronAge": "Железный век",
+        "EarlyMiddleAges": "Раннее средневековье",
+        "HighMiddleAges": "Высокое средневековье",
+        "LateMiddleAges": "Позднее средневековье",
+        "ColonialAge": "Колониальный период",
+        "IndustrialAge": "Индустриальная эпоха",
+        "ProgressiveEra": "Эра прогрессивизма",
+        "ModernEra": "Эпоха модерна",
+        "PostmodernEra": "Эпоха постмодерна",
+        "ContemporaryEra": "Новейшее время",
+        "Tomorrow": "Завтра",
+        "TheFuture": "Будущее",
+        "ArcticFuture": "Арктическое будущее",
+        "OceanicFuture": "Океаническое будущее"
+      },
+      "gb": {
+        "Observatory": "Обсерватория",
+        "Temple_of_Relics": "Храм реликвий",
+        "Oracle_of_Delphi": "Дельфийский оракул",
+        "Tower_of_Babel": "Вавилонская башня",
+        "Statue_of_Zeus": "Статуя Зевса",
+        "Colosseum": "Колизей",
+        "Lighthouse_of_Alexandria": "Александрийский маяк",
+        "Hagia_Sophia": "Собор Святой Софии",
+        "Cathedral_of_Aachen": "Ахенский Собор",
+        "St_Mark_s_Basilica": "Собор Святого Марка",
+        "Notre_Dame": "Нотр-Дам",
+        "Saint_Basil_s_Cathedral": "Храм Василия Блаженного",
+        "Castel_del_Monte": "Кастель-дель-Монте",
+        "Deal_Castle": "Дильский замок",
+        "Frauenkirche_of_Dresden": "Фрауэнкирхе",
+        "Capitol": "Капитолий",
+        "Royal_Albert_Hall": "Королевский Альберт-холл",
+        "Chateau_Frontenac": "Шато-Фронтенак",
+        "Alcatraz": "Алькатрас",
+        "Space_Needle": "Спейс-Нидл",
+        "Atomium": "Атомиум",
+        "Cape_Canaveral": "Космодром на мысе Канаверал",
+        "The_Habitat": "Хабитат",
+        "Lotus_Temple": "Храм Лотоса",
+        "Innovation_Tower": "Башня Инноваций",
+        "Dynamic_Tower": "Вращающаяся башня",
+        "Voyager_V1": "Вояджер V1",
+        "The_Arc": "Арка",
+        "Rain_Forest_Project": "Проект \"Дождевой лес\"",
+        "Gaea_Statue": "Статуя Геи",
+        "Arctic_Orangery": "Арктическая оранжерея",
+        "Seed_Vault": "Зернохранилище",
+        "Atlantis_Museum": "Музей Атлантиды",
+        "The_Kraken": "Кракен"
+      }
+    },
+    "utils": {
+      "btn_calculate": "Калькулятор",
+      "description": {
+        "p1": "Введите значения. Результат будет обновлен автоматически.",
+        "p2_html": "<strong>Замечание</strong>: Если результат не обновился автоматически, нажмите \"$t(utils.btn_calculate)\"."
+      },
+      "permalink": "постоянная ссылка",
+      "Yes": "Да",
+      "No": "Нет",
+      "Information": "Информация"
+    }
+  }
+}

@@ -51,7 +51,21 @@ yarn run build
 
 The generated static site will be placed in `dist/`.
 
-*Note: if you're having trouble while testing the static site, removing the `dist/` and `.cache/` directories and rebuilding the project.*
+
+
+Generate all files for production (or test for production):
+
+```bash
+npm run generate
+```
+
+Using yarn:
+
+```bash
+yarn run generate
+```
+
+
 
 ## TODO
 

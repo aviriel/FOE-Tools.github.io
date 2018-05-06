@@ -12,10 +12,11 @@ momentDurationFormatSetup(moment);
 
 const i18nPrefix = "components.gb_forecast_cost.";
 const urlPrefix = "gbfc_";
-let oldInvestorPercentageCustom;
 const defaultArcPercentage = 0;
 const defaultFrom = 1;
 const defaultTo = 10;
+let oldInvestorPercentageCustom;
+let oldMaxLevel = 0;
 
 const queryKey = {
   gb: urlPrefix + "gb",
@@ -190,7 +191,9 @@ export default {
       };
     },
     maxCurrentLevel() {
-      return this.$data.gb.levels[this.$data.from].cost;
+      return Utils.inRange(this.$data.from, 1, this.$data.gb.levels.length)
+        ? this.$data.gb.levels[this.$data.from].cost
+        : oldMaxLevel;
     },
     duration() {
       if (this.$data.fpBy24h > 0) {
@@ -229,11 +232,12 @@ export default {
     },
     from(val, oldVal) {
       if (
-        Utils.handlerForm(this, "from", val.length === 0 ? 0 : val, oldVal, [
+        Utils.handlerForm(this, "from", val.length === 0 ? 1 : val, oldVal, [
           1,
           this.$data.to
         ]) === Utils.FormCheck.VALID
       ) {
+        oldMaxLevel = val;
         this.$store.commit("UPDATE_URL_QUERY", {
           key: queryKey.from,
           value: val
@@ -529,7 +533,7 @@ export default {
       let result = {};
       let change = Utils.FormCheck.NO_CHANGE;
       let investorPercentageCustom = Array.apply(null, Array(5)).map(
-        (x) => defaultArcPercentage
+        x => defaultArcPercentage
       );
       let tmp;
       let from = data.from;
@@ -558,7 +562,7 @@ export default {
             result[key] = tmp.value;
             if (key === "investorPercentageGlobal") {
               investorPercentageCustom = Array.apply(null, Array(5)).map(
-                (x) => tmp.value
+                x => tmp.value
               );
             }
           }

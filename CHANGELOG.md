@@ -8,6 +8,13 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 ## 2.0.X
 
+### 2.0.1 - 2018-05-06
+
+- Fix graph is show in "Forecast cost GB" when we estimate a single level
+- Fix bad redirect in english in "GB Investment"
+- Fix table overflow
+- Fix bad i18n key for permalink in "About"
+
 ### 2.0.0 - 2018-05-05
 
 - Migrate from [Marko](https://markojs.com/) to [Vue](https://vuejs.org/) ([Nuxt](https://nuxtjs.org/))

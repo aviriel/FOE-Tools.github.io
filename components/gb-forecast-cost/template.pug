@@ -72,4 +72,5 @@ div.content
   div(v-show="(previsionResult !== null) && (fpBy24h > 0)")
     p {{$t(i18nPrefix + 'message.estimated_time', { time: estimatedTime })}}
 
-  graph-canvas.margin-top-one-em(v-show="from < to" gtype="line" id="graph" v-bind:goptions="options" v-bind:labels="labels" v-bind:datasets="datasets")
+  div(v-show="from !== to")
+    graph-canvas.margin-top-one-em(v-show="from < to" gtype="line" id="graph" v-bind:goptions="options" v-bind:labels="labels" v-bind:datasets="datasets")

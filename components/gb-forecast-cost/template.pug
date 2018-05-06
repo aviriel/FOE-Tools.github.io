@@ -40,19 +40,18 @@ div.content
         b-input#previsionInvestorPercentageGlobal(type="number" min="0" step="0.1" v-model.number="investorPercentageGlobal" name="investorPercentageGlobal" autocomplete="off")
 
   // Row 3
-  div.columns(v-show="customPercentage")
-    div.column
-      table.table.is-bordered.is-striped.is-narrow.is-fullwidth
-        thead
-          tr
-            th {{$t('components.gb_investment.gb_investment.table.thead.th1')}}
-            th {{$t('components.gb_investment.gb_investment.table.thead.th5')}}
-        tbody
-          tr(v-for="i in 5")
-            td.has-text-right {{i}}
-            td
-              b-field(v-bind:type="haveError('investorPercentageCustom_' + i)")
-                b-input(type="number" min="0" step="0.1" v-model.number="investorPercentageCustom[i - 1]" v-bind:name="'investorPercentageCustom_' + i" autocomplete="off")
+  div.table-wrapper(v-show="customPercentage")
+    table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+      thead
+        tr
+          th {{$t('components.gb_investment.gb_investment.table.thead.th1')}}
+          th {{$t('components.gb_investment.gb_investment.table.thead.th5')}}
+      tbody
+        tr(v-for="i in 5")
+          td.has-text-right {{i}}
+          td
+            b-field(v-bind:type="haveError('investorPercentageCustom_' + i)")
+              b-input(type="number" min="0" step="0.1" v-model.number="investorPercentageCustom[i - 1]" v-bind:name="'investorPercentageCustom_' + i" autocomplete="off")
 
   // Result
   div(v-if="previsionResult !== null")

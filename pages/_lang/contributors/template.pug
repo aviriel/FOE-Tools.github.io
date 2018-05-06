@@ -2,18 +2,19 @@ div.content
   h3.title.is-3 {{$t($data.i18nPrefix + 'hero.title')}}
   h4.title.is-4 {{$t($data.i18nPrefix + 'credit.title')}}
 
-  table.table.is-bordered.is-striped.is-narrow.is-fullwidth
-    thead
-      tr
-        th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th1')}}
-        th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th2')}}
-    tbody
-      tr
-        td Von Willem (FR)
-        td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td1')}}
-      tr
-        td Ozyman Tremble Weaklings (US)
-        td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td2')}}
+  div.table-wrapper
+    table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+      thead
+        tr
+          th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th1')}}
+          th.has-text-centered {{$t($data.i18nPrefix + 'credit.table_credit.thead.th2')}}
+      tbody
+        tr
+          td Von Willem (FR)
+          td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td1')}}
+        tr
+          td Ozyman Tremble Weaklings (US)
+          td {{$t($data.i18nPrefix + 'credit.table_credit.tbody.td2')}}
 
   h4.title.is-4 {{$t($data.i18nPrefix + 'programmer_and_translator.title')}}
 

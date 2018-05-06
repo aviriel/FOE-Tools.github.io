@@ -48,22 +48,22 @@ div
   //    div.field
   //      div.control.level-item
   //        button#submit-cf-calculator.button.is-link(v-on:click="submitCfCalculator") {{$t('utils.btn_calculate')}}
-
-  table.table.is-bordered.is-striped.is-narrow.is-fullwidth
-    thead
-      tr
-        th.has-text-centered(colspan=4) {{$t(i18nPrefix + 'block_cfc.table_reward.title')}}
-      tr
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th1')}}
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th2')}}
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th3')}}
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th4')}}
-    tbody
-      tr
-        td.has-text-right {{$formatNumber(result.bp)}}
-        td.has-text-right {{$formatNumber(result.medals)}}
-        td.has-text-right {{$formatNumber(result.goods)}}
-        td.has-text-right {{$formatNumber(result.fp)}}
+  div.table-wrapper
+    table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+      thead
+        tr
+          th.has-text-centered(colspan=4) {{$t(i18nPrefix + 'block_cfc.table_reward.title')}}
+        tr
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th1')}}
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th2')}}
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th3')}}
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_reward.thead.th4')}}
+      tbody
+        tr
+          td.has-text-right {{$formatNumber(result.bp)}}
+          td.has-text-right {{$formatNumber(result.medals)}}
+          td.has-text-right {{$formatNumber(result.goods)}}
+          td.has-text-right {{$formatNumber(result.fp)}}
 
   div.columns
     div.column.is-one-third
@@ -79,14 +79,15 @@ div
         p {{$t(i18nPrefix + 'block_cfc.reward_message.total_rq_completed', {count: result.totalRqCompleted})}}
         p(v-show="secondRq") {{$t(i18nPrefix + 'block_cfc.reward_message.second_rq_completed', {count: result.secondRqCompleted})}}
 
-  table(v-show="!result.coinSupplyReturn.length <= 0").table.is-bordered.is-striped.is-narrow.is-fullwidth
-    thead
-      tr
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_level')}}
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_coin')}}
-        th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_supply')}}
-    tbody
-      tr(v-for="(data, index) in result.coinSupplyReturn")
-        td.has-text-right {{$formatNumber(index + 1)}}
-        td.has-text-right {{$formatNumber(data.coin)}}
-        td.has-text-right {{$formatNumber(data.supply)}}
+  div.table-wrapper(v-show="!result.coinSupplyReturn.length <= 0")
+    table.table.is-bordered.is-striped.is-narrow.is-fullwidth
+      thead
+        tr
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_level')}}
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_coin')}}
+          th.has-text-centered {{$t(i18nPrefix + 'block_cfc.table_return.thead.th_supply')}}
+      tbody
+        tr(v-for="(data, index) in result.coinSupplyReturn")
+          td.has-text-right {{$formatNumber(index + 1)}}
+          td.has-text-right {{$formatNumber(data.coin)}}
+          td.has-text-right {{$formatNumber(data.supply)}}

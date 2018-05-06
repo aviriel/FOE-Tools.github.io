@@ -255,7 +255,7 @@ export default {
   },
   methods: {
     goTo(val) {
-      window.location.href = this.$i18n.path("gb-investment/" + val);
+      window.location.href = this.$i18n.path(`gb-investment/${val}/`);
     },
     cookieValid(key) {
       return (

@@ -29,7 +29,7 @@ export default ({ app, store, route }) => {
 
   app.i18n.path = link => {
     if (app.i18n.i18next.language === app.defaultLocale) {
-      return `${link}`;
+      return `${link.charAt(0) === "/" ? "" : "/"}${link}`;
     }
 
     if (link === "/") {

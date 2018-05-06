@@ -8,6 +8,14 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 ## 2.0.X
 
+### 2.1.0 - 2018-05-06
+
+- Fix issue in "Forecast cost GB" when "From" input is empty
+
+- Update Tomorrow data, add level 26 to 70
+
+  ​
+
 ### 2.0.1 - 2018-05-06
 
 - Fix graph is show in "Forecast cost GB" when we estimate a single level

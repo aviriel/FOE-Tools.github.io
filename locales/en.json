@@ -197,7 +197,7 @@
         "cookie": {
           "title": "Cookies",
           "p1": "To improve your comfort of use, the site uses cookies.",
-          "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a \"$t(components.gb_investment.gb_investment.permalink)\" page, no information on the level of GB and the various percentages of investors is stored.",
+          "p2_html": "We store the display language.<br />In \"$t(components.gb_investment.gb_investment.title)\" tool, we store for each GB the level and various percentages of investors so we do not have to re-enter them each time. <br />Please note that when you visit a \"$t(utils.permalink)\" page, no information on the level of GB and the various percentages of investors is stored.",
           "p3": "In \"$t(routes.cf_calculator.hero.title)\" tool, we store all form input."
         },
         "dev_info": {

@@ -99,7 +99,7 @@
         "cookie": {
           "title": "Cookies",
           "p1": "Um die Bedienungsfreundlichkeit zu erhöhen, verwendet diese Seite Cookies.",
-          "p2_html": "Wir speichern die Darstellungssprache.<br />Im \"$t(components.gb_investment.gb_investment.title)\" Tool speichern wir für jedes LB die Stufe und die verschiedenen Prozentwerte der Investoren, sodass sie nicht jedes Mal neu eingegeben werden müssen. <br />Bitte nimm zur Kenntnis, dass ein Besuch der \"$t(components.gb_investment.gb_investment.permalink)\" Seite keine Informationen über Stufe der LB oder die verschiedenen Prozentwerte der Investoren gespeichert werden."
+          "p2_html": "Wir speichern die Darstellungssprache.<br />Im \"$t(components.gb_investment.gb_investment.title)\" Tool speichern wir für jedes LB die Stufe und die verschiedenen Prozentwerte der Investoren, sodass sie nicht jedes Mal neu eingegeben werden müssen. <br />Bitte nimm zur Kenntnis, dass ein Besuch der \"$t(utils.permalink)\" Seite keine Informationen über Stufe der LB oder die verschiedenen Prozentwerte der Investoren gespeichert werden."
         },
         "dev_info": {
           "title": "Entwicklungsinformation",

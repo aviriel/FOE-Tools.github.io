@@ -8,13 +8,17 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 ## 2.0.X
 
+### 2.1.1 - 2018-05-09
+
+- Fix From input in "Forecast cost GB" [9b48859](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/9b488590c44a89c518ad24ece46f5e647fe60851)
+- Fix copy button not working on iOS [0b0c6ab](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/0b0c6abd653753c6b27c2a55373666352726f110)
+
 ### 2.1.0 - 2018-05-06
 
 - Fix issue in "Forecast cost GB" when "From" input is empty
 
 - Update Tomorrow data, add level 26 to 70
 
-  ​
 
 ### 2.0.1 - 2018-05-06
 
@@ -41,8 +45,6 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 - Fix cookies expiration
 - Fix infinity calculation in "Château Frontenac Calculator"
 - Update GB data [#25](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/25)
-
-
 
 # 1.X
 

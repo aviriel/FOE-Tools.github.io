@@ -87,7 +87,7 @@ div.content
       b-input(type="text" :value="value.message" readonly expanded)
       p.control
         b-tooltip(type="is-dark" v-bind:label="$t('utils.Copyed')" :active="value.active" always)
-          button.button(@click="copy(i)" v-bind:title="$t('utils.Copy')" style="color: #24292e; background-color: #eff3f6; background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);")
+          button.button(v-clipboard="value.message" @success="successCopy(i)" v-bind:title="$t('utils.Copy')" style="color: #24292e; background-color: #eff3f6; background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);")
             span.icon
               i.far.fa-copy
             | &nbsp;&nbsp;{{$t('utils.Copy')}}

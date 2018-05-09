@@ -72,7 +72,7 @@
     "nuxt-buefy": "^0.0.4",
     "remark": "^9.0.0",
     "remark-html": "^7.0.0",
-    "v-clipboard": "^1.0.4",
+    "vue-clipboards": "^1.2.4",
     "vue-router": "^3.0.1"
   }
 }

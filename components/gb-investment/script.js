@@ -308,8 +308,7 @@ export default {
 
       return { message: result, active: false };
     },
-    copy(index) {
-      this.$clipboard(this.promotion[index].message);
+    successCopy(index) {
       this.promotion[index].active = true;
       let self = this;
       setTimeout(function() {

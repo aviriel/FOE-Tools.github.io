@@ -4,6 +4,7 @@ import gbProcess from "~/scripts/foe-gb-investment";
 import gbListSelect from "~/components/gb-list-select/index";
 import graphCanvas from "~/components/graph-canvas/index";
 
+import Vue from "vue";
 import * as moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
 import YesNo from "~/components/yes-no/index";
@@ -17,6 +18,7 @@ const defaultFrom = 1;
 const defaultTo = 10;
 let oldInvestorPercentageCustom;
 let oldMaxLevel = 0;
+let oldFromInput = 0;
 
 const queryKey = {
   gb: urlPrefix + "gb",
@@ -178,6 +180,15 @@ export default {
     return data;
   },
   computed: {
+    fromInput: {
+      get() {
+        return this.$data.from;
+      },
+      set(val) {
+        this.checkFrom(val);
+        oldFromInput = val;
+      }
+    },
     lang() {
       return this.$store.state.locale;
     },
@@ -253,7 +264,7 @@ export default {
         ]) === Utils.FormCheck.VALID
       ) {
         if (this.$data.errors.from) {
-          if (val >= this.$data.errors.from) {
+          if (this.checkFrom(oldFromInput)) {
             this.$store.commit("UPDATE_URL_QUERY", {
               key: queryKey.to,
               value: val
@@ -395,6 +406,24 @@ export default {
     }
   },
   methods: {
+    checkFrom(val) {
+      if (val.length === 0) {
+        Vue.set(this.$data.errors, "from", true);
+        return false;
+      }
+      if (
+        Utils.handlerForm(this, "from", val, this.$data.from, [
+          1,
+          this.$data.to
+        ]) === Utils.FormCheck.VALID
+      ) {
+        console.log("valid");
+        Vue.set(this.$data.errors, "from", false);
+        Vue.set(this.$data, "from", val);
+        return true;
+      }
+      return false;
+    },
     changeGb(key) {
       this.$data.gb = foeData.gbs[key];
       this.$data.maxLevel = this.$data.gb.levels.length;

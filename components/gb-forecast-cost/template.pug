@@ -25,7 +25,7 @@ div.content
   div.columns
     div.column.is-half
       b-field(v-bind:label="$t('utils.From')" label-for="previsionFrom" v-bind:type="haveError('from')")
-        b-input#previsionFrom(type="number" min="1" v-bind:max="to" v-model.number="from" name="previsionFrom" autocomplete="off")
+        b-input#previsionFrom(type="number" min="1" v-bind:max="to" v-model.number="fromInput" name="previsionFrom" autocomplete="off")
     div.column.is-half
       b-field(v-bind:label="$t('utils.To', { max: maxLevel })" label-for="previsionTo" v-bind:type="haveError('to')")
         b-input#previsionTo(type="number" v-bind:min="from" v-bind:max="maxLevel" v-model.number="to" name="previsionTo" autocomplete="off")

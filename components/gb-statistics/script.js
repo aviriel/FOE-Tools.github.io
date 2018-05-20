@@ -1,6 +1,7 @@
 import Utils from "~/scripts/utils";
-import foeData from "~/scripts/foe-gb-data";
 import graphCanvas from "~/components/graph-canvas/index";
+
+import { agesCost, gbsData } from "~/lib/foe-data/gbs";
 
 const i18nPrefix = "components.gb_statistics.";
 
@@ -143,8 +144,8 @@ export default {
         }
       },
       statSelector: "cost_level",
-      maxLevelGraph: Object.keys(foeData.gbs)
-        .map(k => foeData.gbs[k])
+      maxLevelGraph: Object.keys(gbsData)
+        .map(k => gbsData[k])
         .map(item => item.levels.length)
         .reduce((a, b) => Math.max(a, b), -Infinity),
       from: defaultFromGraph,
@@ -166,7 +167,7 @@ export default {
   },
   watch: {
     statSelector: {
-      handler(val, oldVal) {
+      handler() {
         this.updateGraphData();
       },
       deep: true
@@ -271,10 +272,8 @@ export default {
     },
     from(val, oldVal) {
       if (
-        Utils.handlerForm(this, "from", val.length === 0 ? 0 : val, oldVal, [
-          1,
-          this.$data.to
-        ]) === Utils.FormCheck.VALID
+        Utils.handlerForm(this, "from", val.length === 0 ? 0 : val, oldVal, [1, this.$data.to]) ===
+        Utils.FormCheck.VALID
       ) {
         this.updateGraphData();
       }
@@ -298,13 +297,7 @@ export default {
     }
   },
   methods: {
-    updateData(
-      statSelector,
-      graphType,
-      ageConfig,
-      from = this.$data.from,
-      to = this.$data.to
-    ) {
+    updateData(statSelector, graphType, ageConfig, from = this.$data.from, to = this.$data.to) {
       const data = {};
       const datasets = [];
       let suggestedMin = Infinity;
@@ -316,29 +309,27 @@ export default {
           return i + from;
         }
         if (statSelector !== "reward_cost") {
-          return foeData.ages.OceanicFuture[i].cost;
+          return agesCost.OceanicFuture[i].cost;
         } else {
-          return foeData.ages.OceanicFuture[i].reward[0];
+          return agesCost.OceanicFuture[i].reward[0];
         }
       });
 
-      for (const elt in foeData.ages) {
-        data[elt] = foeData.ages[elt].slice(from - 1, to + 1).map(x => {
+      for (const elt in agesCost) {
+        data[elt] = agesCost[elt].slice(from - 1, to + 1).map(x => {
           if (statSelector === "cost_level" || statSelector === "reward_cost") {
             suggestedMin = x.cost < suggestedMin ? x.cost : suggestedMin;
             suggestedMax = x.cost > suggestedMax ? x.cost : suggestedMax;
             return x.cost;
           } else {
-            suggestedMin =
-              x.reward[0] < suggestedMin ? x.reward[0] : suggestedMin;
-            suggestedMax =
-              x.reward[0] > suggestedMax ? x.reward[0] : suggestedMax;
+            suggestedMin = x.reward[0] < suggestedMin ? x.reward[0] : suggestedMin;
+            suggestedMax = x.reward[0] > suggestedMax ? x.reward[0] : suggestedMax;
             return x.reward[0];
           }
         });
       }
 
-      for (const elt in foeData.ages) {
+      for (const elt in agesCost) {
         datasets.push({
           hidden: true,
           label: ageConfig[elt].name,
@@ -375,13 +366,7 @@ export default {
       };
     },
     updateGraphData(obj = this.$data) {
-      const result = this.updateData(
-        obj.statSelector,
-        obj.graphType,
-        obj.ageConfig,
-        obj.from,
-        obj.to
-      );
+      const result = this.updateData(obj.statSelector, obj.graphType, obj.ageConfig, obj.from, obj.to);
 
       obj.options.title.text = result.title;
       obj.options.scales.xAxes[0].scaleLabel.labelString = result.xAxesLabel;

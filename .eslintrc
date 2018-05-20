@@ -17,6 +17,8 @@
     "eslint:recommended"
   ],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "max-len": ["error", { "code": 120 }],
+    "prettier/prettier": ["error", {"printWidth": 120}]
   }
 }

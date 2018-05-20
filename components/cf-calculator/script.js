@@ -1,4 +1,4 @@
-import questData from "~/scripts/foe-quest-data";
+import questData from "~/lib/foe-data/rq-quests";
 import Utils from "~/scripts/utils";
 import YesNo from "~/components/yes-no/index";
 
@@ -61,11 +61,7 @@ export default {
 
     for (let key in data) {
       if (this.$cookies.get(key) !== undefined) {
-        let result = Utils.checkFormNumeric(
-          this.$cookies.get(key),
-          -1,
-          inputComparator[key].comparator
-        );
+        let result = Utils.checkFormNumeric(this.$cookies.get(key), -1, inputComparator[key].comparator);
         if (result.state === Utils.FormCheck.VALID) {
           data[key] = result.value;
         }
@@ -73,14 +69,10 @@ export default {
     }
 
     data.yourAge =
-      this.$cookies.get("yourAge") === undefined ||
-      !(this.$cookies.get("yourAge") in questData.ages)
+      this.$cookies.get("yourAge") === undefined || !(this.$cookies.get("yourAge") in questData.ages)
         ? questData.ages.BronzeAge.key
         : this.$cookies.get("yourAge");
-    data.secondRq =
-      this.$cookies.get("secondRq") === undefined
-        ? false
-        : this.$cookies.get("secondRq") === true;
+    data.secondRq = this.$cookies.get("secondRq") === undefined ? false : this.$cookies.get("secondRq") === true;
 
     Object.assign(data, this.checkQuery());
 
@@ -189,7 +181,7 @@ export default {
         this.errors.yourAge = false;
         if (!this.isPermalink) {
           this.$cookies.set("yourAge", val, {
-            path: $nuxt.$route.path,
+            path: this.$nuxt.$route.path,
             expires: Utils.getDefaultCookieExpireTime()
           });
         }
@@ -205,7 +197,7 @@ export default {
           });
           if (!this.isPermalink) {
             this.$cookies.set("secondRq", false, {
-              path: $nuxt.$route.path,
+              path: this.$nuxt.$route.path,
               expires: Utils.getDefaultCookieExpireTime()
             });
           }
@@ -219,7 +211,7 @@ export default {
     secondRq(val) {
       if (!this.isPermalink) {
         this.$cookies.set("secondRq", val, {
-          path: $nuxt.$route.path,
+          path: this.$nuxt.$route.path,
           expires: Utils.getDefaultCookieExpireTime()
         });
       }
@@ -263,7 +255,7 @@ export default {
           oldVal,
           inputComparator.coins.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -282,7 +274,7 @@ export default {
           oldVal,
           inputComparator.supplies.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -301,7 +293,7 @@ export default {
           oldVal,
           inputComparator.goods.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -320,7 +312,7 @@ export default {
           oldVal,
           inputComparator.fpBy24h.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -339,7 +331,7 @@ export default {
           oldVal,
           inputComparator.otherRq.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -358,7 +350,7 @@ export default {
           oldVal,
           inputComparator.suppliesGathered.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -377,7 +369,7 @@ export default {
           oldVal,
           inputComparator.cumulativeQuest.comparator,
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -401,25 +393,18 @@ export default {
       let cf_boost = this.$data.yourCfBoost / 100;
       let age = this.$data.questData.ages[this.$data.yourAge];
       let coins_relation = Math.floor(this.$data.coins / age.cost.coins);
-      let supplies_relation = Math.floor(
-        this.$data.supplies / age.cost.supplies
-      );
+      let supplies_relation = Math.floor(this.$data.supplies / age.cost.supplies);
 
-      this.$data.result.dailyUbq =
-        coins_relation < supplies_relation ? coins_relation : supplies_relation;
+      this.$data.result.dailyUbq = coins_relation < supplies_relation ? coins_relation : supplies_relation;
       this.$data.result.bonusUbq = 0;
       this.$data.result.coinSupplyReturn = [];
 
       let nb_quest =
         Math.floor(
-          (Math.floor(
-            (this.$data.result.dailyUbq + this.$data.otherRq) * (2 / 14)
-          ) *
+          (Math.floor((this.$data.result.dailyUbq + this.$data.otherRq) * (2 / 14)) *
             age.reward.small_coins *
             (1 + cf_boost) +
-            Math.floor(
-              (this.$data.result.dailyUbq + this.$data.otherRq) * (1 / 14)
-            ) *
+            Math.floor((this.$data.result.dailyUbq + this.$data.otherRq) * (1 / 14)) *
               age.reward.large_coins *
               (1 + cf_boost)) /
             age.cost.gather
@@ -441,59 +426,35 @@ export default {
           first_lap = false;
 
           coin_return =
-            Math.floor(
-              (this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) *
-                (2 / 14)
-            ) *
+            Math.floor((this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) * (2 / 14)) *
               age.reward.small_coins *
               (1 + cf_boost) +
-            Math.floor(
-              (this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) *
-                (1 / 14)
-            ) *
+            Math.floor((this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) * (1 / 14)) *
               age.reward.large_coins *
               (1 + cf_boost);
 
           supply_return =
-            Math.floor(
-              (this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) *
-                (2 / 14)
-            ) *
+            Math.floor((this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) * (2 / 14)) *
               age.reward.small_supplies *
               (1 + cf_boost) +
-            Math.floor(
-              (this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) *
-                (1 / 14)
-            ) *
+            Math.floor((this.$data.result.dailyUbq + this.$data.otherRq + plus_quest) * (1 / 14)) *
               age.reward.large_supplies *
               (1 + cf_boost);
         } else {
           coin_return =
-            Math.floor(final_nb_quest * (1 / 14)) *
-              age.reward.large_coins *
-              (1 + cf_boost) +
-            Math.floor(final_nb_quest * (2 / 14)) *
-              age.reward.small_coins *
-              (1 + cf_boost);
+            Math.floor(final_nb_quest * (1 / 14)) * age.reward.large_coins * (1 + cf_boost) +
+            Math.floor(final_nb_quest * (2 / 14)) * age.reward.small_coins * (1 + cf_boost);
 
           supply_return =
-            Math.floor(final_nb_quest * (1 / 14)) *
-              age.reward.large_supplies *
-              (1 + cf_boost) +
-            Math.floor(final_nb_quest * (2 / 14)) *
-              age.reward.small_supplies *
-              (1 + cf_boost);
+            Math.floor(final_nb_quest * (1 / 14)) * age.reward.large_supplies * (1 + cf_boost) +
+            Math.floor(final_nb_quest * (2 / 14)) * age.reward.small_supplies * (1 + cf_boost);
         }
 
         coin_return_by_cost = Math.floor(coin_return / age.cost.coins);
-        supply_coin_return_by_cost = Math.floor(
-          supply_return / age.cost.supplies
-        );
+        supply_coin_return_by_cost = Math.floor(supply_return / age.cost.supplies);
         supplies_return_by_gather = Math.floor(supply_return / age.cost.gather);
         min_between_coin_supplies =
-          coin_return_by_cost < supply_coin_return_by_cost
-            ? coin_return_by_cost
-            : supply_coin_return_by_cost;
+          coin_return_by_cost < supply_coin_return_by_cost ? coin_return_by_cost : supply_coin_return_by_cost;
         final_nb_quest = this.$data.secondRq
           ? supplies_return_by_gather + min_between_coin_supplies
           : min_between_coin_supplies;
@@ -504,9 +465,7 @@ export default {
           if (
             !this.$data.infinityGenerator &&
             this.$data.result.coinSupplyReturn.length > 0 &&
-            this.$data.result.coinSupplyReturn[
-              this.$data.result.coinSupplyReturn.length - 1
-            ].coin <= coin_return
+            this.$data.result.coinSupplyReturn[this.$data.result.coinSupplyReturn.length - 1].coin <= coin_return
           ) {
             this.$data.infinityGenerator = true;
           }
@@ -517,53 +476,35 @@ export default {
         }
         second_quest_Completed += supplies_return_by_gather;
       } while (
-        (!this.$data.infinityGenerator &&
-          (coin_return > 0 || supply_return > 0)) ||
+        (!this.$data.infinityGenerator && (coin_return > 0 || supply_return > 0)) ||
         this.$data.cumulativeQuest > this.$data.result.coinSupplyReturn.length
       );
 
       if (this.$data.infinityGenerator && this.$data.cumulativeQuest === 0) {
-        this.$data.cumulativeQuest =
-          this.$data.result.coinSupplyReturn.length + 1;
+        this.$data.cumulativeQuest = this.$data.result.coinSupplyReturn.length + 1;
       } else if (!this.$data.infinityGenerator) {
         this.$data.cumulativeQuest = 0;
       }
 
-      this.$data.result.secondRqCompleted = this.$data.secondRq
-        ? second_quest_Completed
-        : 0;
+      this.$data.result.secondRqCompleted = this.$data.secondRq ? second_quest_Completed : 0;
       this.$data.result.totalRqCompleted =
         this.$data.result.dailyUbq +
         this.$data.result.bonusUbq +
         this.$data.otherRq +
         this.$data.result.secondRqCompleted;
 
-      this.$data.result.bp = Math.floor(
-        this.$data.result.totalRqCompleted * (1 / 14) * age.reward.blueprint
-      );
+      this.$data.result.bp = Math.floor(this.$data.result.totalRqCompleted * (1 / 14) * age.reward.blueprint);
       this.$data.result.medals =
-        Math.floor(this.$data.result.totalRqCompleted * (1 / 14)) *
-        Math.round(age.reward.medals * (1 + cf_boost));
+        Math.floor(this.$data.result.totalRqCompleted * (1 / 14)) * Math.round(age.reward.medals * (1 + cf_boost));
       this.$data.result.goods =
-        Math.floor(this.$data.result.totalRqCompleted * (5 / 14)) *
-        Math.round(age.reward.goods * (1 + cf_boost));
-      this.$data.result.fp =
-        Math.floor(this.$data.result.totalRqCompleted * (1 / 14)) *
-        age.reward.fp;
+        Math.floor(this.$data.result.totalRqCompleted * (5 / 14)) * Math.round(age.reward.goods * (1 + cf_boost));
+      this.$data.result.fp = Math.floor(this.$data.result.totalRqCompleted * (1 / 14)) * age.reward.fp;
 
       this.$data.result.totalGoods = this.$data.result.goods + this.$data.goods;
       this.$data.result.totalFp = this.$data.result.fp + this.$data.fpBy24h;
     },
     submitCfCalculator() {
-      let data = [
-        "yourCfBoost",
-        "coins",
-        "supplies",
-        "goods",
-        "fpBy24h",
-        "otherRq",
-        "suppliesGathered"
-      ];
+      let data = ["yourCfBoost", "coins", "supplies", "goods", "fpBy24h", "otherRq", "suppliesGathered"];
 
       let change = Utils.FormCheck.NO_CHANGE;
       let listCheck = true;
@@ -575,7 +516,7 @@ export default {
           this.$data[key],
           [">=", 0],
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         );
         if (result.state === Utils.FormCheck.VALID) {
           change = listCheck ? Utils.FormCheck.VALID : change;
@@ -594,7 +535,7 @@ export default {
           -1,
           [">=", 1],
           !this.isPermalink,
-          $nuxt.$route.path
+          this.$nuxt.$route.path
         ) !== Utils.FormCheck.INVALID
       ) {
         this.calculate();
@@ -606,21 +547,14 @@ export default {
       let tmp;
 
       for (let key in inputComparator) {
-        tmp = Utils.checkFormNumeric(
-          this.$route.query[queryKey[key]],
-          -1,
-          inputComparator[key].comparator
-        );
+        tmp = Utils.checkFormNumeric(this.$route.query[queryKey[key]], -1, inputComparator[key].comparator);
         if (tmp.state === Utils.FormCheck.VALID) {
           change = Utils.FormCheck.VALID;
           result[key] = tmp.value;
         }
       }
 
-      if (
-        this.$route.query[queryKey.yourAge] &&
-        this.$route.query[queryKey.yourAge] in questData.ages
-      ) {
+      if (this.$route.query[queryKey.yourAge] && this.$route.query[queryKey.yourAge] in questData.ages) {
         change = Utils.FormCheck.VALID;
         result["yourAge"] = this.$route.query[queryKey.yourAge];
       }
@@ -631,8 +565,7 @@ export default {
         parseInt(this.$route.query[queryKey.secondRq]) >= 0
       ) {
         change = Utils.FormCheck.VALID;
-        result["secondRq"] =
-          parseInt(this.$route.query[queryKey.secondRq]) === 1;
+        result["secondRq"] = parseInt(this.$route.query[queryKey.secondRq]) === 1;
       }
 
       if (change === Utils.FormCheck.VALID) {

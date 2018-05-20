@@ -151,7 +151,7 @@ export default {
           oldVal,
           [1, this.$data.maxLevel],
           !this.isPermalink,
-          $nuxt.$route.path
+         this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -170,7 +170,7 @@ export default {
           oldVal,
           [">=", 0],
           !this.isPermalink,
-          $nuxt.$route.path,
+         this.$nuxt.$route.path,
           "float"
         ) === Utils.FormCheck.VALID
       ) {
@@ -203,7 +203,7 @@ export default {
           oldInvestorPercentageCustom[index],
           [">=", 0],
           !this.isPermalink,
-          $nuxt.$route.path,
+         this.$nuxt.$route.path,
           "float"
         );
         if (tmp === Utils.FormCheck.INVALID) {
@@ -343,7 +343,7 @@ export default {
         -1,
         [1, this.$data.maxLevel],
         !this.isPermalink,
-        $nuxt.$route.path
+       this.$nuxt.$route.path
       );
       const pChange = Utils.handlerForm(
         this,
@@ -352,7 +352,7 @@ export default {
         -1,
         [">=", 0],
         !this.isPermalink,
-        $nuxt.$route.path,
+       this.$nuxt.$route.path,
         "float"
       );
 
@@ -392,7 +392,7 @@ export default {
           -1,
           [">=", 0],
           !this.isPermalink,
-          $nuxt.$route.path,
+         this.$nuxt.$route.path,
           "float"
         );
         if (result === Utils.FormCheck.INVALID) {

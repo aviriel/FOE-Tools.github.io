@@ -8,6 +8,6 @@ div
         div.content
           ul
             li(v-for="gb in item.gbs")
-              a(v-bind:href="$i18n.path('gb-investment/' + gb.key + '/')") {{$t('foe_data.gb.' + gb.key)}}
+              a(v-bind:href="$i18n.path('gb-investment/' + gb + '/')") {{$t('foe_data.gb.' + gb)}}
               // FIXME: with nuxt-link, no URL query in gb-investment
               //nuxt-link(v-bind:to="$i18n.path('gb-investment/' + gb.key + '/')" exact) {{$t('foe_data.gb.' + gb.key)}}

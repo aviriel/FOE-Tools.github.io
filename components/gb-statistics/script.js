@@ -148,6 +148,7 @@ export default {
         .map(k => gbsData[k])
         .map(item => item.levels.length)
         .reduce((a, b) => Math.max(a, b), -Infinity),
+      maxAgeCost: agesCost.OceanicFuture,
       from: defaultFromGraph,
       to: defaultToGraph,
       errors: {
@@ -155,6 +156,12 @@ export default {
         to: false
       }
     };
+
+    for (const gb in gbsData) {
+      if (gbsData[gb].levels.length === obj.maxLevelGraph) {
+        obj.maxAgeCost = agesCost[gbsData[gb].age];
+      }
+    }
 
     this.updateGraphData(obj);
 
@@ -297,7 +304,7 @@ export default {
     }
   },
   methods: {
-    updateData(statSelector, graphType, ageConfig, from = this.$data.from, to = this.$data.to) {
+    updateData(statSelector, graphType, ageConfig, maxAgeCost, from = this.$data.from, to = this.$data.to) {
       const data = {};
       const datasets = [];
       let suggestedMin = Infinity;
@@ -309,9 +316,9 @@ export default {
           return i + from;
         }
         if (statSelector !== "reward_cost") {
-          return agesCost.OceanicFuture[i].cost;
+          return maxAgeCost[i].cost;
         } else {
-          return agesCost.OceanicFuture[i].reward[0];
+          return maxAgeCost[i].reward[0];
         }
       });
 
@@ -366,7 +373,7 @@ export default {
       };
     },
     updateGraphData(obj = this.$data) {
-      const result = this.updateData(obj.statSelector, obj.graphType, obj.ageConfig, obj.from, obj.to);
+      const result = this.updateData(obj.statSelector, obj.graphType, obj.ageConfig, obj.maxAgeCost, obj.from, obj.to);
 
       obj.options.title.text = result.title;
       obj.options.scales.xAxes[0].scaleLabel.labelString = result.xAxesLabel;

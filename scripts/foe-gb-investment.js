@@ -38,7 +38,7 @@ function getValues(gb, currentLevel, investorPercentage) {
     let investment = {};
     let factor = 1 + investorPercentage[i] / 100;
     investment.reward = gb[currentLevel - 1].reward[i];
-    investment.participation = Math.ceil(investment.reward * factor);
+    investment.participation = Math.round(investment.reward * factor);
     participation[participation.length] = investment.participation;
     investment.preparation = costSecureRank(obj.cost, participation);
     obj.investment[obj.investment.length] = investment;

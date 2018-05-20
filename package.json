@@ -1,6 +1,6 @@
 {
   "name": "foe-tools",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Set of tools for Forge Of Empire",
   "main": "nuxt.config.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "build:gh": "cross-env DEPLOY_ENV=GH_PAGES nuxt build",
     "generate:gh": "cross-env DEPLOY_ENV=GH_PAGES nuxt generate",
+    "release": "standard-version",
     "deploy": "push-dir --dir=dist --branch=master --cleanup"
   },
   "repository": {

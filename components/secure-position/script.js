@@ -41,10 +41,7 @@ export default {
       otherParticipation: 0,
       levelCost: this.haveInputLevelCost() ? this.$props.propLevelCost : 0,
       currentDeposits: 0,
-      yourArcBonus:
-        this.$cookies.get("yourArcBonus") === undefined
-          ? 0
-          : this.$cookies.get("yourArcBonus"),
+      yourArcBonus: this.$cookies.get("yourArcBonus") === undefined ? 0 : this.$cookies.get("yourArcBonus"),
       fpTargetReward: 0,
       roi: 0,
       formValid: false,
@@ -100,7 +97,7 @@ export default {
     }
   },
   watch: {
-    propLevelCost(val, oldVal) {
+    propLevelCost(val) {
       this.$data.change = true;
       this.$data.levelCost = val;
     },
@@ -238,8 +235,7 @@ export default {
           Math.ceil(
             (this.$data["levelCost"] -
               this.$data["currentDeposits"] -
-              (this.$data["otherParticipation"] -
-                this.$data["yourParticipation"])) /
+              (this.$data["otherParticipation"] - this.$data["yourParticipation"])) /
               2
           ) + this.$data["otherParticipation"];
 
@@ -247,15 +243,8 @@ export default {
           this.$data.fp = -1;
         } else {
           this.$data.fp = result;
-          if (
-            this.$data["yourArcBonus"] >= 0 &&
-            this.$data["fpTargetReward"] > 0
-          ) {
-            this.$data.roi = Math.round(
-              (1 + this.$data["yourArcBonus"] / 100) *
-                this.$data["fpTargetReward"] -
-                result
-            );
+          if (this.$data["yourArcBonus"] >= 0 && this.$data["fpTargetReward"] > 0) {
+            this.$data.roi = Math.round((1 + this.$data["yourArcBonus"] / 100) * this.$data["fpTargetReward"] - result);
           }
         }
       }
@@ -270,8 +259,7 @@ export default {
       this.$data.errors["otherParticipation"] = false;
 
       if (
-        ((this.$data["levelCost"] === this.$data["currentDeposits"]) ===
-          this.$data["yourParticipation"]) ===
+        ((this.$data["levelCost"] === this.$data["currentDeposits"]) === this.$data["yourParticipation"]) ===
           this.$data["otherParticipation"] &&
         this.$data["levelCost"] === 0
       ) {
@@ -301,12 +289,7 @@ export default {
         this.$data.errors["levelCost"] = true;
       }
 
-      if (
-        !(
-          this.$data["yourParticipation"] + this.$data["otherParticipation"] <=
-          this.$data["currentDeposits"]
-        )
-      ) {
+      if (!(this.$data["yourParticipation"] + this.$data["otherParticipation"] <= this.$data["currentDeposits"])) {
         this.$data.formValid = false;
         this.$data.errors["yourParticipation"] = true;
         this.$data.errors["otherParticipation"] = true;

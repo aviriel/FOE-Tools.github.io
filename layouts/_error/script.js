@@ -27,13 +27,9 @@ export default {
 
       if (
         this.$i18n.i18next.exists(i18nPrefix + statusCode.toString()) &&
-        this.$i18n.i18next.exists(
-          i18nPrefix + statusCode.toString() + ".message"
-        )
+        this.$i18n.i18next.exists(i18nPrefix + statusCode.toString() + ".message")
       ) {
-        return this.$i18n.i18next.t(
-          i18nPrefix + statusCode.toString() + ".message"
-        );
+        return this.$i18n.i18next.t(i18nPrefix + statusCode.toString() + ".message");
       } else {
         return this.error.message || "messages.client_error";
       }

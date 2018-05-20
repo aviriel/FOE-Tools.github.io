@@ -8,10 +8,7 @@ import { i18next, defaultLocale, supportedLocales } from "@/scripts/i18n";
 Vue.use(VueI18Next);
 
 export default ({ app, store, route }) => {
-  if (
-    app.$cookies.get("locale") === null ||
-    supportedLocales.indexOf(app.$cookies.get("locale")) === -1
-  ) {
+  if (app.$cookies.get("locale") === null || supportedLocales.indexOf(app.$cookies.get("locale")) === -1) {
     app.$cookies.set("locale", route.params.lang || defaultLocale, {
       path: "/",
       expires: Utils.getDefaultCookieExpireTime()

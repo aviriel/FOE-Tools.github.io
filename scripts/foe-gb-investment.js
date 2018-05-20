@@ -47,8 +47,7 @@ function getValues(gb, currentLevel, investorPercentage) {
   obj.totalPreparations =
     obj.investment[obj.investment.length - 1].preparation === 0
       ? 0
-      : obj.investment[obj.investment.length - 1].preparation +
-        obj.investment[obj.investment.length - 1].participation;
+      : obj.investment[obj.investment.length - 1].preparation + obj.investment[obj.investment.length - 1].participation;
   obj.level = currentLevel;
 
   return obj;
@@ -98,8 +97,7 @@ export default {
     for (let i = from; i <= to; i++) {
       result.levels.push(this.Submit(i, investorPercentage, gb));
       result.global.cost += result.levels[result.levels.length - 1].cost;
-      result.global.totalPreparations +=
-        result.levels[result.levels.length - 1].totalPreparations;
+      result.global.totalPreparations += result.levels[result.levels.length - 1].totalPreparations;
     }
 
     return result;

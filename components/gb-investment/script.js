@@ -34,9 +34,7 @@ export default {
   data() {
     const data = {
       i18nPrefix,
-      level: this.cookieValid("level")
-        ? parseInt(this.$cookies.get("level"))
-        : 10,
+      level: this.cookieValid("level") ? parseInt(this.$cookies.get("level")) : 10,
       maxLevel: this.$props.gb.levels.length,
       investorPercentageGlobal: this.cookieValid("investorPercentageGlobal")
         ? parseFloat(this.$cookies.get("investorPercentageGlobal"))
@@ -48,19 +46,9 @@ export default {
         defaultArcPercentage,
         defaultArcPercentage
       ],
-      placeFree: [
-        { state: true },
-        { state: true },
-        { state: true },
-        { state: true },
-        { state: true }
-      ],
-      prefix: this.$cookies.get("gbPrefix")
-        ? this.$cookies.get("gbPrefix")
-        : "",
-      suffix: this.$cookies.get("gbSuffix")
-        ? this.$cookies.get("gbSuffix")
-        : "",
+      placeFree: [{ state: true }, { state: true }, { state: true }, { state: true }, { state: true }],
+      prefix: this.$cookies.get("gbPrefix") ? this.$cookies.get("gbPrefix") : "",
+      suffix: this.$cookies.get("gbSuffix") ? this.$cookies.get("gbSuffix") : "",
       result: null,
       errors: {
         level: false,
@@ -78,17 +66,13 @@ export default {
 
     for (let i = 0; i < 5; i++) {
       if (this.cookieValid("investorPercentageCustom_" + i)) {
-        data.investorPercentageCustom[i] = parseFloat(
-          this.$cookies.get("investorPercentageCustom_" + i)
-        );
+        data.investorPercentageCustom[i] = parseFloat(this.$cookies.get("investorPercentageCustom_" + i));
       }
     }
 
     Object.assign(data, this.checkQuery(data.maxLevel));
 
-    oldInvestorPercentageCustom = JSON.parse(
-      JSON.stringify(data.investorPercentageCustom)
-    );
+    oldInvestorPercentageCustom = JSON.parse(JSON.stringify(data.investorPercentageCustom));
 
     this.$store.commit("ADD_URL_QUERY", {
       key: queryKey.level,
@@ -139,7 +123,7 @@ export default {
     }
   },
   watch: {
-    GET_URL_QUERY(val, oldVal) {
+    GET_URL_QUERY(val) {
       this.$data.permalink.query = val;
     },
     level(val, oldVal) {
@@ -151,7 +135,7 @@ export default {
           oldVal,
           [1, this.$data.maxLevel],
           !this.isPermalink,
-         this.$nuxt.$route.path
+          this.$nuxt.$route.path
         ) === Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -170,7 +154,7 @@ export default {
           oldVal,
           [">=", 0],
           !this.isPermalink,
-         this.$nuxt.$route.path,
+          this.$nuxt.$route.path,
           "float"
         ) === Utils.FormCheck.VALID
       ) {
@@ -180,11 +164,7 @@ export default {
         });
         this.calculate();
       }
-      for (
-        let index = 0;
-        index < this.$data.investorPercentageCustom.length;
-        index++
-      ) {
+      for (let index = 0; index < this.$data.investorPercentageCustom.length; index++) {
         this.$store.commit("UPDATE_URL_QUERY", {
           key: queryKey.investorPercentageCustom + (index + 1),
           value: val
@@ -192,7 +172,7 @@ export default {
         this.$data.investorPercentageCustom[index] = val;
       }
     },
-    investorPercentageCustom(val, oldVal) {
+    investorPercentageCustom(val) {
       let result = Utils.FormCheck.VALID;
       let tmp;
       for (let index = 0; index < val.length; index++) {
@@ -203,7 +183,7 @@ export default {
           oldInvestorPercentageCustom[index],
           [">=", 0],
           !this.isPermalink,
-         this.$nuxt.$route.path,
+          this.$nuxt.$route.path,
           "float"
         );
         if (tmp === Utils.FormCheck.INVALID) {
@@ -258,9 +238,7 @@ export default {
       window.location.href = this.$i18n.path(`gb-investment/${val}/`);
     },
     cookieValid(key) {
-      return (
-        this.$cookies.get(key) !== undefined && !isNaN(this.$cookies.get(key))
-      );
+      return this.$cookies.get(key) !== undefined && !isNaN(this.$cookies.get(key));
     },
     calculate() {
       this.$data.result = gbProcess.Submit(
@@ -284,9 +262,7 @@ export default {
     getPromotionMessage(titleFirst = true, reverse = false) {
       let result = this.$data.prefix.length > 0 ? `${this.$data.prefix} ` : "";
       result += titleFirst ? this.$t("foe_data.gb." + this.$props.gb.key) : "";
-      let array = reverse
-        ? this.$data.result.investment.reduce((a, b) => [b, ...a], [])
-        : this.$data.result.investment;
+      let array = reverse ? this.$data.result.investment.reduce((a, b) => [b, ...a], []) : this.$data.result.investment;
 
       let i = reverse ? 5 : 0;
       for (const place of array) {
@@ -316,9 +292,7 @@ export default {
       }, 3000);
     },
     isPlaceFree(index) {
-      return this.$data.placeFree[index]
-        ? this.$t("utils.Yes")
-        : this.$t("utils.No");
+      return this.$data.placeFree[index] ? this.$t("utils.Yes") : this.$t("utils.No");
     },
     changePlaceFree(i, value) {
       this.$data.placeFree[i].state = value;
@@ -343,7 +317,7 @@ export default {
         -1,
         [1, this.$data.maxLevel],
         !this.isPermalink,
-       this.$nuxt.$route.path
+        this.$nuxt.$route.path
       );
       const pChange = Utils.handlerForm(
         this,
@@ -352,19 +326,13 @@ export default {
         -1,
         [">=", 0],
         !this.isPermalink,
-       this.$nuxt.$route.path,
+        this.$nuxt.$route.path,
         "float"
       );
 
       if (pChange === Utils.FormCheck.VALID) {
-        for (
-          let index = 0;
-          index < this.$data.investorPercentageCustom.length;
-          index++
-        ) {
-          this.$data.investorPercentageCustom[
-            index
-          ] = this.$data.investorPercentageGlobal;
+        for (let index = 0; index < this.$data.investorPercentageCustom.length; index++) {
+          this.$data.investorPercentageCustom[index] = this.$data.investorPercentageGlobal;
         }
       }
 
@@ -380,11 +348,7 @@ export default {
       let change = Utils.FormCheck.NO_CHANGE;
       let listCheck = true;
 
-      for (
-        let index = 0;
-        index < this.$data.investorPercentageCustom.length;
-        index++
-      ) {
+      for (let index = 0; index < this.$data.investorPercentageCustom.length; index++) {
         let result = Utils.handlerForm(
           this,
           "investorPercentageCustom_" + index,
@@ -392,7 +356,7 @@ export default {
           -1,
           [">=", 0],
           !this.isPermalink,
-         this.$nuxt.$route.path,
+          this.$nuxt.$route.path,
           "float"
         );
         if (result === Utils.FormCheck.INVALID) {
@@ -416,10 +380,8 @@ export default {
      */
     checkQuery(maxLevel) {
       let result = {};
-      let investorPercentageCustom = Array.apply(null, Array(5)).map(
-        (x, i) => defaultArcPercentage
-      );
-      let placeFree = Array.apply(null, Array(5)).map((x, i) => {
+      let investorPercentageCustom = Array.apply(null, Array(5)).map(() => defaultArcPercentage);
+      let placeFree = Array.apply(null, Array(5)).map(() => {
         return { free: true };
       });
       let isPermalink = false;
@@ -441,29 +403,19 @@ export default {
         parseFloat(this.$route.query[queryKey.investorPercentageGlobal]) >= 0
       ) {
         isPermalink = true;
-        result.investorPercentageGlobal = parseInt(
-          this.$route.query[queryKey.investorPercentageGlobal]
-        );
-        investorPercentageCustom = Array.apply(null, Array(5)).map(
-          (x, i) => result.investorPercentageGlobal
-        );
+        result.investorPercentageGlobal = parseInt(this.$route.query[queryKey.investorPercentageGlobal]);
+        investorPercentageCustom = Array.apply(null, Array(5)).map(() => result.investorPercentageGlobal);
       }
 
       //  Check percentage value for each investors
       for (let i = 0; i < 5; i++) {
         if (
           this.$route.query[queryKey.investorPercentageCustom + (i + 1)] &&
-          !isNaN(
-            this.$route.query[queryKey.investorPercentageCustom + (i + 1)]
-          ) &&
-          parseFloat(
-            this.$route.query[queryKey.investorPercentageCustom + (i + 1)]
-          ) >= 0
+          !isNaN(this.$route.query[queryKey.investorPercentageCustom + (i + 1)]) &&
+          parseFloat(this.$route.query[queryKey.investorPercentageCustom + (i + 1)]) >= 0
         ) {
           isPermalink = true;
-          investorPercentageCustom[i] = parseFloat(
-            this.$route.query[queryKey.investorPercentageCustom + (i + 1)]
-          );
+          investorPercentageCustom[i] = parseFloat(this.$route.query[queryKey.investorPercentageCustom + (i + 1)]);
         }
       }
 
@@ -475,8 +427,7 @@ export default {
           parseInt(this.$route.query[queryKey.placeFree + (i + 1)]) >= 0
         ) {
           isPermalink = true;
-          placeFree[i].state =
-            parseInt(this.$route.query[queryKey.placeFree + (i + 1)]) === 1;
+          placeFree[i].state = parseInt(this.$route.query[queryKey.placeFree + (i + 1)]) === 1;
         }
       }
 

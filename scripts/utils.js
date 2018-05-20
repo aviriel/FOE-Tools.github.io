@@ -96,25 +96,18 @@ export default {
           resultValue = parseFloat(value);
           break;
         default:
-          throw new Error(
-            'Unexpected type for parameter "type" in checkFormNumeric.'
-          );
+          throw new Error('Unexpected type for parameter "type" in checkFormNumeric.');
       }
 
       if (comparator instanceof Array) {
         if (comparator.length !== 2) {
           throw new Error(
-            'Unexpected size array for parameter "comparator" in checkFormNumeric. The comparator array must contain only two numbers.'
+            'Unexpected size array for parameter "comparator" in checkFormNumeric. ' +
+              "The comparator array must contain only two numbers."
           );
-        } else if (
-          typeof comparator[0] === typeof comparator[1] &&
-          typeof comparator[0] === "number"
-        ) {
+        } else if (typeof comparator[0] === typeof comparator[1] && typeof comparator[0] === "number") {
           valid = this.inRange(value, comparator[0], comparator[1]);
-        } else if (
-          typeof comparator[0] === "string" &&
-          typeof comparator[1] === "number"
-        ) {
+        } else if (typeof comparator[0] === "string" && typeof comparator[1] === "number") {
           switch (comparator[0]) {
             case "<":
               valid = resultValue < comparator[1];
@@ -136,12 +129,15 @@ export default {
               break;
             default:
               throw new Error(
-                'Unexpected value for parameter "comparator" in checkFormNumeric. Expected a string version of number comparator: "<", "<=", ">", ">=", "==" or "===".'
+                'Unexpected value for parameter "comparator" in checkFormNumeric. ' +
+                  'Expected a string version of number comparator: "<", "<=", ">", ">=", "==" or "===".'
               );
           }
         } else {
           throw new Error(
-            'Unexpected value for parameter "comparator" in checkFormNumeric. The comparator array must contain a number or a string for the fist element and a number for the second.'
+            'Unexpected value for parameter "comparator" in checkFormNumeric. ' +
+              "The comparator array must contain a number or a string for the fist element " +
+              "and a number for the second."
           );
         }
       } else {
@@ -170,7 +166,8 @@ export default {
    * Split an array into sub-array
    * @param arrayList {Array} Array to split
    * @param chunck {number} Number of elements by sub-array
-   * @param sameSize {boolean} True to fill the last sub-array with 'null' value to have the same size of others, False otherwise (default: False)
+   * @param sameSize {boolean} True to fill the last sub-array with 'null' value to have the same size of others,
+   * False otherwise (default: False)
    * @returns {Array} Return an Array that contains @chunck sub-array
    */
   splitArray(arrayList, chunck, sameSize = false) {
@@ -212,16 +209,7 @@ export default {
    * @param type {string} Type of the result value (must be 'int' or 'float')
    * @return {FormCheck} Return the state of the data ("VALID", "INVALID", "NO_CHANGE")
    */
-  handlerForm(
-    ctx,
-    key,
-    value,
-    currentValue,
-    comparator,
-    saveCookie = false,
-    cookiePath = "",
-    type = "int"
-  ) {
+  handlerForm(ctx, key, value, currentValue, comparator, saveCookie = false, cookiePath = "", type = "int") {
     let result = this.checkFormNumeric(value, currentValue, comparator, type);
     ctx.$data.errors[key] = result.state === FormCheck.INVALID;
     if (saveCookie && result.state === FormCheck.VALID) {
@@ -246,7 +234,6 @@ export default {
     const R = parseInt(f[0].slice(4), 10);
     const G = parseInt(f[1], 10);
     const B = parseInt(f[2], 10);
-    return `rgb(${Math.round((t - R) * p) + R},${Math.round((t - G) * p) +
-      G},${Math.round((t - B) * p) + B})`;
+    return `rgb(${Math.round((t - R) * p) + R},${Math.round((t - G) * p) + G},${Math.round((t - B) * p) + B})`;
   }
 };

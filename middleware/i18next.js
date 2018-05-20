@@ -15,10 +15,7 @@ export default function({ isHMR, app, store, route, params, error, redirect }) {
     return error({ message: "This page could not be found.", statusCode: 404 });
   }
 
-  if (
-    app.$cookies.get("locale") === null ||
-    store.supportedLocales.indexOf(app.$cookies.get("locale")) === -1
-  ) {
+  if (app.$cookies.get("locale") === null || store.supportedLocales.indexOf(app.$cookies.get("locale")) === -1) {
     app.$cookies.set("locale", app.defaultLocale, {
       path: "/",
       expires: Utils.getDefaultCookieExpireTime()
@@ -29,15 +26,12 @@ export default function({ isHMR, app, store, route, params, error, redirect }) {
 
   // Set locale
   store.commit("SET_LANG", locale);
-  app.i18n.i18next.changeLanguage(store.state.locale, (err, t) => {
+  app.i18n.i18next.changeLanguage(store.state.locale, err => {
     if (err) return console.error("something went wrong loading", err);
   });
 
   // If route is /<defaultLocale>/... -> redirect to /...
-  if (
-    locale === defaultLocale &&
-    route.fullPath.indexOf("/" + defaultLocale) === 0
-  ) {
+  if (locale === defaultLocale && route.fullPath.indexOf("/" + defaultLocale) === 0) {
     const toReplace = "^/" + defaultLocale;
     const re = new RegExp(toReplace);
     let result = route.fullPath.replace(re, "");
@@ -57,10 +51,7 @@ export default function({ isHMR, app, store, route, params, error, redirect }) {
     }
   }
 
-  if (
-    !(route.fullPath.indexOf("/" + locale) === 0) &&
-    locale !== defaultLocale
-  ) {
+  if (!(route.fullPath.indexOf("/" + locale) === 0) && locale !== defaultLocale) {
     return redirect("/" + locale + route.fullPath);
   }
 }

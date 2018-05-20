@@ -12,8 +12,7 @@ export default {
     this.$store.commit("RESTORE_HERO");
 
     return {
-      url:
-        "https://raw.githubusercontent.com/FOE-Tools/FOE-Tools.github.io/dev/CHANGELOG.md",
+      url: "https://raw.githubusercontent.com/FOE-Tools/FOE-Tools.github.io/dev/CHANGELOG.md",
       markdown: ""
     };
   },
@@ -21,7 +20,7 @@ export default {
     let xhr = new XMLHttpRequest();
     let self = this;
     xhr.open("GET", this.$data.url, true);
-    xhr.onload = function(e) {
+    xhr.onload = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           remark()
@@ -38,7 +37,7 @@ export default {
         }
       }
     };
-    xhr.onerror = function(e) {
+    xhr.onerror = function() {
       console.error(xhr.statusText);
     };
     xhr.send(null);

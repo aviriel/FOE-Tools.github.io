@@ -499,7 +499,7 @@ export default {
       let noCheck = ["from", "to", "investorPercentageCustom"];
       let result = {};
       let change = Utils.FormCheck.NO_CHANGE;
-      let investorPercentageCustom = Array.apply(null, Array(5)).map(x => defaultArcPercentage);
+      let investorPercentageCustom = Array.apply(null, Array(5)).map(() => defaultArcPercentage);
       let tmp;
       let from = data.from;
       let to = data.to;
@@ -523,7 +523,7 @@ export default {
             change = Utils.FormCheck.VALID;
             result[key] = tmp.value;
             if (key === "investorPercentageGlobal") {
-              investorPercentageCustom = Array.apply(null, Array(5)).map(x => tmp.value);
+              investorPercentageCustom = Array.apply(null, Array(5)).map(() => tmp.value);
             }
           }
         }

@@ -1,4 +1,4 @@
-import foeGBData from "~/scripts/foe-gb-data";
+import { gbs, gbList } from "~/lib/foe-data/gbs";
 
 const i18nPrefix = "components.gb_investment.gb_list_select.";
 
@@ -13,13 +13,13 @@ export default {
   data() {
     return {
       i18nPrefix: i18nPrefix,
-      foeGBData,
+      foeGBList: gbList,
       gbList: this.$props.current
     };
   },
   watch: {
     gbList(val) {
-      if (val in foeGBData.gbs) {
+      if (val in gbs) {
         this.$emit("change", val);
       }
     }

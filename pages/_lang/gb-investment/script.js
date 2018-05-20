@@ -1,5 +1,5 @@
-import foeGBData from "~/scripts/foe-gb-data";
 import Utils from "~/scripts/utils";
+import { gbList } from "~/lib/foe-data/gbs";
 
 const i18nPrefix = "routes.gb_investment_gb_chooser.";
 
@@ -10,21 +10,16 @@ export default {
       subtitle: i18nPrefix + "hero.subtitle"
     });
 
-    return { title: this.$t(i18nPrefix + "title") };
+    return {
+      title: this.$t(i18nPrefix + "title")
+    };
   },
   data() {
     this.$store.commit("SET_CURRENT_LOCATION", "gb_investment");
 
     return {
       i18nPrefix: i18nPrefix,
-      GBsByAge: Utils.splitArray(
-        Object.keys(foeGBData.GBs_BY_AGE).map(key => foeGBData.GBs_BY_AGE[key]),
-        2,
-        true
-      )
+      GBsByAge: Utils.splitArray(gbList, 2, true)
     };
-  },
-  mounted() {
-    document.foeGBData = foeGBData;
   }
 };

@@ -1,4 +1,4 @@
-import foeGBData from "~/scripts/foe-gb-data";
+import { gbs } from "~/lib/foe-data/gbs";
 import gbInvestment from "~/components/gb-investment/index";
 import securePosition from "~/components/secure-position/index";
 
@@ -7,9 +7,7 @@ const i18nPrefix = "routes.gb_investment.";
 export default {
   validate({ params }) {
     // Check if `params.gb` is an existing Great Building
-    return Object.keys(foeGBData.gbs)
-      .map(key => foeGBData.gbs[key])
-      .some(gb => gb.key === params.gb);
+    return params.gb in gbs;
   },
   head() {
     this.$store.commit("SET_HERO", {
@@ -25,8 +23,10 @@ export default {
       })
     };
   },
-  asyncData({ params }) {
-    return params.gb ? { gb: foeGBData.gbs[params.gb] } : {};
+  asyncData({ params, payload }) {
+    if (payload) return { gb: payload };
+    const data = require(`~/lib/foe-data/gbs-data/${params.gb}`);
+    return { gb: data };
   },
   data() {
     this.$store.commit("SET_CURRENT_LOCATION", "gb_investment");

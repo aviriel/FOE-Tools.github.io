@@ -3,6 +3,7 @@ const { JSDOM } = jsdom;
 
 const i18n = require("./scripts/i18n");
 const { i18next, defaultLocale, supportedLocales } = i18n;
+const { gbs } = require("./lib/foe-data/gbs");
 
 /**
  * Return locale based on route
@@ -63,9 +64,7 @@ const modifyHtml = (page, locale) => {
   // Set meta description
   text = i18next.t(
     [
-      `routes.${
-        pageKey[0] === "gb_investment" ? "gb_investment_gb_chooser" : pageKey[0]
-      }.hero.subtitle`,
+      `routes.${pageKey[0] === "gb_investment" ? "gb_investment_gb_chooser" : pageKey[0]}.hero.subtitle`,
       "components.site_layout.hero.slogan_html"
     ],
     { lng: locale }
@@ -157,43 +156,10 @@ const defaultRoutes = [
   { route: "/changelog", dynamic: [] },
   {
     route: "/gb-investment",
-    dynamic: [
-      "Observatory",
-      "Temple_of_Relics",
-      "Oracle_of_Delphi",
-      "Tower_of_Babel",
-      "Statue_of_Zeus",
-      "Colosseum",
-      "Lighthouse_of_Alexandria",
-      "Hagia_Sophia",
-      "Cathedral_of_Aachen",
-      "St_Mark_s_Basilica",
-      "Notre_Dame",
-      "Saint_Basil_s_Cathedral",
-      "Castel_del_Monte",
-      "Deal_Castle",
-      "Frauenkirche_of_Dresden",
-      "Capitol",
-      "Royal_Albert_Hall",
-      "Chateau_Frontenac",
-      "Alcatraz",
-      "Space_Needle",
-      "Atomium",
-      "Cape_Canaveral",
-      "The_Habitat",
-      "Lotus_Temple",
-      "Innovation_Tower",
-      "Dynamic_Tower",
-      "Voyager_V1",
-      "The_Arc",
-      "Rain_Forest_Project",
-      "Gaea_Statue",
-      "Arctic_Orangery",
-      "Seed_Vault",
-      "Atlantis_Museum",
-      "The_Kraken",
-      "The_Blue_Galaxy"
-    ]
+    dynamic: Object.keys(gbs),
+    payload(gb) {
+      return require("./lib/foe-data/gbs-data/" + gb);
+    }
   },
   { route: "/secure-position", dynamic: [] },
   { route: "/cf-calculator", dynamic: [] },
@@ -212,11 +178,7 @@ module.exports = {
   router: {
     middleware: "i18next"
   },
-  plugins: [
-    { src: "~/plugins/i18next.js" },
-    { src: "~/plugins/clipboard.js" },
-    { src: "~/plugins/numeral-plugin.js" }
-  ],
+  plugins: [{ src: "~/plugins/i18next.js" }, { src: "~/plugins/clipboard.js" }, { src: "~/plugins/numeral-plugin.js" }],
   generate: {
     fallback: true,
     routes: function() {
@@ -227,7 +189,14 @@ module.exports = {
         for (let route of defaultRoutes) {
           result.push(prefix + route.route);
           for (let subRoute of route.dynamic) {
-            result.push(`${prefix}${route.route}/${subRoute}`);
+            if (route.payload) {
+              result.push({
+                route: `${prefix}${route.route}/${subRoute}`,
+                payload: route.payload(subRoute)
+              });
+            } else {
+              result.push(`${prefix}${route.route}/${subRoute}`);
+            }
           }
         }
       }

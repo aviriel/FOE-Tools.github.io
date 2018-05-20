@@ -1,5 +1,5 @@
 import Utils from "~/scripts/utils";
-import foeData from "~/scripts/foe-gb-data";
+import { gbsData } from "~/lib/foe-data/gbs";
 import gbProcess from "~/scripts/foe-gb-investment";
 import gbListSelect from "~/components/gb-list-select/index";
 import graphCanvas from "~/components/graph-canvas/index";
@@ -60,7 +60,7 @@ export default {
         title: {
           display: true,
           text: this.$i18n.i18next.t(i18nPrefix + "graph.title", {
-            gb: "foe_data.gb." + foeData.GBs_BY_AGE.NoAge.gbs[0].key
+            gb: "foe_data.gb." + gbsData.Observatory.key
           })
         },
         tooltips: {
@@ -73,9 +73,7 @@ export default {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: this.$i18n.i18next.t(
-                  i18nPrefix + "graph.x_axes_label"
-                )
+                labelString: this.$i18n.i18next.t(i18nPrefix + "graph.x_axes_label")
               },
               ticks: {
                 suggestedMin: defaultFrom,
@@ -88,16 +86,14 @@ export default {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: this.$i18n.i18next.t(
-                  i18nPrefix + "graph.y_axes_label"
-                )
+                labelString: this.$i18n.i18next.t(i18nPrefix + "graph.y_axes_label")
               }
             }
           ]
         }
       },
-      gb: foeData.GBs_BY_AGE.NoAge.gbs[0],
-      maxLevel: foeData.GBs_BY_AGE.NoAge.gbs[0].levels.length,
+      gb: gbsData.Observatory,
+      maxLevel: gbsData.Observatory.levels.length,
       from: defaultFrom,
       to: defaultTo,
       investorPercentageGlobal: defaultArcPercentage,
@@ -127,14 +123,8 @@ export default {
       previsionDefault: gbProcess.SubmitRange(
         defaultFrom,
         defaultTo,
-        [
-          defaultArcPercentage,
-          defaultArcPercentage,
-          defaultArcPercentage,
-          defaultArcPercentage,
-          defaultArcPercentage
-        ],
-        foeData.GBs_BY_AGE.NoAge.gbs[0].levels
+        [defaultArcPercentage, defaultArcPercentage, defaultArcPercentage, defaultArcPercentage, defaultArcPercentage],
+        gbsData.Observatory.levels
       )
     };
 
@@ -173,9 +163,7 @@ export default {
       });
     }
 
-    oldInvestorPercentageCustom = JSON.parse(
-      JSON.stringify(data.investorPercentageCustom)
-    );
+    oldInvestorPercentageCustom = JSON.parse(JSON.stringify(data.investorPercentageCustom));
 
     return data;
   },
@@ -209,9 +197,7 @@ export default {
     duration() {
       if (this.$data.fpBy24h > 0) {
         let result = Math.ceil(
-          (this.$data.previsionResult.global.totalPreparations -
-            this.$data.alreadyInvested) /
-            this.$data.fpBy24h
+          (this.$data.previsionResult.global.totalPreparations - this.$data.alreadyInvested) / this.$data.fpBy24h
         );
         return result < 0 ? 0 : result;
       } else {
@@ -223,14 +209,8 @@ export default {
     lang() {
       moment.locale(this.$store.state.locale);
       if (this.$data.fpBy24h > 0) {
-        let duration = Math.ceil(
-          this.$data.previsionResult.global.totalPreparations /
-            this.$data.fpBy24h
-        );
-        this.$data.estimatedTime = Utils.getFormatedDuration(
-          moment.duration(duration, "days"),
-          this.$i18n.i18next
-        );
+        let duration = Math.ceil(this.$data.previsionResult.global.totalPreparations / this.$data.fpBy24h);
+        this.$data.estimatedTime = Utils.getFormatedDuration(moment.duration(duration, "days"), this.$i18n.i18next);
       }
 
       this.updatePrevisionGraph();
@@ -243,10 +223,8 @@ export default {
     },
     from(val, oldVal) {
       if (
-        Utils.handlerForm(this, "from", val.length === 0 ? 1 : val, oldVal, [
-          1,
-          this.$data.to
-        ]) === Utils.FormCheck.VALID
+        Utils.handlerForm(this, "from", val.length === 0 ? 1 : val, oldVal, [1, this.$data.to]) ===
+        Utils.FormCheck.VALID
       ) {
         oldMaxLevel = val;
         this.$store.commit("UPDATE_URL_QUERY", {
@@ -258,10 +236,8 @@ export default {
     },
     to(val, oldVal) {
       if (
-        Utils.handlerForm(this, "to", val.length === 0 ? 0 : val, oldVal, [
-          this.$data.from,
-          this.$data.maxLevel
-        ]) === Utils.FormCheck.VALID
+        Utils.handlerForm(this, "to", val.length === 0 ? 0 : val, oldVal, [this.$data.from, this.$data.maxLevel]) ===
+        Utils.FormCheck.VALID
       ) {
         if (this.$data.errors.from) {
           if (this.checkFrom(oldFromInput)) {
@@ -300,11 +276,7 @@ export default {
         });
         this.calculate();
       }
-      for (
-        let index = 0;
-        index < this.$data.investorPercentageCustom.length;
-        index++
-      ) {
+      for (let index = 0; index < this.$data.investorPercentageCustom.length; index++) {
         this.$store.commit("UPDATE_URL_QUERY", {
           key: queryKey.investorPercentageCustom + (index + 1),
           value: val
@@ -347,9 +319,7 @@ export default {
         value: val ? 1 : 0
       });
       for (let i = 0; i < 5; i++) {
-        this.$data.investorPercentageCustom[
-          i
-        ] = this.$data.investorPercentageGlobal;
+        this.$data.investorPercentageCustom[i] = this.$data.investorPercentageGlobal;
         this.$store.commit("UPDATE_URL_QUERY", {
           key: queryKey.investorPercentageCustom + (i + 1),
           value: this.$data.investorPercentageGlobal
@@ -363,9 +333,7 @@ export default {
           value: val
         });
         this.$data.duration = Math.ceil(
-          (this.$data.previsionResult.global.totalPreparations -
-            this.$data.alreadyInvested) /
-            val
+          (this.$data.previsionResult.global.totalPreparations - this.$data.alreadyInvested) / val
         );
         this.$data.estimatedTime = Utils.getFormatedDuration(
           moment.duration(this.$data.duration, "days"),
@@ -381,22 +349,15 @@ export default {
     },
     alreadyInvested(val, oldVal) {
       if (
-        Utils.handlerForm(
-          this,
-          "alreadyInvested",
-          val.length === 0 ? 0 : val,
-          oldVal,
-          [0, this.maxCurrentLevel]
-        ) === Utils.FormCheck.VALID
+        Utils.handlerForm(this, "alreadyInvested", val.length === 0 ? 0 : val, oldVal, [0, this.maxCurrentLevel]) ===
+        Utils.FormCheck.VALID
       ) {
         this.$store.commit("UPDATE_URL_QUERY", {
           key: queryKey.alreadyInvested,
           value: val
         });
         this.$data.duration = Math.ceil(
-          (this.$data.previsionResult.global.totalPreparations -
-            this.$data.alreadyInvested) /
-            this.$data.fpBy24h
+          (this.$data.previsionResult.global.totalPreparations - this.$data.alreadyInvested) / this.$data.fpBy24h
         );
         this.$data.estimatedTime = Utils.getFormatedDuration(
           moment.duration(this.$data.duration, "days"),
@@ -411,13 +372,7 @@ export default {
         Vue.set(this.$data.errors, "from", true);
         return false;
       }
-      if (
-        Utils.handlerForm(this, "from", val, this.$data.from, [
-          1,
-          this.$data.to
-        ]) === Utils.FormCheck.VALID
-      ) {
-        console.log("valid");
+      if (Utils.handlerForm(this, "from", val, this.$data.from, [1, this.$data.to]) === Utils.FormCheck.VALID) {
         Vue.set(this.$data.errors, "from", false);
         Vue.set(this.$data, "from", val);
         return true;
@@ -425,22 +380,15 @@ export default {
       return false;
     },
     changeGb(key) {
-      this.$data.gb = foeData.gbs[key];
+      this.$data.gb = gbsData[key];
       this.$data.maxLevel = this.$data.gb.levels.length;
-      this.$data.from =
-        this.$data.from > this.$data.maxLevel ? 1 : this.$data.from;
-      this.$data.to =
-        this.$data.to > this.$data.maxLevel
-          ? this.$data.maxLevel
-          : this.$data.to;
+      this.$data.from = this.$data.from > this.$data.maxLevel ? 1 : this.$data.from;
+      this.$data.to = this.$data.to > this.$data.maxLevel ? this.$data.maxLevel : this.$data.to;
       this.calculate();
     },
     updatePrevisionGraph() {
       const datasets = [];
-      const labels = Array.from(
-        new Array(this.$data.to - this.$data.from + 1),
-        (x, i) => i + this.$data.from
-      );
+      const labels = Array.from(new Array(this.$data.to - this.$data.from + 1), (x, i) => i + this.$data.from);
 
       const chartColors = {
         red: "rgb(255, 99, 132)",
@@ -473,9 +421,7 @@ export default {
         },
         {
           label: this.$t(i18nPrefix + "graph.label.default_preparation"),
-          data: this.$data.previsionDefault.levels.map(
-            x => x.totalPreparations
-          ),
+          data: this.$data.previsionDefault.levels.map(x => x.totalPreparations),
           color: chartColors.blue,
           color_alpha: chartColorsAlpha.blue
         }
@@ -483,8 +429,7 @@ export default {
 
       if (
         this.$data.previsionResult !== null &&
-        this.$data.previsionResult.global.totalPreparations !==
-          this.$data.previsionDefault.global.totalPreparations
+        this.$data.previsionResult.global.totalPreparations !== this.$data.previsionDefault.global.totalPreparations
       ) {
         data.push({
           label: this.$t(i18nPrefix + "graph.label.custom_preparation"),
@@ -517,10 +462,9 @@ export default {
 
       this.$data.datasets = datasets;
       this.$data.labels = labels;
-      this.$data.options.title.text = this.$i18n.i18next.t(
-        i18nPrefix + "graph.title",
-        { gb: "foe_data.gb." + this.$data.gb.key }
-      );
+      this.$data.options.title.text = this.$i18n.i18next.t(i18nPrefix + "graph.title", {
+        gb: "foe_data.gb." + this.$data.gb.key
+      });
       this.$data.options.scales.xAxes[0].scaleLabel.labelString = this.$i18n.i18next.t(
         i18nPrefix + "graph.x_axes_label"
       );
@@ -546,14 +490,8 @@ export default {
       );
 
       if (this.$data.fpBy24h > 0) {
-        let duration = Math.ceil(
-          this.$data.previsionResult.global.totalPreparations /
-            this.$data.fpBy24h
-        );
-        this.$data.estimatedTime = Utils.getFormatedDuration(
-          moment.duration(duration, "days"),
-          this.$i18n.i18next
-        );
+        let duration = Math.ceil(this.$data.previsionResult.global.totalPreparations / this.$data.fpBy24h);
+        this.$data.estimatedTime = Utils.getFormatedDuration(moment.duration(duration, "days"), this.$i18n.i18next);
       }
       this.updatePrevisionGraph();
     },
@@ -561,21 +499,16 @@ export default {
       let noCheck = ["from", "to", "investorPercentageCustom"];
       let result = {};
       let change = Utils.FormCheck.NO_CHANGE;
-      let investorPercentageCustom = Array.apply(null, Array(5)).map(
-        x => defaultArcPercentage
-      );
+      let investorPercentageCustom = Array.apply(null, Array(5)).map(x => defaultArcPercentage);
       let tmp;
       let from = data.from;
       let to = data.to;
       let fromToChange = 0;
       let customPercentage = data.customPercentage;
 
-      if (
-        this.$route.query[queryKey.gb] &&
-        this.$route.query[queryKey.gb] in foeData.gbs
-      ) {
+      if (this.$route.query[queryKey.gb] && this.$route.query[queryKey.gb] in gbsData) {
         change = Utils.FormCheck.VALID;
-        result.gb = foeData.gbs[this.$route.query[queryKey.gb]];
+        result.gb = gbsData[this.$route.query[queryKey.gb]];
       }
 
       for (let key in inputComparator) {
@@ -590,9 +523,7 @@ export default {
             change = Utils.FormCheck.VALID;
             result[key] = tmp.value;
             if (key === "investorPercentageGlobal") {
-              investorPercentageCustom = Array.apply(null, Array(5)).map(
-                x => tmp.value
-              );
+              investorPercentageCustom = Array.apply(null, Array(5)).map(x => tmp.value);
             }
           }
         }
@@ -628,8 +559,7 @@ export default {
         parseInt(this.$route.query[queryKey.cp]) >= 0
       ) {
         change = Utils.FormCheck.VALID;
-        result.customPercentage =
-          parseInt(this.$route.query[queryKey.cp]) === 1;
+        result.customPercentage = parseInt(this.$route.query[queryKey.cp]) === 1;
         customPercentage = result.customPercentage;
       }
 
@@ -662,7 +592,6 @@ export default {
   mounted() {
     this.calculate();
     this.updatePrevisionGraph();
-    document.foeData = foeData;
   },
   components: {
     gbListSelect,

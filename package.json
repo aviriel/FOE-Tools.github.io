@@ -55,7 +55,8 @@
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "push-dir": "^0.4.1",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "@panter/vue-i18next": "^0.9.1",

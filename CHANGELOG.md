@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.0"></a>
+# 2.2.0 (2018-05-27)
+
+### Bug Fixes
+
+* ArcticFuture corrected reward value for cost 120 ([2892edf](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/2892edf))
+
+
+### Features
+
+* Externalize markdown component and add support of emoji in markdown ([4ce7046](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/4ce7046)), closes [#52](https://github.com/FOE-Tools/FOE-Tools.github.io/issues/52)
+
+
+
 <a name="2.1.2"></a>
 ## 2.1.2 (2018-05-20)
 
@@ -23,7 +37,7 @@ All notable changes to this project will be documented in this file. See [standa
 - Fix From input in "Forecast cost GB" [9b48859](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/9b488590c44a89c518ad24ece46f5e647fe60851)
 - Fix copy button not working on iOS [0b0c6ab](https://github.com/FOE-Tools/FOE-Tools.github.io/commit/0b0c6abd653753c6b27c2a55373666352726f110)
 
-## 2.1.0 (2018-05-06)
+# 2.1.0 (2018-05-06)
 
 - Fix issue in "Forecast cost GB" when "From" input is empty
 - Update Tomorrow data, add level 26 to 70
@@ -36,7 +50,7 @@ All notable changes to this project will be documented in this file. See [standa
 - Fix table overflow
 - Fix bad i18n key for permalink in "About"
 
-## 2.0.0 (2018-05-05)
+# 2.0.0 (2018-05-05)
 
 This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vuejs.org/) Applications).
 
@@ -61,7 +75,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 -   Fix cost and rewards of Oracle of Delphi [#24](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/24)
 
-## 1.5.0 (2018-02-22)
+# 1.5.0 (2018-02-22)
 
 - Add changelog page [#21](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/21)
 - Add contributor page [#20](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/20)
@@ -69,7 +83,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 - Add support of Russian (by [aviriel](https://github.com/aviriel)) [#14](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/14)
 - Add return on investment in secure-position tool [#12](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/12)
 
-## 1.4.0 (2018-02-05)
+# 1.4.0 (2018-02-05)
 
 -   Added support of German (by [Nlossae](https://github.com/Nlossae)) [#6](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/6)
 -   Fix selected option in GB select list [#7](https://github.com/FOE-Tools/FOE-Tools.github.io/pull/7)
@@ -87,7 +101,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 - Fix permalink i18n key in about
 
-## 1.3.0 (2018-01-01)
+# 1.3.0 (2018-01-01)
 
 -   Added support of internationalization
 -   Added support of English
@@ -101,7 +115,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 
 - Updated home page
 
-## 1.2.0 (2017-12-23)
+# 1.2.0 (2017-12-23)
 
 - Added tool: Secure position (and integrating it to GB Investment)
 - Added cookies for improve UX
@@ -109,7 +123,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 - Correction of mistakes in texts
 - Prevent bugs (GB Investment and Cookie)
 
-## 1.1.0 (2017-12-22)
+# 1.1.0 (2017-12-22)
 
 - Added a select to switch quickly between GB in GB-Investment
 - Added indication for input data in GB-Investment
@@ -122,7 +136,7 @@ This version using [Nuxt.js](https://nuxtjs.org/) (Universal [Vue.js](https://vu
 - Add autocomplete to off (because it is useless here)
 - Fix trouble with level input on GB-Investment (User can't delete last digit of level input)
 
-## 1.0.0 (2017-12-20)
+# 1.0.0 (2017-12-20)
 
 Initial version of the website.
 This version using [Marko](https://markojs.com/).

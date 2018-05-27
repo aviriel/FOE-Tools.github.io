@@ -1,5 +1,4 @@
-import remark from "remark";
-import html from "remark-html";
+import Remark from "~/components/remark/index";
 
 const i18nPrefix = "routes.changelog.";
 
@@ -23,15 +22,7 @@ export default {
     xhr.onload = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          remark()
-            .use(html)
-            .process(xhr.responseText, function(err, file) {
-              if (err) {
-                console.error(err);
-              } else {
-                self.$data.markdown = file.contents;
-              }
-            });
+          self.$data.markdown = xhr.responseText;
         } else {
           console.error(xhr.statusText);
         }
@@ -41,5 +32,8 @@ export default {
       console.error(xhr.statusText);
     };
     xhr.send(null);
+  },
+  components: {
+    Remark
   }
 };

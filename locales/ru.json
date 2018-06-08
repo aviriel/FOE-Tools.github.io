@@ -4,7 +4,9 @@
       "home": "Главная",
       "gb_investment": "$t(routes.gb_investment_gb_chooser.hero.title)",
       "secure_position": "$t(routes.secure_position.hero.title)",
-      "cf_calculator": "$t(routes.cf_calculator.hero.title)"
+      "cf_calculator": "$t(routes.cf_calculator.hero.title)",
+      "gb_statistics": "$t(routes.gb_statistics.hero.title)",
+      "gb_forecast_cost": "$t(routes.gb_forecast_cost.hero.title)"
     },
     "footer_menu": {
       "about": "О сервисе",
@@ -17,12 +19,12 @@
           "title": "$t(routes.cf_calculator.hero.title)",
           "your_age": "Ваша эпоха",
           "your_cf_boost": "Ваш бонус $t(foe_data.gb.Chateau_Frontenac)",
-          "coins_to_use": "Монет, используемых в Праздничной вечеринке Ринбина (ПВР)",
-          "supplies_to_use": "Ресурсов, используемых в ПВР",
+          "coins_to_use": "Монет в Праздничной вечеринке Ринбина (ПВР)",
+          "supplies_to_use": "Ресурсов в ПВР",
           "gb_plunder_goods": "ВС и производственные здания (товары)",
           "fp_by_24h": "Производство СО в сутки",
-          "other_rq": "Другие суточные повторяемые квесты",
-          "second_rq": "Еще повторяющиеся квесты?",
+          "other_rq": "Другие суточные круговые квесты",
+          "second_rq": "Еще круговые квесты?",
           "supplies_gathered": "Ресурсов получено",
           "table_reward": {
             "title": "Награды",
@@ -36,10 +38,13 @@
           "reward_message": {
             "daily_ubq": "Ежедневные ПВР: {{count}}",
             "bonus_ubq": "Бонус ПВР: {{count}}",
-            "second_rq_completed": "Вторых круговых заданий выполнено: {{count}}",
+            "second_rq_completed": "Вторых круговых квестов выполнено: {{count}}",
             "total_goods": "Всего товаров: {{count}}",
+            "total_goods_plural": "Всего товаров : {{count, number}}",
             "total_fp": "Всего СО: {{count}}",
-            "total_rq_completed": "Всего круговых заданий выполнено: {{count}}"
+            "total_fp_plural": "Всего СО : {{count, number}}",
+            "total_rq_completed": "Всего круговых заданий выполнено: {{count}}",
+            "total_rq_completed_plural": "Всего круговых заданий выполнено : {{count, number}}"
           },
           "table_return": {
             "thead": {
@@ -47,6 +52,10 @@
               "th_coin": "Возврат монет",
               "th_supply": "Возврат ресурсов"
             }
+          },
+          "infinity_generator": {
+            "message": "С текущим бонусом $t(foe_data.gb.Chateau_Frontenac) вы получите больше монет и ресурсов, чем потратите на выполнение задания. Пожалуйста, укажите число \"$t(components.cf_calculator.block_cfc.infinity_generator.label)\", которые вы хотите выполнить.",
+            "label": "Кумулятивный квест"
           }
         }
       },
@@ -58,7 +67,7 @@
           "title": "$t(routes.gb_investment_gb_chooser.hero.title)",
           "description": {
             "p1": "Укажите уровень ВС и бонус Арки (%) того, кто вкладывается. Значения в таблице обновятся автоматически.",
-            "p2_html": "<strong>Замечание</strong>: Если таблица не обновилась автоматически, сначала укажите уровень ВС, потом значение бонуса Арки и нажмите \"$t(components.gb_investment.gb_investment.form.submit_global)\". Если вы хотите указать значения вкладов для всех мест, заполните правую колонку таблицы и нажмите \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
+            "p2_html": "<strong>Замечание</strong>: Если таблица не обновилась автоматически, сначала укажите уровень ВС, потом значение бонуса Арки и нажмите \"$t(components.gb_investment.gb_investment.form.submit_global)\". Если вы хотите указать значения вкладов для всех мест вручную, заполните правую колонку таблицы и нажмите \"$t(components.gb_investment.gb_investment.form.submit_custom)\"."
           },
           "form": {
             "level": "Уровень ВС (от 1 до {{max}})",
@@ -73,7 +82,8 @@
               "th2": "Стандартная награда",
               "th3": "СО, которые должен вложить владелец для гарантии места",
               "th4": "Награда с учетом бонуса",
-              "th5": "Бонус Арки, %"
+              "th5": "Бонус Арки, %",
+              "th6": "Место свободно"
             },
             "tfoot": {
               "total_preparation": "Общий вклад владельца",
@@ -83,6 +93,8 @@
         },
         "promotion": {
           "title": "Шаблон сообщения с предложением вложиться арочникам",
+          "prefix_placeholder": "текст до предложения",
+          "suffix_placeholder": "текст после предложения",
           "promo": [
             "P1({{investment}})",
             "P2({{investment}})",
@@ -92,6 +104,41 @@
           ]
         }
       },
+      "gb_forecast_cost": {
+        "title": "Прогноз",
+        "p1": "Определите количество СО, нужное для перехода с уровня на уровень, с и без бонуса Арки.",
+        "custom_percentage": "Разные бонусы Арки (для разных мест)",
+        "estimated_time": "Примерное время на достижения уровня",
+        "message": {
+          "single": "Для достижения уровня {{level}} \"$t({{gb}})\", владелец должен вложить {{preparation, number}} СО. Общая стоимость уровней: {{cost, number}} СО.",
+          "multi": "Для достижения уровня {{level}} \"$t({{gb}})\", владелец должен вложить {{preparation, number}} СО. Общая стоимость уровней: {{cost, number}} СО.",
+          "diff": "За счет бонуса вы сэкономите {{count}} СО",
+          "diff_plural": "За счет бонуса вы сэкономите {{count}} СО",
+          "estimated_time": "Примерное время на достижение уровня: {{time}}"
+        },
+        "prop_already_invested": "Уже вложено СО владельцем в текущий уровень:",
+        "graph": {
+          "title": "Прогноз затрат СО для владельца для подготовки и прокачки \"$t({{gb}})\"",
+          "x_axes_label": "$t(utils.graph.gb_level)",
+          "y_axes_label": "$t(utils.graph.gb_level_cost)",
+          "label": {
+            "default": "Разница относительно прошлого уровня",
+            "default_preparation": "Количество требуемых СО без бонуса",
+            "custom_preparation": "Количество требуемых СО с бонусом"
+          }
+        }
+      },
+      "gb_statistics": {
+        "title": "$t(routes.gb_statistics.hero.title)",
+        "p1": "Граф сделан на основании Эпох, так как стоимость и награды в ВС одной эпохи одинаковы кроме особого случая ($t(foe_data.gb.Oracle_of_Delphi)).",
+        "represent": "Представляет:",
+        "graph": {
+          "title_1": "Рост стоимости уровня относительно уровней",
+          "title_2": "Рост наград за первое место относительно уровней",
+          "title_3": "Рост стоимости уровня относительно награды за первое место",
+          "title_4": "Рост награды за первое место относительно стоимости уровней"
+        }
+      },
       "secure_position": {
         "block_place": {
           "title": "Обеспечение гарантии",
@@ -99,7 +146,6 @@
           "current_deposits": "Сумма вложений на данный момент",
           "your_participation": "Ваше вложение",
           "other_participation": "Вложение игрока, которого нужно обойти",
-          "submit": "Рассчитать",
           "fp_to_complete_level": "Количество СО, которые осталось вложить до закрытия уровня: {{count}}",
           "fp_to_complete_level_plural": "Количество СО, которые осталось вложить до закрытия уровня: {{count}}",
           "your_arc_bonus": "Бонус вашей Арки",
@@ -128,6 +174,11 @@
           "title": "$t(common:site_title)",
           "slogan_html": "Набор инструментов для упрощения игры в $t(common:links.foe)"
         },
+        "cookie": {
+          "message": "Продолжая использовать $t(common:site_title), вы соглашаетесь с применением cookies для удобства использования сайта.",
+          "link": "Больше информации"
+        },
+        "permalink_info": "Вы перешли по прямой ссылке. В связи с этим данные не будут сохранены в cookies.",
         "footer": {
           "license_html": "Исходный код доступен под лицезией $t(common:links.mit)",
           "version": "Версия {{version}}"
@@ -147,9 +198,10 @@
           "p3_html": "Сайт является открытым, исходный код доступен на GitHub. <br /> Все желающие могут принять участие в улучшении этого сайта."
         },
         "cookie": {
-          "title": "Куки",
-          "p1": "Для вашего удобства этот сайт использует куки вашего браузера.",
-          "p2_html": "Мы храним в куки выбранный вами язык сайта.<br />В \"$t(components.gb_investment.gb_investment.title)\" мы также храним для каждого ВС уровни и проценты бонуса Арки, чтобы их не нужно было вводить каждый раз заново. <br />Пожалуйста, учитывайте, что, когда вы переходите по ссылке \"$t(utils.permalink)\", информация об уровне ВС и бонусах Арки не хранится."
+          "title": "Cookies",
+          "p1": "Для вашего удобства этот сайт использует cookies вашего браузера.",
+          "p2_html": "Мы храним в cookies выбранный вами язык сайта.<br />В \"$t(components.gb_investment.gb_investment.title)\" мы также храним для каждого ВС уровни и проценты бонуса Арки, чтобы их не нужно было вводить каждый раз заново. <br />Пожалуйста, учитывайте, что, когда вы переходите по ссылке \"$t(utils.permalink)\", информация об уровне ВС и бонусах Арки не хранится.",
+          "p3": "В сервисе \"$t(routes.cf_calculator.hero.title)\" мы храним все введённые в формы данные."
         },
         "dev_info": {
           "title": "Информация для разработчиков",
@@ -163,7 +215,7 @@
         "title": "$t(routes.cf_calculator.hero.title) | $t(common:site_title)",
         "hero": {
           "title": "Калькулятор Шато-Фронтенак",
-          "subtitle": "Инструмент для подсчета возврата товаров и СО при решении повторяющихся квестов и неосновного квеста Ринбин (Непраздничная вечеринка)."
+          "subtitle": "Инструмент для подсчета возврата товаров и СО при выполнении круговых квестов и неосновного квеста Ринбин (Непраздничная вечеринка)."
         }
       },
       "changelog": {
@@ -205,10 +257,24 @@
         "title": "$t(routes.gb_investment_gb_chooser.hero.title) | $t(common:site_title)",
         "hero": {
           "title": "Вложения ВС",
-          "subtitle": "Инструмент для подсчета количества стратегических очков (СО), которые игрок должен вложить в его великое строение (ВС) для обеспечения гарантии по 5 местам другим вкладчикам с Аркой (с учетом бонуса Арки)."
+          "subtitle": "Инструмент для подсчета количества стратегических очков (СО), которые игрок должен вложить в великое строение (ВС) для обеспечения гаранта по 5 местам другим вкладчикам с Аркой (с учетом бонуса Арки)."
         },
         "choose_gb": {
           "title": "Выберите Великое Строение"
+        }
+      },
+      "gb_forecast_cost": {
+        "title": "$t(routes.gb_forecast_cost.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Прогноз строимости ВС",
+          "subtitle": "Этот инструмент позволяет определить количество СО, нужное для перехода с уровня на уровень, с и без бонуса Арки."
+        }
+      },
+      "gb_statistics": {
+        "title": "$t(routes.gb_statistics.hero.title) | $t(common:site_title)",
+        "hero": {
+          "title": "Статистика ВС",
+          "subtitle": "Этот инструмент визуализирует рост стоимости  ВС относительно эпохи."
         }
       },
       "secure_position": {
@@ -217,10 +283,17 @@
           "title": "Резервирование места",
           "subtitle": "Этот инструмент позволяет подсчитать количество СО, которые игрок должен вложить в ВС для того, чтобы гарантированно занять в нем место."
         }
+      },
+      "error": {
+        "404": {
+          "title": "Страница не найдена | $t(common:site_title)",
+          "message": "Извините, страница не существует"
+        }
       }
     },
     "foe_data": {
       "age": {
+        "Oracle": "$t(foe_data.age.NoAge) ($t(foe_data.gb.Oracle_of_Delphi))",
         "NoAge": "Без эпохи",
         "BronzeAge": "Бронзовый век",
         "IronAge": "Железный век",
@@ -272,10 +345,15 @@
         "Arctic_Orangery": "Арктическая оранжерея",
         "Seed_Vault": "Зернохранилище",
         "Atlantis_Museum": "Музей Атлантиды",
-        "The_Kraken": "Кракен"
+        "The_Kraken": "Кракен",
+        "The_Blue_Galaxy": "Синяя галактика"
       }
     },
     "utils": {
+      "content": {
+        "tools": "Инструменты",
+        "statistics": "Статистика"
+      },
       "btn_calculate": "Калькулятор",
       "description": {
         "p1": "Введите значения. Результат будет обновлен автоматически.",
@@ -284,7 +362,37 @@
       "permalink": "постоянная ссылка",
       "Yes": "Да",
       "No": "Нет",
-      "Information": "Информация"
+      "Ok": "Ok",
+      "Copy": "Скопировать",
+      "Copyed": "Скопировано!",
+      "Information": "Информация",
+      "From": "От",
+      "To": "До (максимум {{max}})",
+      "Prefix": "Префикс",
+      "Suffix": "Суффикс",
+      "moment": {
+        "year": "{{count}} год",
+        "year_plural": "{{count, number}} лет",
+        "month": "{{count}} месяц",
+        "month_plural": "{{count}} месяцев",
+        "day": "{{count}} день",
+        "day_plural": "{{count}} дней"
+      },
+      "graph": {
+        "gb_level": "Уровень",
+        "gb_level_cost": "Стоимость уровня",
+        "gb_reward_1st_place": "Награда за уровень (1е место)"
+      }
+    },
+    "seo": {
+      "keywords": {
+        "gb": "вс",
+        "great_building": "великое строение",
+        "fp": "со",
+        "forge_point": "стратегическое очко",
+        "medals": "медали",
+        "military_units": "военные юниты"
+      }
     }
   }
 }
